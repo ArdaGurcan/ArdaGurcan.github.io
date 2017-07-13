@@ -1,0 +1,10 @@
+youtube vid= <iframe width="250" height="157.5"
+src="https://www.youtube.com/embed/burayidoldur">
+</iframe>
+
+youtube vid plot= <tr>
+<td width="210" height="157.5" colspan="3">
+</td>
+<td width="210" height="157.5" colspan="3">
+</td>
+</tr>
