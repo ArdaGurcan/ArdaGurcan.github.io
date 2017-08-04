@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://www.ilkertemir.com/arda/astronotlar.py"></script>
+
   <style>
   body {
 	  background-color: lightblue;
@@ -27,7 +27,7 @@
       <li><a href="/c-cube">C-Cube</a></li>
     
       <li><a href="/gerekligereksiz"><b>G</b>erekli <b>G</b>ereksiz</a></li>
-      <li><a href="/oyunlar/blockbreaker">Block Breaker</a></li>
+      <li><a href="/peopleinspace/index.html">People in Space</a></li>
     </ul>
   </div>
 </nav>
@@ -36,26 +36,8 @@
 <div class="jumbotron">
   <!--<img src="cinqueterre.jpg" class="img-thumbnail" width="304" height="236">-->
   <h1><b>Arda Gürcan</h1>      
-  <p>Şu anda uzayda olan kişi sayısı: <span id="astnum"></span><br/><span id="astname"></span></p>
-  <script type="text/javascript"> 
-    $('#astnum').html(data.number);
-    var names;
-    var i=0;
-    //for (var i = data.people.length - 1; i >= 0; i--) {
-    function ChangeName(){
 
-      names = data.people[i].name;
-      $('#astname').html(names);
-      i++;
-      if(i>data.people.length-1){
-        i=0;
-      }
-      setTimeout(ChangeName,2000);
-    }
-    ChangeName();
-
-   </script>	
-  <a type="button" class="btn btn-info" href="/oyunlar/blockbreaker">En yeni oyunum<b> Block Breaker</b></a>
+  <a type="button" class="btn btn-info" href="/peopleinspace/index.html">Uzaydaki kişileri ve onlarla ilgili çeşitli bilgiler gösteren sitem<b> People in Space</b></a>
 </div>
 
 
@@ -66,7 +48,7 @@
 	  <div class="col-sm-4" ><a href="
 	  /gerekligereksiz"><h3><b>G</b>erekli <b>G</b>ereksiz</h3><p>Okulda <b>g</b>erekli <b>g</b>ereksiz şeyler satmak için kurduğum websitesi!</p></a>
 	  </div>	  
-	  <div class="col-sm-4" ><a href="/oyunlar/blockbreaker"><h3>Block Breaker</h3><p>Unity ile yaptığım 9. oyun, aynı zamanda en iyilerinden biri!</p></a>
+	  <div class="col-sm-4" ><a href="/peopleinspace/index.html"><h3>People in Space</h3><p>Uzaydaki kişileri ve onlarla ilgili çeşitli bilgiler gösteren sitem :)</p></a>
 	  </div>
   </div>
   <!--<p align="center" ></br></br></br><b>Not: </b>Eğer Nesibe Aydın Okulları Gölbaşı Kampüsü'nden değilseniz bu sistem düzgün bir şekilde çalışmaz.</p>-->           

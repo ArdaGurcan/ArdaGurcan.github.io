@@ -1,0 +1,128 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://www.ilkertemir.com/arda/astronotlar.py"></script>
+		<style type="text/css">
+			#astbiodivin {
+				margin: auto;
+				width: 90%; 
+				
+				padding: 10px;
+
+			}
+			#astbiodivout {
+				position: absolute;
+				top:50%;
+				left:50%;
+				width: 300px; 
+				height: 430px;
+				margin-top: -215px; 
+				margin-left: -150px;
+				opacity:0.9;
+				background-color: white;
+				border-radius: 5px;
+				
+				
+				padding: 10px;
+
+			}
+			#astphoto {
+				border-radius: 4px;
+			}
+			body {
+				background-image: url("http://cdn.pixabay.com/photo/2016/06/23/16/07/background-1475670_960_720.jpg");
+				background-color: black;
+				background-repeat: no-repeat;
+   				background-attachment: fixed;
+   				background-position: center;
+   				background-size: cover; 
+			}
+			#astcount {
+				position: absolute;
+				bottom:60px;
+				left:0;
+				width: 100%; 
+				height: 30px;
+				text-align: center;
+				color: white;
+				font-size:16pt;
+				opacity:0.9;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="astcount">Şu anda uzayda olan kişi sayısı: <span id="astnum"></span></div>
+		<div id="astbiodivout"><div style="text-align:center;padding-top:15px;"><img id="astphoto" height="" width="" src="" onload='show_img();'><br/><span style="font-size: 14pt;"id="astname"></span><br/></div><div id="astbiodivin"><span id="astbio"></span></div><br/></div>
+  		<script type="text/javascript"> 
+	    	$('#astnum').html(data.number);
+   		 	var names;
+   		 	
+   		 	var biotext1="";
+			var photos;
+			var height;
+			var width;
+			var charcounter=0;
+    		var i=0;
+    		/*var maxbiolength=0;
+    		for (var c = 0; c < data.people.length-1; c++) {
+    			if(maxbiolength<data.people[c].bio.length){
+    				maxbiolength=data.people[c].bio.length;
+    			}
+    		}*/
+    		//alert(maxbiolength);
+    		//for (var i = data.people.length - 1; i >= 0; i--) {
+			function show_img() {
+    		  $('#astphoto').fadeTo('slow',1);
+			  $('#astname').fadeTo('slow',1);
+			}
+  	 		function ChangeName(){
+			  photos = data.people[i].biophoto;
+    		  names = data.people[i].name;
+			  width = data.people[i].biophotowidth;
+			  height = data.people[i].biophotoheight;
+			  var bio= data.people[i].bio;
+			  $('#astname').fadeTo('slow',0);
+			  $('#astphoto').fadeTo('slow',0, function () {
+				$('#astname').html(names);
+				$('#astphoto').attr('src',photos);
+				$('#astphoto').attr('height',height/4);
+				$('#astphoto').attr('width',width/4);
+				ShowBio(i);
+	    		i++;
+    			if(i>data.people.length-1){
+    		   	i=0;
+    		  }
+			  });
+			  
+    		  
+
+    		}
+    		function ShowBio(astindex) {
+    			var bio=data.people[astindex].bio;
+    			
+    			
+    			
+    			biotext1=biotext1+bio[charcounter];
+    			$('#astbio').html(biotext1);
+    			charcounter++;
+    			if(charcounter>bio.length-1){
+    				biotext1="";
+    				charcounter=0;
+    				ChangeName();
+    		  	}else{
+    		  		setTimeout(function(){ShowBio(astindex)},40);
+    		  	}
+    		  	//setTimeout(ShowBio,10000/bio.length);
+    		}
+    		ChangeName();
+    		
+	
+  	 	</script>	
+	
+	
+	</body>
+</html>
