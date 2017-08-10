@@ -17,20 +17,7 @@
   ga('send', 'pageview');
 
 </script>
-<script type="text/javascript">
-var snowing=false;
-  function MakeItSnow() {
-    if(!snowing){
-      $("#weather").attr('src' , 'snowstorm.js');
-      $("#easter-egg").html("Make it stop!");
-      snowing=true;
-    }else{
-      $("#weather").attr('id' , '');
-      $("#easter-egg").html("Make it snow!");
-      snowing=false;
-    }
-  }
-</script>
+
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
@@ -42,19 +29,16 @@ var snowing=false;
   snowStorm.followMouse = false;
   snowStorm.targetElement = null;
 </script>-->
-<script id="weather" src=""></script>
+<script src="snowstorm.js"></script>
   <style>
   body {
 	  background-color: lightblue;
-  }
-  #easter-egg {
-    color: lightblue;
   }
   .jumbotron {
   background-color: darkturquoise !important;
   text-align: center;
   }
-  a:link    {
+    a:link    {
   /* Applies to all unvisited links */
   text-decoration:  none;
   font-weight:      bold;
@@ -75,7 +59,6 @@ a:active  {
   font-weight:      bold;
 
   } 
-
 
   </style></head>
  <body>
@@ -117,7 +100,7 @@ a:active  {
 	  </div>
   </div>
   
-  <p align="center"><a href="snowing.html" id="easter-egg"></br></br></br>How did you even find me?</a></p>
+  <p align="center" style="color: black;" title="Stop the snow?"><a href="clear.html" id="easter-egg"></br></br></br>Make it stop</a></p>
 
 </div>
 
