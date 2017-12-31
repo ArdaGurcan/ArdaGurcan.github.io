@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="node_modules/cheet.js/cheet.min.js"></script>
+  
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -17,20 +17,7 @@
   ga('send', 'pageview');
 
 </script>
-<script type="text/javascript">
-var snowing=false;
-  function MakeItSnow() {
-    if(!snowing){
-      $("#weather").attr('src' , 'snowstorm.js');
-      $("#easter-egg").html("Make it stop!");
-      snowing=true;
-    }else{
-      $("#weather").attr('id' , '');
-      $("#easter-egg").html("Make it snow!");
-      snowing=false;
-    }
-  }
-</script>
+
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
@@ -38,28 +25,20 @@ var snowing=false;
     enable_page_level_ads: true
   });
 </script>
-<script type="text/javascript">
-  cheet('up up down down left right left right b a', function () { 
-    alert('God mode enabled!'); 
-});
-</script>
 <!--<script type="text/javascript">
   snowStorm.followMouse = false;
   snowStorm.targetElement = null;
 </script>-->
-<script id="weather" src=""></script>
+<script src="snowstorm.js"></script>
   <style>
   body {
 	  background-color: lightblue;
-  }
-  #easter-egg {
-    color: lightblue;
   }
   .jumbotron {
   background-color: darkturquoise !important;
   text-align: center;
   }
-  a:link    {
+    a:link    {
   /* Applies to all unvisited links */
   text-decoration:  none;
   font-weight:      bold;
@@ -81,19 +60,17 @@ a:active  {
 
   } 
 
-
   </style></head>
  <body>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="" >Arda Gürcan</a>
+      <a class="navbar-brand" href="">Arda Gürcan</a>
     </div>
 
     <ul class="nav navbar-nav">
-      <li><a href="/c-cube" title=>C-Cube</a></li>
-    
+      <li><a href="/c-cube" title="C-Cube">C-Cube</a></li>
       <li><a href="/gerekligereksiz" ><b>G</b>erekli <b>G</b>ereksiz</a></li>
       <li><a href="/peopleinspace/index.html" >People in Space</a></li>
       <li><a href="notepad.html" >Notepad</a></li>
@@ -102,12 +79,11 @@ a:active  {
     </ul>
   </div>
 </nav>
-  
+
 <div class="container" align="center">
 <div class="jumbotron">
-  <!--<img src="cinqueterre.jpg" class="img-thumbnail" width="304" height="236">
-  height="12.75%"-->
-  <h1 ><b><marquee behavior="alternate" height="12.75%" loop="12" width="385px"direction="up">Arda Gürcan</marquee></h1>      
+  <!--<img src="cinqueterre.jpg" class="img-thumbnail" width="304" height="236">-->
+  <h1><b><marquee behavior="alternate" height="12%" loop="12" width="385px"direction="up">Arda Gürcan</marquee></h1>      
 
   <a type="button" class="btn btn-info" href="/oyunlar/snowman/index.html">Download My New Game:<br/><b>2D Platformer</b></a>
 </div>
@@ -116,16 +92,16 @@ a:active  {
   <div class="row text-center">
 
   <!--col-sm-xlerin toplamı 12-->
-	  <div class="col-sm-4"><a href="/c-cube"><h3><marquee behavior="alternate" height="5.5%" loop="12" width="100px"direction="up">C-Cube</marquee></h3><p>A cubing website I made last year!</p></a>
+	  <div class="col-sm-4"><a href="/c-cube"><h3><marquee behavior="alternate" height="5.5%" loop="12" width="100px"direction="up">C-Cube</marquee></h3><p>A cubing website I made last year with Cemal Atakan Bostancı!</p></a>
 	  </div>
 	  <div class="col-sm-4"><a href="
 	  /gerekligereksiz"><h3><marquee behavior="alternate" height="5.5%" loop="12" width="200px"direction="up"><b>G</b>erekli <b>G</b>ereksiz</marquee></h3><p>A website I made to sell things at school!</p></a>
 	  </div>	  
-	  <div class="col-sm-4" ><a href="/peopleinspace/index.html"><h3><marquee behavior="alternate" height="5.5%" loop="12" width="200px"direction="up">People in Space</marquee></h3><p>A website that shows the people in space and information about them :)</p></a>
+	  <div class="col-sm-4"><a href="/peopleinspace/index.html"><h3><marquee behavior="alternate" height="5.5%" loop="12" width="200px"direction="up">People in Space</marquee></h3><p>A website that shows the people in space and information about them :)</p></a>
 	  </div>
   </div>
   
-  <p align="center"><a href="snowing.html" id="easter-egg"></br></br></br>How did you find me?</a></p>
+  <p align="center" style="color: black;"><a href="index.html" id="easter-egg"></br></br></br>Stop the snow!</a></p>
 
 </div>
 
