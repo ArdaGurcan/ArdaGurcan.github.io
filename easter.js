@@ -1,5 +1,5 @@
 // a key map of allowed keys
-var cheats=false;
+//var cheats=false;
 var allowedKeys = {
   37: 'left',
   38: 'up',
@@ -39,15 +39,19 @@ document.addEventListener('keydown', function(e) {
 });
 
 function activateCheats() {
-if(cheats){
+/*if(cheats==true){
   document.body.contentEditable = 'false';
   document.designMode='off';
-
+  cheats=false;
   alert("Cheats disabled!");
-}else if(!cheats){
+}else if(cheats==false){
   document.body.contentEditable = 'true';
   document.designMode='on';
+  cheats=true;
   alert("Cheats enabled!");
-}
+  */
+  new Audio('xf.mp3').play();
+//}
+
 
 }
