@@ -1,9 +1,0 @@
-{
-"TOTAL_MEMORY": 268435456,
-"dataUrl": "blockbreaker.data.unityweb",
-"asmCodeUrl": "blockbreaker.asm.code.unityweb",
-"asmMemoryUrl": "blockbreaker.asm.memory.unityweb",
-"asmFrameworkUrl": "blockbreaker.asm.framework.unityweb",
-"splashScreenStyle": "Dark",
-"backgroundColor": "#231F20"
-}
