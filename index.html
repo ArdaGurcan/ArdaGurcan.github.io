@@ -43,6 +43,8 @@
   function Weather(){
     myDate = new Date();
     currentMonth = myDate.getMonth();
+    console.log(myDate);
+    console.log(currentMonth);
     if(currentMonth != 0 && currentMonth != 1 && currentMonth != 11){
       snowStorm.stop();
     }
