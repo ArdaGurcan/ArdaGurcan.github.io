@@ -16,7 +16,8 @@
 <script type="text/javascript" src="adframe.js"></script>
 <script type="text/javascript">
     if(adblock) {
-          setTimeout(function(){ alert("You can keep using AdBlock. My website doesn't have any ads."); }, 5000);
+           setTimeout(function(){ console.log("You can keep using AdBlock for now. My website doesn't have any ads yet."); }, 0);
+          // console.log("You can keep using AdBlock for now. My website doesn't have any ads yet.");
     }
 </script>
   <script>
@@ -40,15 +41,20 @@
 <script src="snowstorm.js"></script>
 <script>
   //snowStorm.toggleSnow();
+
   function Weather(){
     myDate = new Date();
     currentMonth = myDate.getMonth();
-    console.log(myDate);
-    console.log(currentMonth);
-    if(currentMonth != 0 && currentMonth != 1 && currentMonth != 11){
-      snowStorm.stop();
+
+    if(currentMonth == 0 || currentMonth == 1|| currentMonth == 11){
+	
+	}
+    else
+    {
+    	snowStorm.toggleSnow();
     }
   }
+  Weather();
 //snowStorm.flakesMaxActive = 256;    // show more snow on screen at once
 </script>
 
@@ -95,7 +101,7 @@ a:active  {
 
 
   </style></head>
- <body onLoad="snowStorm.toggleSnow()">
+ <body>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -118,7 +124,7 @@ a:active  {
 </nav>
   
 <div class="container" align="center">
-<div class="jumbotron" onload="Weather();">
+<div class="jumbotron" onload="snowStorm.toggleSnow()">
 
   <!--<img src="cinqueterre.jpg" class="img-thumbnail" width="304" height="236">
   height="12.75%"  >  height="12%"" -->
