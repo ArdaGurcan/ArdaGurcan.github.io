@@ -41,25 +41,27 @@
 <script src="snowstorm.js"></script>
 <script>
   //snowStorm.toggleSnow();
+  var fakeDate = new Date();
 
   function Weather(){
-    myDate = new Date();
-    currentMonth = myDate.getMonth();
+    //myDate = new Date();
+    currentMonth = fakeDate.getMonth();
 
     if(currentMonth == 0 || currentMonth == 1|| currentMonth == 11){
-		
+		snowStorm.toggleSnow();
 
 	}
     else
     {
-    	snowStorm.stop();
+    	
     }
   }
 
   function CheckForEasterEggs(){
-  	currentDate = new Date();
-  	currentMonth = currentDate.getMonth();
-  	currentDay = currentDate.getDate()
+  	
+  	
+  	currentMonth = fakeDate.getMonth();
+  	currentDay = fakeDate.getDate()
   	if(currentMonth == 3 && currentDay == 1)
   	{
   		console.log("April Fools!")
@@ -69,11 +71,26 @@
 
 
   	}
+  	else
+  	{
+
+  		document.getElementsByTagName("BODY")[0].classList.remove('rotate');
+  		document.getElementsByTagName("LINK")[0].setAttribute("href","ico.png");
+  		document.getElementsByTagName("TITLE")[0].innerHTML = "Arda Gürcan";
+  	}
   }
-  window.onload = function () {
-  	CheckForEasterEggs();
+
+function SetDate(date,month){
+	fakeDate.setMonth(month-1);
+	fakeDate.setDate(date);
+	CheckForEasterEggs();
   	Weather();
-  }
+}
+
+  // window.onload = function () {
+  // 	CheckForEasterEggs();
+  // 	Weather();
+  // }
 //snowStorm.flakesMaxActive = 256;    // show more snow on screen at once
 </script>
 
@@ -141,7 +158,7 @@ a:active  {
 
 
   </style></head>
- <body id="body">
+ <body id="body" onload="SetDate(fakeDate.getDate(),fakeDate.getMonth()+1)">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
