@@ -43,8 +43,8 @@
   function Weather(){
     myDate = new Date();
     currentMonth = myDate.getMonth();
-    if(currentMonth == 0 || currentMonth == 1 || currentMonth == 11){
-      snowStorm.toggleSnow();
+    if(currentMonth != 0 && currentMonth != 1 && currentMonth != 11){
+      snowStorm.stop();
     }
   }
 //snowStorm.flakesMaxActive = 256;    // show more snow on screen at once
