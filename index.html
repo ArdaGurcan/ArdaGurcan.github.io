@@ -47,14 +47,30 @@
     currentMonth = myDate.getMonth();
 
     if(currentMonth == 0 || currentMonth == 1|| currentMonth == 11){
-	
+		snowStorm.toggleSnow();
+
 	}
     else
     {
-    	snowStorm.toggleSnow();
+    	
     }
   }
-  Weather();
+
+  function CheckForEasterEggs(){
+  	currentDate = new Date();
+  	currentMonth = currentDate.getMonth();
+  	currentDay = currentDate.getDate()
+  	if(currentMonth == 3 && currentDay == 1)
+  	{
+  		console.log("April Fools!")
+  		document.getElementsByTagName("BODY")[0].classList.add('rotate');
+
+  	}
+  }
+  window.onload = function () {
+  	CheckForEasterEggs();
+  	Weather();
+  }
 //snowStorm.flakesMaxActive = 256;    // show more snow on screen at once
 </script>
 
@@ -66,6 +82,27 @@
   <style>
   body {
 	  background-color: lightblue;
+  }
+  .rotate{
+  	transform: rotate(180deg);
+
+
+
+  /* Safari */
+  -webkit-transform: rotate(180deg);
+
+  /* Firefox */
+  -moz-transform: rotate(180deg);
+
+  /* IE */
+  -ms-transform: rotate(180deg);
+
+  /* Opera */
+  -o-transform: rotate(180deg);
+
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=4);
+
   }
   img {
     border-radius: 25px;
@@ -101,7 +138,7 @@ a:active  {
 
 
   </style></head>
- <body>
+ <body id="body">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
