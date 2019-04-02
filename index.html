@@ -47,13 +47,15 @@
     //myDate = new Date();
     currentMonth = fakeDate.getMonth();
 
-    if(currentMonth == 0 || currentMonth == 1|| currentMonth == 11){
-		snowStorm.toggleSnow();
+    if((currentMonth == 0 || currentMonth == 1|| currentMonth == 11) && snowStorm.active == false){
+        
+        toggleSnow();
 
 	}
-    else
+    else if((currentMonth != 0 && currentMonth != 1 && currentMonth != 11) && snowStorm.active == true)
     {
-    	
+    	snowStorm.stop();
+        snowStorm.freeze();
     }
   }
 
