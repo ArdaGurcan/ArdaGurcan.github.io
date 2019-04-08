@@ -11,21 +11,69 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <style type="text/css">
-      .navbar {
+      hr {
+        border-color: rgb(58,58,58);
+        background-color: rgb(58,58,58);
+        color: rgb(58,58,58);
+      }
+      body {
+        color: rgb(217, 215, 211);
+        background-color: rgb(23, 24, 28);
+
+      }
+      body.light {
+         background-color: #f1f2f6;
+      }
+      .text-muted{
+        color: rgb(187, 182, 175) !important;
+      }
+      .navbar.light {
         border: 1px gainsboro solid;
-        background-color: #FFF!important;
+        background-color: #FFF !important;
+      }
+      .navbar {
+        border: 1px rgb(58,58,58) solid;
+        background-color: rgb(20,21,24) !important;
+      }
+
+      .navbar-brand {
+        color: rgba(232, 231, 227, 0.9) !important;
+      }
+
+      .jumbotron.light {
+        word-wrap: break-word;
+        border: 1px gainsboro solid;
+        background-color: #FFFFFF;
       }
 
       .jumbotron {
+        word-wrap: break-word;
+        border: 1px rgb(58,58,58) solid;
+        background-color: rgb(20,21,24);
+
+      }
+      .card.light {
         border: 1px gainsboro solid;
       }
       .card {
-        border: 1px gainsboro solid;
+        border: 1px rgb(58,58,58) solid;
+        background-color: rgb(20,21,24);
       }
-
+      .nav-link {
+        color: rgba(232, 231, 227, 0.5) !important;
+      }
+      .nav-link.active {
+        color: rgba(232, 231, 227, 0.9) !important;
+      }
     </style>
+    <script type="text/javascript">
+      window.onload = function(){
+        lastEditDate = new Date(document.lastModified);
+       document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + lastEditDate.getMonth() + "." + lastEditDate.getFullYear();
+      }
+    </script>
   </head>
-  <body style="background-color: #f1f2f6">
+  <body>
 
 <!--     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -42,7 +90,7 @@
       </div>
     </nav> -->
 
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
       <div class="container">
         <a class="navbar-brand" href="#">
           <img src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -56,7 +104,7 @@
           <div class="container">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link active" href="#">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Games</a>
@@ -78,10 +126,10 @@
     
 
     <div class="container mt-4">
-      <div class="jumbotron text-center" style="background-color: #FFFFFF">
+      <div class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Arda Gürcan</h1>
-            <p class="lead text-muted">a website made by Arda Gürcan for fun</p>
+            <h1 class="jumbotron-heading">www.ardagurcan.com</h1>
+            <p class="lead text-muted">Games, Projects, 3D Models, Simulations...</p>
         </div>
       </div>
     </div>
@@ -97,7 +145,7 @@
           <div class="card">
             <img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">
             <div class="card-body">
-              <h5 class="card-title">Bulbhead <span class="badge badge-success">New</span></h5>
+              <h5 class="card-title">Bulbhead <span class="badge badge-danger">New</span></h5>
               <p class="card-text">
                 Release Date: 04.04.2004<br>
                 Release Purpose: Brackeys Game Jam #1<br>
@@ -135,7 +183,7 @@
         </div>
 
         <div class="col-md-6 my-3">
-          <div class="card">
+          <div class="card dark">
             <img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
@@ -146,9 +194,13 @@
         </div>
       </div>
     </div>
-<!--     <hr>
+    
     <footer class="container py-2">
-      <p>Made by Arda Gürcan</p>
-    </footer> -->
+      <hr>
+      <p style="text-align:left;">
+        Made by Arda Gürcan.
+        <span style="float:right;font-style: italic">Last edited: <span class="last-edit"></span></span>
+      </p>
+    </footer>
   </body>
 </html>
