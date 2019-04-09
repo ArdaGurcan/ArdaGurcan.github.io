@@ -65,16 +65,26 @@
       }
     </style> -->
     <script type="text/javascript">
+      var dark = true;
+
       window.onload = function(){
         lastEditDate = new Date(document.lastModified);
        document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + lastEditDate.getMonth() + "." + lastEditDate.getFullYear();
+
+        // toggleMode();
+        // toggleMode();
+        if(localStorage.getItem("dark-mode") == "off")
+        {
+          console.log("dark-off");
+          dark = false;
+          document.getElementById("mode").setAttribute("href","light.css");
+          document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","moon.svg");
+          localStorage.setItem("dark-mode", "off");
+        }
       }
 
-      var dark = true;
-      if(localStorage.getItem("dark-mode") == "off")
-      {
-        dark = false;
-      }
+      
       function toggleMode() {
         dark = !dark;
         if(dark)
@@ -92,8 +102,7 @@
           localStorage.setItem("dark-mode", "off");
         }
       }
-      toggleMode();
-      toggleMode();
+      
     </script>
      <link id="mode" rel="stylesheet" type="text/css" href="dark.css">
  </head>
@@ -167,7 +176,7 @@
           <div class="card">
             <img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">
             <div class="card-body">
-              <h5 class="card-title">Bulbhead <span class="badge badge-danger">New</span></h5>
+              <h5 class="card-title">Bulbhead <span class="badge badge-pill badge-danger align-middle">New</span></h5>
               <p class="card-text">
                 Release Date: 04.04.2004<br>
                 Release Purpose: Brackeys Game Jam #1<br>

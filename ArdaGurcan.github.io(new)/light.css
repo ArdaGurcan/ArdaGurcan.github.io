@@ -30,3 +30,11 @@ hr {
 .toggle-icon {
 	filter: invert(14%) sepia(5%) saturate(944%) hue-rotate(169deg) brightness(101%) contrast(100%);
 }
+
+.nav-link {
+	white-space: nowrap;
+}
+
+.nav-link.active {
+	white-space: nowrap;
+}

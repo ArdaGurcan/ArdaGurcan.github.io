@@ -35,9 +35,11 @@ body {
 }
 .nav-link {
   color: rgba(232, 231, 227, 0.5) !important;
+  white-space: nowrap;
 }
 .nav-link.active {
   color: rgba(232, 231, 227, 0.9) !important;
+  white-space: nowrap;
 }
 .navbar-toggler {
   border: 1px rgb(58,58,58) solid !important; 
