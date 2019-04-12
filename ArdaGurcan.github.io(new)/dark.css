@@ -47,3 +47,8 @@ body {
 .toggle-icon {
   filter: invert(94%) sepia(5%) saturate(164%) hue-rotate(2deg) brightness(94%) contrast(87%);
 }
+
+a,button {
+  box-shadow: none !important;
+  outline: none !important;
+}

@@ -38,3 +38,8 @@ hr {
 .nav-link.active {
 	white-space: nowrap;
 }
+
+a,button {
+  box-shadow: none !important;
+  outline: none !important;
+}

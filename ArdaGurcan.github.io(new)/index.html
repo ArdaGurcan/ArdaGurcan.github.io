@@ -5,65 +5,10 @@
     <link rel="icon" type="image/png" href="ico.png">
     <meta name="keywords" content="Arda,Gürcan,Gurcan,Arda Gürcan,Arda Gurcan,ardagürcan,ardagurcan">
     <meta name="description" content="This is a website created by Arda Gürcan for fun.">
-
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<!--     <style type="text/css">
-      hr {
-        border-color: rgb(58,58,58);
-        background-color: rgb(58,58,58);
-        color: rgb(58,58,58);
-      }
-      body {
-        color: rgb(217, 215, 211);
-        background-color: rgb(23, 24, 28);
 
-      }
-      body.light {
-         background-color: #f1f2f6;
-      }
-      .text-muted{
-        color: rgb(187, 182, 175) !important;
-      }
-      .navbar.light {
-        border: 1px gainsboro solid;
-        background-color: #FFF !important;
-      }
-      .navbar {
-        border: 1px rgb(58,58,58) solid;
-        background-color: rgb(20,21,24) !important;
-      }
-
-      .navbar-brand {
-        color: rgba(232, 231, 227, 0.9) !important;
-      }
-
-      .jumbotron.light {
-        word-wrap: break-word;
-        border: 1px gainsboro solid;
-        background-color: #FFFFFF;
-      }
-
-      .jumbotron {
-        word-wrap: break-word;
-        border: 1px rgb(58,58,58) solid;
-        background-color: rgb(20,21,24);
-
-      }
-      .card.light {
-        border: 1px gainsboro solid;
-      }
-      .card {
-        border: 1px rgb(58,58,58) solid;
-        background-color: rgb(20,21,24);
-      }
-      .nav-link {
-        color: rgba(232, 231, 227, 0.5) !important;
-      }
-      .nav-link.active {
-        color: rgba(232, 231, 227, 0.9) !important;
-      }
-    </style> -->
     <script type="text/javascript">
       var dark = true;
 
@@ -71,8 +16,6 @@
         lastEditDate = new Date(document.lastModified);
        document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + lastEditDate.getMonth() + "." + lastEditDate.getFullYear();
 
-        // toggleMode();
-        // toggleMode();
         if(localStorage.getItem("dark-mode") == "off")
         {
           console.log("dark-off");
@@ -82,6 +25,10 @@
           document.getElementsByClassName("toggle-icon")[0].setAttribute("src","moon.svg");
           localStorage.setItem("dark-mode", "off");
         }
+
+        $.getJSON('projects.json', function(data) {         
+            alert(data);
+        });
       }
 
       
@@ -113,7 +60,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          <img src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="ɐ">
           Arda Gürcan
         </a>
 
@@ -140,7 +87,7 @@
 
           </div>
           <div class="container">
-            <img src="sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();" title="Toggle dark mode" style="float: right;">
+            <img src="sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();" title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
           </div>
 
         </div>
