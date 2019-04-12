@@ -2,7 +2,14 @@
 <html>
 <head>
 	<title>CAPTCHA Test</title>
-	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<script src="https://www.google.com/recaptcha/api.js?render=6LfsnJwUAAAAAFc6HuyqPfj2loaG5lQqNdNs-lUh"></script>
+	<script>
+		grecaptcha.ready(function() {
+			grecaptcha.execute('6LfsnJwUAAAAAFc6HuyqPfj2loaG5lQqNdNs-lUh', {action: 'homepage'}).then(function(token) {
+			         alert("Success!");
+			});
+		});
+	</script>
 </head>
 <body>
 	<div class="g-recaptcha" data-sitekey="6LfsnJwUAAAAAFc6HuyqPfj2loaG5lQqNdNs-lUh"></div>
