@@ -6,8 +6,11 @@
 	<script>
 		grecaptcha.ready(function() {
 			grecaptcha.execute('6LfsnJwUAAAAAFc6HuyqPfj2loaG5lQqNdNs-lUh', {action: 'homepage'}).then(function(token) {
-			         alert("Success!");
+			         alert("Success! Your score: ");
+			         console.log("token: " + token);
+
 			});
+			
 		});
 	</script>
 </head>
