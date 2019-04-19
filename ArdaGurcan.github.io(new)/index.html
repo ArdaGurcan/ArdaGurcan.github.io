@@ -29,8 +29,6 @@
           localStorage.setItem("dark-mode", "off");
         }
         today = new Date();
-        // fakeday = new Date("4.04.2019")
-        // console.log();
         $.getJSON('projects.json', function(data) {         
           var addString = "";
           console.log("success");
@@ -43,16 +41,16 @@
              addString += 
                 '<div class="col-md-6 my-3">'+
                   '<div class="card">'+
-                    '<img href="!LINK!" src="!LINK!/cover-image.gif" class="card-img-top" alt="!NAME! Cover Image">'+
+                    '<a href="!LINK!"><img src="!LINK!/cover-image.gif" class="card-img-top" alt="!NAME! Cover Image"></a>'+
                     '<div class="card-body">'+
                       '<h5 class="card-title">' + 
                       '<a href="!LINK!">!NAME!' + "!NEWPILL!" + 
                       '</a></h5>'+
                       '<p class="card-text">'+
-                        'Release Date: ' + "!RELEASEDATE!" + '<br>'+
-                        'Release Purpose: ' + "!PURPOSE!" + '<br>'+
-                        'Category: ' + "!CATEGORY!" + '<br>'+
-                        'Made with: ' + "!ENGINE!" + '<br>'+
+                        '<b>Release Date:</b> ' + "!RELEASEDATE!" + '<br>'+
+                        '<b>Release Purpose:</b> ' + "!PURPOSE!" + '<br>'+
+                        '<b>Category:</b> ' + "!CATEGORY!" + '<br>'+
+                        '<b>Made with</b>: ' + "!ENGINE!" + '<br>'+
                       '</p>'+
                       '<a href="!LINK!" class="btn btn-primary">' + "!BUTTONMESSAGE!" + '</a>'+
                     '</div>'+
@@ -143,11 +141,6 @@
         </div>
       </div>
     </nav>
-
-
-
-    
-
     <div class="container mt-4">
       <div class="jumbotron text-center">
         <div class="container">
