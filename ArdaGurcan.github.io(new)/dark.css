@@ -51,9 +51,12 @@ body {
 a,button {
   box-shadow: none !important;
   outline: none !important;
-
 }
 
-a:link, a:visited {
+button {
+  color: inherit;
+}
+
+a:link, a:visited, {
   color: inherit;
 }
