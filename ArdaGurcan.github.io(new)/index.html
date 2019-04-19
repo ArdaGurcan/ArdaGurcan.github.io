@@ -34,7 +34,7 @@
 
           for(var i = 0; i < data.projects.length; i++)
           {
-            if(i + 1 % 2 == 0)
+            if(i % 2 == 0)
             {
              document.getElementById("projects").innerHTML += 
               '<div class="card-deck">'+
@@ -42,7 +42,7 @@
                   '<div class="card">'+
                     '<img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">'+
                     '<div class="card-body">'+
-                      '<h5 class="card-title">' + data.projects[i].name + '<span class="badge badge-pill badge-danger align-middle">New</span></h5>'+
+                      '<h5 class="card-title"> ' + data.projects[i].name + '<span class="badge badge-pill badge-danger align-middle">New</span></h5>'+
                       '<p class="card-text">'+
                         'Release Date: ' + data.projects[i].releaseDate + '<br>'+
                         'Release Purpose: ' + data.projects[i].purpose + '<br>'+
@@ -61,7 +61,7 @@
                   '<div class="card">'+
                     '<img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">'+
                     '<div class="card-body">'+
-                      '<h5 class="card-title">' + data.projects[i].name + '<span class="badge badge-pill badge-danger align-middle">New</span></h5>'+
+                      '<h5 class="card-title"> ' + data.projects[i].name + '<span class="badge badge-pill badge-danger align-middle">New</span></h5>'+
                       '<p class="card-text">'+
                         'Release Date: ' + data.projects[i].releaseDate + '<br>'+
                         'Release Purpose: ' + data.projects[i].purpose + '<br>'+
