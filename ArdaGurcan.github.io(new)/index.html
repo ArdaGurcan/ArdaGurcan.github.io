@@ -28,9 +28,12 @@
           document.getElementsByClassName("toggle-icon")[0].setAttribute("src","moon.svg");
           localStorage.setItem("dark-mode", "off");
         }
-
+        today = new Date();
+        fakeday = new Date("4.04.2019")
+        console.log();
         $.getJSON('projects.json', function(data) {         
           var addString = "";
+
           for(var i = 0; i < data.projects.length; i++)
           {
             if(i % 2 == 0)
@@ -41,7 +44,7 @@
                   '<div class="card">'+
                     '<img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">'+
                     '<div class="card-body">'+
-                      '<h5 class="card-title">' + data.projects[i].name + ' <span class="badge badge-pill badge-danger align-middle">New</span></h5>'+
+                      '<h5 class="card-title">' + data.projects[i].name + (today.getMonth() - fakeday.getMonth()+ (12 * (today.getFullYear() - fakeday.getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>' + '</h5>'+
                       '<p class="card-text">'+
                         'Release Date: ' + data.projects[i].releaseDate + '<br>'+
                         'Release Purpose: ' + data.projects[i].purpose + '<br>'+
@@ -60,7 +63,7 @@
                   '<div class="card">'+
                     '<img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">'+
                     '<div class="card-body">'+
-                      '<h5 class="card-title">' + data.projects[i].name + ' <span class="badge badge-pill badge-danger align-middle">New</span></h5>'+
+                      '<h5 class="card-title">' + data.projects[i].name + (today.getMonth() - fakeday.getMonth()+ (12 * (today.getFullYear() - fakeday.getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>' + '</h5>'+
                       '<p class="card-text">'+
                         'Release Date: ' + data.projects[i].releaseDate + '<br>'+
                         'Release Purpose: ' + data.projects[i].purpose + '<br>'+
@@ -140,13 +143,7 @@
           <div class="container">
             <img src="sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();" title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
           </div>
-
         </div>
-        
-        
-
-
-
       </div>
     </nav>
 
@@ -171,7 +168,7 @@
       <hr>
       <p style="text-align:left;">
         Made by Arda Gürcan.
-        <span style="float:right;font-style: italic">Last edited: <span class="last-edit">9.3.2019</span></span>
+        <span style="float:right;font-style: italic">Last edited: <span class="last-edit"></span></span>
       </p>
     </footer>
   
