@@ -53,10 +53,6 @@ a,button {
   outline: none !important;
 }
 
-button {
-  color: inherit;
-}
-
-a:link, a:visited, {
+a:link:not(.btn), a:visited:not(.btn) {
   color: inherit;
 }
