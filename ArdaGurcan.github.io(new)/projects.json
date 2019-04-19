@@ -3,24 +3,24 @@
     {
       "name": "Bulbhead",
       "category": "Game",
-      "file-type": "Website",
-      "release-date": "01.09.2018",
+      "fileType": "Website",
+      "releaseDate": "01.09.2018",
       "purpose": "Brackeys Game Jam #1",
       "engine": "Unity"
     },
     {
       "name": "Home Builder",
       "category": "Game",
-      "file-type": "Website",
-      "release-date": "27.01.2019",
+      "fileType": "Website",
+      "releaseDate": "27.01.2019",
       "purpose": "Global Game Jam 2019",
       "engine": "Unity"
     },
     {
       "name": "Rolling Ball",
       "category": "Game",
-      "file-type": "Download",
-      "release-date": "20.07.2017",
+      "fileType": "Download",
+      "releaseDate": "20.07.2017",
       "purpose": "Fun",
       "engine": "Unity"
     }
