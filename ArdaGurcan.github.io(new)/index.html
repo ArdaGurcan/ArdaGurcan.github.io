@@ -31,12 +31,12 @@
 
         $.getJSON('projects.json', function(data) {         
            alert(data);
-
+           var addString = ""
           for(var i = 0; i < data.projects.length; i++)
           {
             if(i % 2 == 0)
             {
-             document.getElementById("projects").innerHTML += 
+             addString += 
               '<div class="card-deck">'+
                 '<div class="col-md-6 my-3">'+
                   '<div class="card">'+
@@ -56,7 +56,7 @@
             }
             else
             {
-              document.getElementById("projects").innerHTML += 
+              addString += 
                 '<div class="col-md-6 my-3">'+
                   '<div class="card">'+
                     '<img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">'+
@@ -76,6 +76,7 @@
 
             }
           }
+          document.getElementById("projects").innerHTML += addString;
         })
       }
 
