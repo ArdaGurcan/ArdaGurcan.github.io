@@ -45,8 +45,8 @@
                   '<div class="card">'+
                     '<img href="!LINK!" src="!LINK!/cover-image.gif" class="card-img-top" alt="!NAME! Cover Image">'+
                     '<div class="card-body">'+
-                      '<h5 class="card-title" href="!LINK!">' + 
-                      "!NAME!" + "!NEWPILL!" + 
+                      '<h5 class="card-title">' + 
+                      '<a href="!LINK!">!NAME!' + "!NEWPILL!" + 
                       '</h5>'+
                       '<p class="card-text">'+
                         'Release Date: ' + "!RELEASEDATE!" + '<br>'+
@@ -58,14 +58,14 @@
                     '</div>'+
                   '</div>'+
               '</div>';
-              addString.replace("!NAME!",  data.projects[i].name);
-              addString.replace("!NEWPILL!",((today.getMonth() - (new Date(data.projects[i].releaseDate)).getMonth()+ (12 * (today.getFullYear() - (new Date(data.projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
-              addString.replace("!RELEASEDATE!", data.projects[i].releaseDate);
-              addString.replace("!PURPOSE!", data.projects[i].purpose);
-              addString.replace("!CATEGORY!", data.projects[i].category);
-              addString.replace("!ENGINE!", data.projects[i].engine);
-              addString.replace("!BUTTONMESSAGE!", (data.projects[i].category == "Game") ? "Play!" : "View!")
-              addString.replace("!LINK!", data.projects[i].name.replace(" ","_").toLowerCase());
+              addString = addString.replace("!NAME!",  data.projects[i].name);
+              addString = addString.replace("!NEWPILL!",((today.getMonth() - (new Date(data.projects[i].releaseDate)).getMonth()+ (12 * (today.getFullYear() - (new Date(data.projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
+              addString = addString.replace("!RELEASEDATE!", data.projects[i].releaseDate);
+              addString = addString.replace("!PURPOSE!", data.projects[i].purpose);
+              addString = addString.replace("!CATEGORY!", data.projects[i].category);
+              addString = addString.replace("!ENGINE!", data.projects[i].engine);
+              addString = addString.replace("!BUTTONMESSAGE!", (data.projects[i].category == "Game") ? "Play!" : "View!")
+              addString = addString.replace("!LINK!", data.projects[i].name.replace(" ","_").toLowerCase());
 
             
             if(i + 1 % 2 == 0)
