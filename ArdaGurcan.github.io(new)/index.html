@@ -30,8 +30,7 @@
         }
 
         $.getJSON('projects.json', function(data) {         
-           alert(data);
-           var addString = ""
+          var addString = "";
           for(var i = 0; i < data.projects.length; i++)
           {
             if(i % 2 == 0)
