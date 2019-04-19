@@ -44,7 +44,6 @@ a,button {
   outline: none !important;
 }
 
-a:link, a:visited, a:hover, a:active {
-  text-decoration:  none;
+a:link, a:visited {
   color: inherit;
-} 
+}
