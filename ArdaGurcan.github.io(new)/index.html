@@ -59,14 +59,14 @@
                   '</div>'+
               '</div>';
               console.log(addString);
-              addString = addString.replace("!NAME!",  data.projects[i].name);
-              addString = addString.replace("!NEWPILL!",((today.getMonth() - (new Date(data.projects[i].releaseDate)).getMonth()+ (12 *(today.getFullYear() - (new Date(data.projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
-              addString = addString.replace("!RELEASEDATE!", data.projects[i].releaseDate);
-              addString = addString.replace("!PURPOSE!", data.projects[i].purpose);
-              addString = addString.replace("!CATEGORY!", data.projects[i].category);
-              addString = addString.replace("!ENGINE!", data.projects[i].engine);
-              addString = addString.replace("!BUTTONMESSAGE!", (data.projects[i].category == "Game") ? "Play!" : "View!");
-              addString = addString.replace("!LINK!", data.projects[i].name.replace(" ","_").toLowerCase());
+              addString = addString.replace(/!NAME!/g,  data.projects[i].name);
+              addString = addString.replace(/!NEWPILL!/g,((today.getMonth() - (new Date(data.projects[i].releaseDate)).getMonth()+ (12 *(today.getFullYear() - (new Date(data.projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
+              addString = addString.replace(/!RELEASEDATE!/g, data.projects[i].releaseDate);
+              addString = addString.replace(/!PURPOSE!/g, data.projects[i].purpose);
+              addString = addString.replace(/!CATEGORY!/g, data.projects[i].category);
+              addString = addString.replace(/!ENGINE!/g, data.projects[i].engine);
+              addString = addString.replace(/!BUTTONMESSAGE!/g, (data.projects[i].category == "Game") ? "Play!" : "View!");
+              addString = addString.replace(/!LINK!/g, data.projects[i].name.replace(" ","_").toLowerCase());
               console.log(addString);
             
             if(i % 2 != 0)
