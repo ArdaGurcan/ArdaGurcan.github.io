@@ -38,45 +38,41 @@
           {
             if(i % 2 == 0)
             {
+              addString += '<div class="card-deck">';
+            }
              addString += 
-              '<div class="card-deck">'+
                 '<div class="col-md-6 my-3">'+
                   '<div class="card">'+
-                    '<img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">'+
+                    '<img href="!LINK!" src="!LINK!/cover-image.gif" class="card-img-top" alt="!NAME! Cover Image">'+
                     '<div class="card-body">'+
-                      '<h5 class="card-title">' + data.projects[i].name + ((today.getMonth() - (new Date(data.projects[i].releaseDate)).getMonth()+ (12 * (today.getFullYear() - (new Date(data.projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>') + '</h5>'+
+                      '<h5 class="card-title" href="!LINK!">' + 
+                      "!NAME!" + "!NEWPILL!" + 
+                      '</h5>'+
                       '<p class="card-text">'+
-                        'Release Date: ' + data.projects[i].releaseDate + '<br>'+
-                        'Release Purpose: ' + data.projects[i].purpose + '<br>'+
-                        'Type: ' + data.projects[i].category + '<br>'+
-                        'Engine: ' + data.projects[i].engine + '<br>'+
+                        'Release Date: ' + "!RELEASEDATE!" + '<br>'+
+                        'Release Purpose: ' + "!PURPOSE!" + '<br>'+
+                        'Category: ' + "!CATEGORY!" + '<br>'+
+                        'Made with: ' + "!ENGINE!" + '<br>'+
                       '</p>'+
-                      '<a href="#" class="btn btn-primary">Play!</a>'+
+                      '<a href="!LINK!" class="btn btn-primary">' + "!BUTTONMESSAGE!" + '</a>'+
                     '</div>'+
                   '</div>'+
-              '</div>'
-            }
-            else
-            {
-              addString += 
-                '<div class="col-md-6 my-3">'+
-                  '<div class="card">'+
-                    '<img src="cinqueterre.jpg" class="card-img-top" alt="Image not found.">'+
-                    '<div class="card-body">'+
-                      '<h5 class="card-title">' + data.projects[i].name + ((today.getMonth() - (new Date(data.projects[i].releaseDate)).getMonth()+ (12 * (today.getFullYear() - (new Date(data.projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>') + '</h5>'+
-                      '<p class="card-text">'+
-                        'Release Date: ' + data.projects[i].releaseDate + '<br>'+
-                        'Release Purpose: ' + data.projects[i].purpose + '<br>'+
-                        'Type: ' + data.projects[i].category + '<br>'+
-                        'Engine: ' + data.projects[i].engine + '<br>'+
-                      '</p>'+
-                      '<a href="#" class="btn btn-primary">Play!</a>'+
-                    '</div>'+
-                  '</div>'+
-                '</div>'+
-              '</div>'
+              '</div>';
+              addString.replace("!NAME!",  data.projects[i].name);
+              addString.replace("!NEWPILL!",((today.getMonth() - (new Date(data.projects[i].releaseDate)).getMonth()+ (12 * (today.getFullYear() - (new Date(data.projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
+              addString.replace("!RELEASEDATE!", data.projects[i].releaseDate);
+              addString.replace("!PURPOSE!", data.projects[i].purpose);
+              addString.replace("!CATEGORY!", data.projects[i].category);
+              addString.replace("!ENGINE!", data.projects[i].engine);
+              addString.replace("!BUTTONMESSAGE!", (data.projects[i].category == "Game") ? "Play!" : "View!")
+              addString.replace("!LINK!", data.projects[i].name.replace(" ","_").toLowerCase());
 
+            
+            if(i + 1 % 2 == 0)
+            {
+              addString += '</div>';
             }
+
           }
           document.getElementById("projects").innerHTML += addString;
         })
@@ -113,7 +109,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="javascript:location.reload();">
           <img src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="ɐ">
           Arda Gürcan
         </a>
