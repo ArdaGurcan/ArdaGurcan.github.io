@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var dark = true;
 
-
+      var projects[];
 
       function deviceSize() {
         let envs = ['xs', 'sm', 'md', 'lg', 'xl'];
@@ -57,13 +57,20 @@
         }
         today = new Date();
 
-        $.getJSON('projects.json', function(data) { 
-          data.projects.sort(function(a, b) {
+        $.getJSON('projects.json', function(data) {
+
+          
+          for(var i = 0; i < data.projects.length; i++)
+          {
+            projects[i] = data.projects[i];
+          }
+          projects.sort(function(a, b) {
               return (Math.round(Math.random()) == 1) ? true : false;
-          });        
+          });
+
           var addString = "";
           console.log("success");
-          for(var i = 0; i < data.projects.length; i++)
+          for(var i = 0; i < projects.length; i++)
           {
             if(i % 2 == 0)
             {
@@ -88,15 +95,15 @@
                   '</div>'+
               '</div>';
               console.log(addString);
-              addString = addString.replace(/!NAME!/g,  data.projects[i].name);
-              addString = addString.replace(/!NEWPILL!/g,((today.getMonth() - (new Date(data.projects[i].releaseDate)).getMonth()+ (12 *(today.getFullYear() - (new Date(data.projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
-              addString = addString.replace(/!RELEASEDATE!/g, data.projects[i].releaseDate);
-              addString = addString.replace(/!PURPOSE!/g, data.projects[i].purpose);
-              addString = addString.replace(/!CATEGORY!/g, data.projects[i].category);
-              addString = addString.replace(/!ENGINE!/g, data.projects[i].engine);
-              addString = addString.replace(/!BUTTONMESSAGE!/g, (data.projects[i].category == "Game") ? "Play!" : "View!");
-              addString = addString.replace(/!LINK!/g, "projects/" + data.projects[i].name.replace(" ","_").toLowerCase());
-              console.log(addString);
+              addString = addString.replace(/!NAME!/g,  projects[i].name);
+              addString = addString.replace(/!NEWPILL!/g,((today.getMonth() - (new Date(projects[i].releaseDate)).getMonth()+ (12 *(today.getFullYear() - (new Date(projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
+              addString = addString.replace(/!RELEASEDATE!/g, projects[i].releaseDate);
+              addString = addString.replace(/!PURPOSE!/g, projects[i].purpose);
+              addString = addString.replace(/!CATEGORY!/g, projects[i].category);
+              addString = addString.replace(/!ENGINE!/g, projects[i].engine);
+              addString = addString.replace(/!BUTTONMESSAGE!/g, (projects[i].category == "Game") ? "Play!" : "View!");
+              addString = addString.replace(/!LINK!/g, "projects/" + projects[i].name.replace(" ","_").toLowerCase());
+              //console.log(addString);
             
             if(i % 2 != 0)
             {
