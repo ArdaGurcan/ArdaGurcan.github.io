@@ -68,7 +68,7 @@
              addString += 
                 '<div class="col-md-6 my-3">'+
                   '<div class="card">'+
-                    '<a href="!LINK!"><img src="!LINK!/cover-image.gif" width="478" height="268.88" class="card-img-top" alt="!NAME! Cover Image"></a>'+
+                    '<a href="!LINK!"><img src="!LINK!/cover-image.gif" class="card-img-top" alt="!NAME! Cover Image"></a>'+
                     '<div class="card-body">'+
                       '<h5 class="card-title">' + 
                       '<a href="!LINK!"><b>!NAME!</b></a>' + "!NEWPILL!" + 
@@ -91,7 +91,7 @@
               addString = addString.replace(/!CATEGORY!/g, data.projects[i].category);
               addString = addString.replace(/!ENGINE!/g, data.projects[i].engine);
               addString = addString.replace(/!BUTTONMESSAGE!/g, (data.projects[i].category == "Game") ? "Play!" : "View!");
-              addString = addString.replace(/!LINK!/g, data.projects[i].name.replace(" ","_").toLowerCase());
+              addString = addString.replace(/!LINK!/g, "projects/" + data.projects[i].name.replace(" ","_").toLowerCase());
               console.log(addString);
             
             if(i % 2 != 0)
