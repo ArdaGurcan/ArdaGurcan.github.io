@@ -66,9 +66,10 @@
             projects[i] = data.projects[i];
           }
           console.log(projects);
-          projects.sort(function(a, b) {
-              return (Math.round(Math.random()) == 1) ? true : false;
-          });
+          for (let i = projects.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [projectsx[i], projects[j]] = [projects[j], projects[i]];
+          }
           console.log(projects);
           var addString = "";
           console.log("success");
