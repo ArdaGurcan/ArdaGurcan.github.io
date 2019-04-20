@@ -47,3 +47,12 @@ a,button {
 a:link:not(.btn), a:visited:not(.btn) {
   color: inherit;
 }
+
+img.cover-image {
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  height: 100%;
+}
