@@ -15,7 +15,34 @@
     <script type="text/javascript">
       var dark = true;
 
-      window.onload = function(){
+
+
+      function deviceSize() {
+        let envs = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+        let el = document.createElement('div');
+        document.body.appendChild(el);
+
+        let curEnv = envs.shift();
+
+        for (let env of envs.reverse()) {
+            el.classList.add(`d-${env}-none`);
+
+            if (window.getComputedStyle(el).display === 'none') {
+                curEnv = env;
+                break;
+            }
+        }
+
+        document.body.removeChild(el);
+        return curEnv;
+      }
+      $(window).resize(function(){
+          document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
+      });
+
+      $(document).ready(function(){
+        document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
         lastEditDate = new Date(document.lastModified);
         document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + lastEditDate.getMonth() + "." + lastEditDate.getFullYear();
 
@@ -41,7 +68,7 @@
              addString += 
                 '<div class="col-md-6 my-3">'+
                   '<div class="card">'+
-                    '<a href="!LINK!"><img src="!LINK!/cover-image.gif" class="card-img-top" alt="!NAME! Cover Image"></a>'+
+                    '<a href="!LINK!"><img src="!LINK!/cover-image.gif" width="478" height="268.88" class="card-img-top" alt="!NAME! Cover Image"></a>'+
                     '<div class="card-body">'+
                       '<h5 class="card-title">' + 
                       '<a href="!LINK!"><b>!NAME!</b></a>' + "!NEWPILL!" + 
@@ -75,7 +102,7 @@
           }
           document.getElementById("projects").innerHTML += addString;
         })
-      }
+      });
 
       function writeProjects(){
 
@@ -144,7 +171,7 @@
     <div class="container mt-4">
       <div class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">www.ardagurcan.com</h1>
+            <h1 class="jumbotron-heading .d-none">www.ardagurcan.com</h1>
             <p class="lead text-muted">Games, Projects, 3D Models, Simulations...</p>
         </div>
       </div>
@@ -157,9 +184,10 @@
     <footer class="container py-2">
       <hr>
       <p style="text-align:left;">
-        Made by Arda Gürcan.
+        Made by Arda Gürcan
         <span style="float:right;font-style: italic">Last edited: <span class="last-edit"></span></span>
       </p>
     </footer>
-  
-</body></html>
+
+  </body>
+</html>
