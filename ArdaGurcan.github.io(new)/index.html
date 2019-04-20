@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var dark = true;
 
-      var projects[];
+      
 
       function deviceSize() {
         let envs = ['xs', 'sm', 'md', 'lg', 'xl'];
@@ -42,6 +42,7 @@
       });
 
       $(document).ready(function(){
+
         document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
         lastEditDate = new Date(document.lastModified);
         document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + lastEditDate.getMonth() + "." + lastEditDate.getFullYear();
@@ -58,16 +59,17 @@
         today = new Date();
 
         $.getJSON('projects.json', function(data) {
-
+          var projects = new Array(data.projects.length);
           
           for(var i = 0; i < data.projects.length; i++)
           {
             projects[i] = data.projects[i];
           }
+          console.log(projects);
           projects.sort(function(a, b) {
               return (Math.round(Math.random()) == 1) ? true : false;
           });
-
+          console.log(projects);
           var addString = "";
           console.log("success");
           for(var i = 0; i < projects.length; i++)
