@@ -68,7 +68,7 @@
           console.log(projects);
           for (let i = projects.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
-            [projectsx[i], projects[j]] = [projects[j], projects[i]];
+            [projects[i], projects[j]] = [projects[j], projects[i]];
           }
           console.log(projects);
           var addString = "";
