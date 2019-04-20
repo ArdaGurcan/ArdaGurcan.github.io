@@ -56,7 +56,11 @@
           localStorage.setItem("dark-mode", "off");
         }
         today = new Date();
-        $.getJSON('projects.json', function(data) {         
+
+        $.getJSON('projects.json', function(data) { 
+          data.projects.sort(function(a, b) {
+              return (Math.round(Math.random()) == 1) ? true : false;
+          });        
           var addString = "";
           console.log("success");
           for(var i = 0; i < data.projects.length; i++)
