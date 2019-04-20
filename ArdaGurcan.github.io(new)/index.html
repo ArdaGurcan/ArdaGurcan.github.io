@@ -59,6 +59,7 @@
         today = new Date();
 
         $.getJSON('projects.json', function(data) {
+
           var projects = new Array(data.projects.length);
           
           for(var i = 0; i < data.projects.length; i++)
@@ -105,7 +106,7 @@
               addString = addString.replace(/!CATEGORY!/g, projects[i].category);
               addString = addString.replace(/!ENGINE!/g, projects[i].engine);
               addString = addString.replace(/!BUTTONMESSAGE!/g, (projects[i].category == "Game") ? "Play!" : "View!");
-              addString = addString.replace(/!LINK!/g, (projects[i].category == "Website" && projects[i].link) ? projects[i].link : "projects/" + projects[i].name.replace(" ","_").toLowerCase());
+              addString = addString.replace(/!LINK!/g, (projects[i].category == "Website" && projects[i].link.length > 0) ? projects[i].link : "projects/" + projects[i].name.replace(" ","_").toLowerCase());
               //console.log(addString);
             
             if(i % 2 != 0)
@@ -193,7 +194,6 @@
 
 
     <div class="container" id="projects">
-      <div class="card-deck"><div class="col-md-6 my-3"><div class="card"><a href="projects/gravity_simulation"><img src="projects/gravity_simulation/cover-image.gif" class="card-img-top cover-image" alt="Gravity Simulation Cover Image"></a><div class="card-body"><h5 class="card-title"><a href="projects/gravity_simulation"><b>Gravity Simulation</b></a> <span class="badge badge-pill badge-danger align-middle">New</span></h5><p class="card-text"><b>Release Date:</b> 20 April 2019<br><b>Release Purpose:</b> School Project<br><b>Category:</b> Simulation<br><b>Made with</b>: Processing 3<br></p><a href="projects/gravity_simulation" class="btn btn-primary">View!</a></div></div></div><div class="col-md-6 my-3"><div class="card"><a href="projects/home_builder"><img src="projects/home_builder/cover-image.gif" class="card-img-top cover-image" alt="Home Builder Cover Image"></a><div class="card-body"><h5 class="card-title"><a href="projects/home_builder"><b>Home Builder</b></a></h5><p class="card-text"><b>Release Date:</b> 27 January 2019<br><b>Release Purpose:</b> Global Game Jam 2019<br><b>Category:</b> Game<br><b>Made with</b>: Unity<br></p><a href="projects/home_builder" class="btn btn-primary">Play!</a></div></div></div></div>
     </div>
     
     <footer class="container py-2">
