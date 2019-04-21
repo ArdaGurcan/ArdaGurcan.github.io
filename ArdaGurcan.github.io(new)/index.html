@@ -83,7 +83,7 @@
              addString += 
                 '<div class="col-md-6 my-3">'+
                   '<div class="card">'+
-                    '<a href="!LINK!"><img src="!LINK!/cover-image.gif" class="card-img-top cover-image" alt="!NAME! Cover Image"></a>'+
+                    '<a href="!LINK!"><img src="!IMGLINK!" class="card-img-top cover-image" alt="!NAME! Cover Image"></a>'+
                     '<div class="card-body">'+
                       '<h5 class="card-title">' + 
                       '<a href="!LINK!"><b>!NAME!</b></a>' + "!NEWPILL!" + 
@@ -107,7 +107,7 @@
               addString = addString.replace(/!ENGINE!/g, projects[i].engine);
               addString = addString.replace(/!BUTTONMESSAGE!/g, (projects[i].category == "Game") ? "Play!" : "View!");
               addString = addString.replace(/!LINK!/g, (projects[i].fileType == "Website" && projects[i].link != undefined) ? projects[i].link : "projects/" + projects[i].name.replace(" ","_").toLowerCase());
-              //console.log(addString);
+              addString = addString.replace(/!LINK!/g,"projects/" + projects[i].name.replace(" ","_").toLowerCase() + "/cover-image.gif");
             
             if(i % 2 != 0)
             {
