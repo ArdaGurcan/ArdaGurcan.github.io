@@ -1,0 +1,67 @@
+hr {
+  border-color: rgb(58,58,58);
+  background-color: rgb(58,58,58);
+  color: rgb(58,58,58);
+}
+
+body {
+  color: rgb(217, 215, 211);
+  background-color: rgb(23, 24, 28);
+
+}
+
+.text-muted{
+  color: rgb(187, 182, 175) !important;
+}
+
+.navbar {
+  border: 1px rgb(58,58,58) solid;
+  background-color: rgb(20,21,24) !important;
+}
+
+.navbar-brand {
+  color: rgba(232, 231, 227, 0.9) !important;
+}
+
+.jumbotron {
+  word-wrap: break-word;
+  border: 1px rgb(58,58,58) solid;
+  background-color: rgb(20,21,24);
+}
+
+.card {
+  border: 1px rgb(58,58,58) solid;
+  background-color: rgb(20,21,24);
+}
+.nav-link {
+  color: rgba(232, 231, 227, 0.5) !important;
+  white-space: nowrap;
+}
+.nav-link.active {
+  color: rgba(232, 231, 227, 0.9) !important;
+  white-space: nowrap;
+}
+.navbar-toggler {
+  border: 1px rgb(58,58,58) solid !important; 
+}
+.toggle-icon {
+  filter: invert(94%) sepia(5%) saturate(164%) hue-rotate(2deg) brightness(94%) contrast(87%);
+}
+
+a,button {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+a:link:not(.btn), a:visited:not(.btn) {
+  color: inherit;
+}
+
+img.cover-image {
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  height: 100%;
+}

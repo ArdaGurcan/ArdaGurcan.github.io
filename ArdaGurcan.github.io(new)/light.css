@@ -1,0 +1,58 @@
+body {
+   background-color: #f1f2f6;
+}
+
+.navbar {
+  border: 1px gainsboro solid;
+  background-color: #FFF !important;
+}
+
+.jumbotron {
+  word-wrap: break-word;
+  border: 1px gainsboro solid;
+  background-color: #FFFFFF;
+}
+
+.card {
+  border: 1px gainsboro solid;
+}
+
+.navbar-toggler {
+  border: 1px gainsboro solid !important; 
+}
+
+hr {
+  border-color: gainsboro;
+  background-color: gainsboro;
+  color: gainsboro;
+}
+
+.toggle-icon {
+	filter: invert(14%) sepia(5%) saturate(944%) hue-rotate(169deg) brightness(101%) contrast(100%);
+}
+
+.nav-link {
+	white-space: nowrap;
+}
+
+.nav-link.active {
+	white-space: nowrap;
+}
+
+a,button {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+a:link:not(.btn), a:visited:not(.btn) {
+  color: inherit;
+}
+
+img.cover-image {
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  height: 100%;
+}

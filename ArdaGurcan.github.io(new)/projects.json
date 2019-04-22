@@ -1,0 +1,38 @@
+{
+  "projects": [
+    {
+      "name": "Bulbhead",
+      "category": "Game",
+      "fileType": "Website",
+      "link": "https://agurcan.itch.io/bulbhead",
+      "releaseDate": "1 September 2018",
+      "purpose": "Brackeys Game Jam #1",
+      "engine": "Unity"
+    },
+    {
+      "name": "Home Builder",
+      "category": "Game",
+      "fileType": "Website",
+      "link": "https://globalgamejam.org/2019/games/home-builder",
+      "releaseDate": "27 January 2019",
+      "purpose": "Global Game Jam 2019",
+      "engine": "Unity"
+    },
+    {
+      "name": "C-Cube Website",
+      "category": "Website",
+      "fileType": "Website",
+      "releaseDate": "20 August 2016",
+      "purpose": "Fun",
+      "engine": "Notepad++"
+    },
+    {
+      "name": "Gravity Simulation",
+      "category": "Simulation",
+      "fileType": "Download",
+      "releaseDate": "20 April 2019",
+      "purpose": "School Project",
+      "engine": "Processing 3"
+    }
+  ]
+}
