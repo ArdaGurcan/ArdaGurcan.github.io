@@ -106,7 +106,7 @@
               addString = addString.replace(/!CATEGORY!/g, projects[i].category);
               addString = addString.replace(/!ENGINE!/g, projects[i].engine);
               addString = addString.replace(/!BUTTONMESSAGE!/g, (projects[i].category == "Game") ? "Play!" : "View!");
-              addString = addString.replace(/!LINK!/g, (projects[i].fileType == "Website" && projects[i].link != undefined) ? projects[i].link : "projects/" + projects[i].name.replace(" ","_").toLowerCase() + "index.html");
+              addString = addString.replace(/!LINK!/g, (projects[i].fileType == "Website" && projects[i].link != undefined) ? projects[i].link : "projects/" + projects[i].name.replace(" ","_").toLowerCase());
               addString = addString.replace(/!IMGLINK!/g,"projects/" + projects[i].name.replace(" ","_").toLowerCase() + "/cover-image.png");
             
             if(i % 2 != 0)
