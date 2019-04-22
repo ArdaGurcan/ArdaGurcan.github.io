@@ -1,218 +1,202 @@
-<html>
-<head>
-  <title>Arda Gürcan</title>
-  <link rel="icon" type="image/png" href="ico.png">
-  <meta charset="utf-8">
-  <meta name="keywords" content="Arda,Gürcan,Gurcan,Arda Gürcan,Arda Gurcan,ardagürcan,ardagurcan">
-  <meta name="description" content="This is a website created by Arda Gürcan for fun."/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="easter.js"></script>
-  <script type="text/javascript">
-    var adblock = true;
-</script>
-<script type="text/javascript" src="adframe.js"></script>
-<script type="text/javascript">
-    if(adblock) {
-           setTimeout(function(){ console.log("You can keep using AdBlock for now. My website doesn't have any ads yet."); }, 0);
-          // console.log("You can keep using AdBlock for now. My website doesn't have any ads yet.");
-    }
-</script>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Arda Gürcan</title>
+    <link rel="icon" type="image/png" href="ico.png">
+    <meta name="keywords" content="Arda,Gürcan,Gurcan,Arda Gürcan,Arda Gurcan,ardagürcan,ardagurcan">
+    <meta name="description" content="A website created by Arda Gürcan for fun.">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="http://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-  ga('create', 'UA-104088164-1', 'auto');
-  ga('send', 'pageview');
+    <script type="text/javascript">
+      var dark = true;
 
-</script>
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-6715198268334447",
-    enable_page_level_ads: true
-  });
-</script>
-<script src="snowstorm.js"></script>
-<script>
-  //snowStorm.toggleSnow();
-  var fakeDate = new Date();
-
-  function Weather(){
-    //myDate = new Date();
-    currentMonth = fakeDate.getMonth();
-
-    if((currentMonth == 0 || currentMonth == 1|| currentMonth == 11) && snowStorm.active == false){
-        
-        toggleSnow();
-
-	}
-    else if((currentMonth != 0 && currentMonth != 1 && currentMonth != 11) && snowStorm.active == true)
-    {
-    	snowStorm.stop();
-        snowStorm.freeze();
-    }
-  }
-
-  function CheckForEasterEggs(){
-  	
-  	
-  	currentMonth = fakeDate.getMonth();
-  	currentDay = fakeDate.getDate()
-  	if(currentMonth == 3 && currentDay == 1)
-  	{
-  		console.log("April Fools!")
-  		document.getElementsByTagName("BODY")[0].classList.add('rotate');
-  		document.getElementsByTagName("LINK")[0].setAttribute("href","ico-flipped.png");
-  		document.getElementsByTagName("TITLE")[0].innerHTML = "uɐɔɹnפ ɐpɹ∀";
-
-
-  	}
-  	else
-  	{
-
-  		document.getElementsByTagName("BODY")[0].classList.remove('rotate');
-  		document.getElementsByTagName("LINK")[0].setAttribute("href","ico.png");
-  		document.getElementsByTagName("TITLE")[0].innerHTML = "Arda Gürcan";
-  	}
-  }
-
-function SetDate(date,month){
-	fakeDate.setMonth(month-1);
-	fakeDate.setDate(date);
-	CheckForEasterEggs();
-  	Weather();
-}
-
-  // window.onload = function () {
-  // 	CheckForEasterEggs();
-  // 	Weather();
-  // }
-//snowStorm.flakesMaxActive = 256;    // show more snow on screen at once
-</script>
-
-<!--<script type="text/javascript">
-  snowStorm.followMouse = false;
-  snowStorm.targetElement = null;
-</script>-->
-<script id="weather" src=""></script>
-  <style>
-  body {
-	  background-color: lightblue;
-  }
-  .rotate{
-  	transform: rotate(180deg);
-
-
-
-  /* Safari */
-  -webkit-transform: rotate(180deg);
-
-  /* Firefox */
-  -moz-transform: rotate(180deg);
-
-  /* IE */
-  -ms-transform: rotate(180deg);
-
-  /* Opera */
-  -o-transform: rotate(180deg);
-
-  /* Internet Explorer */
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=4);
-
-  }
-  img {
-    border-radius: 25px;
-  }
-  #easter-egg {
-    color: lightblue;
-  }
-  .jumbotron {
-  background-color: darkturquoise !important;
-  text-align: center;
-  }
-  a:link    {
-  /* Applies to all unvisited links */
-  text-decoration:  none;
-  font-weight:      bold;
-  } 
-a:visited {
-  /* Applies to all visited links */
-  text-decoration:  none;
-  font-weight:      bold;
-  } 
-a:hover   {
-  /* Applies to links under the pointer */
-  text-decoration:  none;
-  font-weight:      bold;
-  } 
-a:active  {
-  /* Applies to activated links */
-  text-decoration:  none;
-  font-weight:      bold;
-
-  } 
-
-
-  </style></head>
- <body id="body" onload="SetDate(fakeDate.getDate(),fakeDate.getMonth()+1)">
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
       
-      <a class="navbar-brand" href="" >Arda Gürcan</a>
+
+      function deviceSize() {
+        let envs = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+        let el = document.createElement('div');
+        document.body.appendChild(el);
+
+        let curEnv = envs.shift();
+
+        for (let env of envs.reverse()) {
+            el.classList.add(`d-${env}-none`);
+
+            if (window.getComputedStyle(el).display === 'none') {
+                curEnv = env;
+                break;
+            }
+        }
+
+        document.body.removeChild(el);
+        return curEnv;
+      }
+      $(window).resize(function(){
+          document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
+      });
+
+      $(document).ready(function(){
+
+        document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
+        lastEditDate = new Date(document.lastModified);
+        document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + lastEditDate.getMonth() + "." + lastEditDate.getFullYear();
+
+        if(localStorage.getItem("dark-mode") == "off")
+        {
+          console.log("dark-off");
+          dark = false;
+          document.getElementById("mode").setAttribute("href","light.css");
+          document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","moon.svg");
+          localStorage.setItem("dark-mode", "off");
+        }
+        today = new Date();
+
+        $.getJSON('projects.json', function(data) {
+
+          var projects = new Array(data.projects.length);
+          
+          for(var i = 0; i < data.projects.length; i++)
+          {
+            projects[i] = data.projects[i];
+          }
+          console.log(projects);
+          for (let i = projects.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [projects[i], projects[j]] = [projects[j], projects[i]];
+          }
+          console.log(projects);
+          var addString = "";
+          console.log("success");
+          for(var i = 0; i < projects.length; i++)
+          {
+            if(i % 2 == 0)
+            {
+              addString += '<div class="card-deck">';
+            }
+             addString += 
+                '<div class="col-md-6 my-3">'+
+                  '<div class="card">'+
+                    '<a href="!LINK!"><img src="!IMGLINK!" class="card-img-top cover-image" alt="!NAME! Cover Image"></a>'+
+                    '<div class="card-body">'+
+                      '<h5 class="card-title">' + 
+                      '<a href="!LINK!"><b>!NAME!</b></a>' + "!NEWPILL!" + 
+                      '</h5>'+
+                      '<p class="card-text">'+
+                        '<b>Release Date:</b> ' + "!RELEASEDATE!" + '<br>'+
+                        '<b>Release Purpose:</b> ' + "!PURPOSE!" + '<br>'+
+                        '<b>Category:</b> ' + "!CATEGORY!" + '<br>'+
+                        '<b>Made with</b>: ' + "!ENGINE!" + '<br>'+
+                      '</p>'+
+                      '<a href="!LINK!" class="btn btn-primary">' + "!BUTTONMESSAGE!" + '</a>'+
+                    '</div>'+
+                  '</div>'+
+              '</div>';
+              console.log(addString);
+              addString = addString.replace(/!NAME!/g,  projects[i].name);
+              addString = addString.replace(/!NEWPILL!/g,((today.getMonth() - (new Date(projects[i].releaseDate)).getMonth()+ (12 *(today.getFullYear() - (new Date(projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
+              addString = addString.replace(/!RELEASEDATE!/g, projects[i].releaseDate);
+              addString = addString.replace(/!PURPOSE!/g, projects[i].purpose);
+              addString = addString.replace(/!CATEGORY!/g, projects[i].category);
+              addString = addString.replace(/!ENGINE!/g, projects[i].engine);
+              addString = addString.replace(/!BUTTONMESSAGE!/g, (projects[i].category == "Game") ? "Play!" : "View!");
+              addString = addString.replace(/!LINK!/g, (projects[i].fileType == "Website" && projects[i].link != undefined) ? projects[i].link : "projects/" + projects[i].name.replace(" ","_").toLowerCase());
+              addString = addString.replace(/!LINK!/g,"projects/" + projects[i].name.replace(" ","_").toLowerCase() + "/cover-image.png");
+            
+            if(i % 2 != 0)
+            {
+              addString += '</div>';
+            }
+
+          }
+          document.getElementById("projects").innerHTML += addString;
+        })
+      });
+
+      function writeProjects(){
+
+      }
+
+      function toggleMode() {
+        dark = !dark;
+        if(dark)
+        {
+          document.getElementById("mode").setAttribute("href","dark.css");
+          document.getElementsByClassName("navbar-light")[0].className = document.getElementsByClassName("navbar-light")[0].className.replace('navbar-light', 'navbar-dark');
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","sun.svg");
+          localStorage.setItem("dark-mode", "on");
+        }
+        else
+        {
+          document.getElementById("mode").setAttribute("href","light.css");
+          document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","moon.svg");
+          localStorage.setItem("dark-mode", "off");
+        }
+      }
+      
+    </script>
+     <link id="mode" rel="stylesheet" type="text/css" href="dark.css">
+ </head>
+  
+  <body>
+
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="javascript:location.reload();">
+          <img src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="ɐ">
+          Arda Gürcan
+        </a>
+
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarNav" style="">
+          <div class="container">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link active" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Me</a>
+              </li>
+            </ul> 
+
+          </div>
+          <div class="container">
+            <img src="sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();" title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-4">
+      <div class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading .d-none">www.ardagurcan.com</h1>
+            <p class="lead text-muted">Games, Projects, 3D Models, Simulations...</p>
+        </div>
+      </div>
     </div>
 
-    <ul class="nav navbar-nav">
-      <li><a href="c-cube/index.html"  rel="noopener noreferrer" target="_blank">C-Cube</a></li>
+
+    <div class="container" id="projects">
+    </div>
     
-      <li><a href="gerekligereksiz/index.html"  rel="noopener noreferrer" target="_blank"><b>G</b>erekli <b>G</b>ereksiz</a></li>
-      <li><a href="peopleinspace/index.html"  rel="noopener noreferrer" target="_blank">People in Space</a></li>
-      <li><a href="notepad.html"  rel="noopener noreferrer" target="_blank">Notepad</a></li>
+    <footer class="container py-2">
+      <hr>
+      <p style="text-align:left;">
+        Made by Arda Gürcan
+        <span style="float:right;font-style: italic">Last edited: <span class="last-edit"></span></span>
+      </p>
+    </footer>
 
-      <!--li><a href="compare.html" >Image Comparer</a></li>
-      <li><a href="oyunlar/snowman/snowman.zip" >2D Platformer</a></li-->
-      <li><a href="mygames.html"  rel="noopener noreferrer" target="_blank">My Games</a></li>
-      <li><a href="https://www.worldcubeassociation.org/persons/2018GURC01" title="World Cubing Association" rel="noopener noreferrer" target="_blank">My WCA Account</a></li>
-    </ul>
-  </div>
-</nav>
-  
-<div class="container" align="center">
-<div class="jumbotron" onload="snowStorm.toggleSnow()">
-
-  <!--<img src="cinqueterre.jpg" class="img-thumbnail" width="304" height="236">
-  height="12.75%"  >  height="12%"" -->
-  <h1><b><marquee behavior="alternate" height="79px" loop="12" width="385px"direction="up">Arda Gürcan</marquee></b></h1>      
-<!--<img src="ardagürcan.jpg" height="384px" width="284px"></img><br><br>-->
-  <a type="button" class="btn btn-info" href="oyunlar/Bulbhead/index.html" rel="noopener noreferrer" target="_blank">Play My New Game:<br><b>Bulbhead</b></a>
-</div>
-
-
-
-  <div class="row text-center" onload="">
-
-  <!--col-sm-xlerin toplamı 12-->
-	  <div class="col-sm-4"><a href="c-cube/index.html" rel="noopener noreferrer" target="_blank"><h3><marquee behavior="alternate" height="36px" loop="12" width="100px"direction="up">C-Cube</marquee></h3><p>A cubing website I made last year!</p></a>
-	  </div>
-	  <div class="col-sm-4"><a href="
-	  gerekligereksiz/index.html" rel="noopener noreferrer" target="_blank"><h3><marquee behavior="alternate" height="36px" loop="12" width="200px"direction="up"><b>G</b>erekli <b>G</b>ereksiz</marquee></h3><p>A website I made to sell things at school!</p></a>
-	  </div>	  
-	  <div class="col-sm-4" ><a href="peopleinspace/index.html" rel="noopener noreferrer" target="_blank"><h3><marquee behavior="alternate" height="36px" loop="12" width="200px"direction="up">People in Space</marquee></h3><p>A website that shows the people in space and information about them :)</p></a>
-	  </div>
-  </div>
-  
-  <!-- <p align="center"><a href="snowing.html" id="easter-egg"><br><br><br>How did you find me?</a></p> -->
-
-</div>
-
-
-</div>
-
-</body>
+  </body>
 </html>
