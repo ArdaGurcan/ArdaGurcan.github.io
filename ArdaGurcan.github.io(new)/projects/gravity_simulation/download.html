@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Download Gravity Simulator</title>
+    <link rel="icon" type="image/png" href="/ico.png">
+    <meta name="keywords" content="Gravity Simulation">
+    <meta name="description" content="A simualtion of gravity and collision among various planets.">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="http://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      var dark = true;
+      $(document).ready(function(){
+        if(localStorage.getItem("dark-mode") == "off")
+        {
+          console.log("dark-off");
+          dark = false;
+          document.getElementById("mode").setAttribute("href","/light.css");
+          document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
+          localStorage.setItem("dark-mode", "off");
+        }
+        today = new Date();
+
+        $.getJSON('/projects.json', function(data) {
+
+          var projects = new Array(data.projects.length);
+          
+          for(var i = 0; i < data.projects.length; i++)
+          {
+            projects[i] = data.projects[i];
+          }
+          console.log(projects);
+          
+        })
+      });
+
+
+
+      function toggleMode() {
+        dark = !dark;
+        if(dark)
+        {
+          document.getElementById("mode").setAttribute("href","/dark.css");
+          document.getElementsByClassName("navbar-light")[0].className = document.getElementsByClassName("navbar-light")[0].className.replace('navbar-light', 'navbar-dark');
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/sun.svg");
+          localStorage.setItem("dark-mode", "on");
+        }
+        else
+        {
+          document.getElementById("mode").setAttribute("href","/light.css");
+          document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
+          localStorage.setItem("dark-mode", "off");
+        }
+      }
+      
+    </script>
+     <link id="mode" rel="stylesheet" type="text/css" href="/dark.css">
+ </head>
+  
+  <body>
+
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="javascript:location.reload();">
+          <img src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="ɐ">
+          Arda Gürcan
+        </a>
+
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarNav" style="">
+          <div class="container">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link active" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Me</a>
+              </li>
+            </ul> 
+
+          </div>
+          <div class="container">
+            <img src="sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();" title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-4">
+      <div class="jumbotron text-center">
+        <div class="container">
+            <img src="cover-image.png" width="100%" height="100%">
+            <br>
+            <h1 class="jumbotron-heading .d-none">Download Gravity Simulator</h1>
+            >
+            
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container" id="projects">
+    </div>
+    
+    <footer class="container py-2">
+      <hr>
+      <p style="text-align:left;">
+        Made by Arda Gürcan
+      </p>
+    </footer>
+
+  </body>
+</html>
