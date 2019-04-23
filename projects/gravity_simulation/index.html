@@ -19,12 +19,12 @@
       $(document).ready(function(){
         for (var i = 0; i < operatingSystems.length; i++) {
           $.ajax({
-              url: document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + ".zip",
+              url: "downloads/" + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + ".zip",
               type:'HEAD',
               error: function () {},
               success: function()
               {
-                  document.getElementsByClassName("downloads")[0].innerHTML += '<a href="' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="btn btn-primary">Download for '+ operatingSystems[i] + '</a>';
+                  document.getElementsByClassName("downloads")[0].innerHTML += '<a href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="btn btn-primary">Download for '+ operatingSystems[i] + '</a>';
               }
           });
         }
