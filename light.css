@@ -61,7 +61,7 @@ img.cover-image {
   border: 1px gainsboro solid;
   background-color: #FFFFFF;
   max-width: 110px !important;
-  min-width: 50px;
+  min-width: 50px !important;
 }
 
 .card-body {
