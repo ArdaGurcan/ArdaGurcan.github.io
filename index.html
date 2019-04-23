@@ -47,39 +47,47 @@
           switch(categoryName)
           {
             case "a-z":
-              projects.sort(function(a, b)
-              {
-                return a.name < b.name;
+              projects.sort(function(a, b) {
+                  var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+                  if (nameA < nameB) return -1;
+                  if (nameA > nameB) return 1;
+                  return 0;
               });
               break;
             case "z-a":
-              projects.sort(function(a, b)
-              {
-                return a.name > b.name;
+              projects.sort(function(b, a) {
+                  var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+                  if (nameA < nameB) return -1;
+                  if (nameA > nameB) return 1;
+                  return 0;
               });
               break;
             case "new":
               projects.sort(function(a, b)
               {
-                return new Date(a.releaseDate) < new Date(b.releaseDate);
+                return new Date(a.releaseDate) - new Date(b.releaseDate);
               });
               break;
             case "old":
-              projects.sort(function(a, b)
+              projects.sort(function(b, a)
               {
-                return new Date(a.releaseDate) > new Date(b.releaseDate);
+                return new Date(a.releaseDate) - new Date(b.releaseDate);
               });
               break;
             case "category":
-              projects.sort(function(a, b)
-              {
-                return a.category > b.category;
+              projects.sort(function(a, b) {
+                  var categoryA = a.category.toLowerCase(), categoryB = b.category.toLowerCase();
+                  if (categoryA < categoryB) return -1;
+                  if (categoryA > categoryB) return 1;
+                  return 0;
               });
               break;
             case "engine":
-              projects.sort(function(a, b)
-              {
-                return a.engine > b.engine;
+              projects.sort(function(a, b) {
+                  var engineA = a.engine.toLowerCase(), engineB = b.engine.toLowerCase();
+                  if (engineA < engineB) return -1;
+                  if (engineA > engineB) return 1;
+                  return 0;
               });
               break;
 
@@ -268,12 +276,12 @@
               Sort by
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">A-Z</a>
-              <a class="dropdown-item" href="#">Z-A</a>
-              <a class="dropdown-item" href="#">Newest</a>
-              <a class="dropdown-item" href="#">Oldest</a>
-              <a class="dropdown-item" href="#">Category</a>
-              <a class="dropdown-item" href="#">Engine</a>
+              <a class="dropdown-item" href="javascript: sortBy('a-z')">A-Z</a>
+              <a class="dropdown-item" href="javascript: sortBy('z-a')">Z-A</a>
+              <a class="dropdown-item" href="javascript: sortBy('new')">Newest</a>
+              <a class="dropdown-item" href="javascript: sortBy('old')">Oldest</a>
+              <a class="dropdown-item" href="javascript: sortBy('category')">Category</a>
+              <a class="dropdown-item" href="javascript: sortBy('engine')">Engine</a>
             </div>
           </nav>
     </nav>
