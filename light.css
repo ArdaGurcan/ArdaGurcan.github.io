@@ -56,3 +56,8 @@ img.cover-image {
 .card {
   height: 100%;
 }
+
+.dropdown-menu {
+  border: 1px gainsboro solid;
+  background-color: #FFFFFF;  
+}

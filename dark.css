@@ -65,3 +65,12 @@ img.cover-image {
 .card {
   height: 100%;
 }
+
+.dropdown-menu {
+  border: 1px rgb(58,58,58) solid;
+  background-color: rgb(20,21,24);  
+}
+
+a.dropdown-item {
+  color: rgb(217, 215, 211);
+}

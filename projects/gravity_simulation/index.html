@@ -31,7 +31,7 @@
               },
               success: function()
               {
-                document.getElementsByClassName("downloads")[0].innerHTML += '<button type="button" href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="btn btn-primary">Download for '+ operatingSystems[i] + '</button>';
+                document.getElementsByClassName("downloads")[0].innerHTML += '<a href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="dropdown-item">'+ operatingSystems[i] + '</a>';
               }
           });
         }
@@ -123,14 +123,19 @@
             <br><br>
             <h1 class="jumbotron-heading .d-none">Gravity Simulation</h1>
             <br>
-            <div class="container downloads"></div>           
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Download
+              </button>
+              <div class="dropdown-menu downloads">
+              </div>
+            </div>   
         </div>
       </div>
     </div>
 
 
-    <div class="container" id="projects">
-    </div>
+
     
     <footer class="container py-2">
       <hr>
