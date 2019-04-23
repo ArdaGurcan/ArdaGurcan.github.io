@@ -45,7 +45,7 @@
 
         document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
         lastEditDate = new Date(document.lastModified);
-        document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + lastEditDate.getMonth() + "." + lastEditDate.getFullYear();
+        document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + (lastEditDate.getMonth()+1) + "." + lastEditDate.getFullYear();
 
         if(localStorage.getItem("dark-mode") == "off")
         {

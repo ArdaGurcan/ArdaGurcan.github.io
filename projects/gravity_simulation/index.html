@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Gravity Simulator</title>
+    <title>Gravity Simulation</title>
     <link rel="icon" type="image/png" href="/ico.png">
     <meta name="keywords" content="Gravity Simulation">
     <meta name="description" content="A simualtion of gravity and collision among various planets.">
@@ -14,7 +14,21 @@
 
     <script type="text/javascript">
       var dark = true;
+      //var downloads = new Array[];
+      var operatingSystems = new Array("Windows","Mac","Linux");
       $(document).ready(function(){
+        for (var i = 0; i < operatingSystems.length; i++) {
+          $.ajax({
+              url: document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + ".zip",
+              type:'HEAD',
+              error: function () {},
+              success: function()
+              {
+                  document.getElementsByClassName("downloads")[0].innerHTML += '<a href="' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="btn btn-primary">Download for '+ operatingSystems[i] + '</a>';
+              }
+          });
+        }
+        
         if(localStorage.getItem("dark-mode") == "off")
         {
           console.log("dark-off");
@@ -26,17 +40,17 @@
         }
         today = new Date();
 
-        $.getJSON('/projects.json', function(data) {
+        // $.getJSON('/projects.json', function(data) {
 
-          var projects = new Array(data.projects.length);
+        //   var projects = new Array(data.projects.length);
           
-          for(var i = 0; i < data.projects.length; i++)
-          {
-            projects[i] = data.projects[i];
-          }
-          console.log(projects);
+        //   for(var i = 0; i < data.projects.length; i++)
+        //   {
+        //     projects[i] = data.projects[i];
+        //   }
+        //   console.log(projects);
           
-        })
+        // })
       });
 
 
@@ -98,11 +112,11 @@
     <div class="container mt-4">
       <div class="jumbotron text-center">
         <div class="container">
-            <img src="cover-image.png" width="100%" height="100%" style="border-radius: 0.25rem">
+            <img src="cover-image.png" width="100%" height="100%" style="border-radius: 1rem">
             <br><br>
-            <h1 class="jumbotron-heading .d-none">Gravity Simulator</h1>
-            
-            
+            <h1 class="jumbotron-heading .d-none">Gravity Simulation</h1>
+            <br>
+            <div class="container downloads"></div>           
         </div>
       </div>
     </div>
