@@ -64,8 +64,8 @@ img.cover-image {
 }
 
 .card-body {
-  position: relative;
-  padding-bottom: 58px;
+  position: relative !important;
+  padding-bottom: 58px !important;
 }
 
 .dropdown-menu {
