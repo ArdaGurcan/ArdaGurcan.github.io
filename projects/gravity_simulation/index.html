@@ -28,7 +28,7 @@
               error: function()
               {
                 console.error("Couldn't get download files.");
-              }
+              },
               success: function()
               {
                 document.getElementsByClassName("downloads")[0].innerHTML += '<a href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="btn btn-primary">Download for '+ operatingSystems[i] + '</a>';
