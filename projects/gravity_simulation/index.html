@@ -18,14 +18,18 @@
       var operatingSystems = new Array("Windows","Mac","Linux");
       $(document).ready(function(){
         for (var i = 0; i < operatingSystems.length; i++) {
+          console.log("for: " + i);
           $.ajax({
+
               url: "downloads/" + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + ".zip",
               type:'HEAD',
-              error: function () {},
+              error: function () {
+                console.log("ajax: " + i);
+              },
               success: function()
-              {
-                console.log(i);
-                  document.getElementsByClassName("downloads")[0].innerHTML += '<a href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="btn btn-primary">Download for '+ operatingSystems[i] + '</a>';
+              {console.log("ajax: " + i);
+                
+                document.getElementsByClassName("downloads")[0].innerHTML += '<a href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="btn btn-primary">Download for '+ operatingSystems[i] + '</a>';
               }
           });
         }
