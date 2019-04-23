@@ -27,11 +27,11 @@
               type:'HEAD',
               error: function()
               {
-                console.error("Couldn't get download files.");
+                console.error("Couldn't find download file for " + operatingSystems[i] + ".");
               },
               success: function()
               {
-                document.getElementsByClassName("downloads")[0].innerHTML += '<a href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="btn btn-primary">Download for '+ operatingSystems[i] + '</a>';
+                document.getElementsByClassName("downloads")[0].innerHTML += '<button type="button" href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="btn btn-primary">Download for '+ operatingSystems[i] + '</button>';
               }
           });
         }
