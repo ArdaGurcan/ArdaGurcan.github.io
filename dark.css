@@ -72,5 +72,13 @@ img.cover-image {
 }
 
 a.dropdown-item {
-  color: rgb(217, 215, 211);
+  color: rgb(217, 215, 211) !important;
+}
+
+a.dropdown-item:hover, a.dropdown-item:focus {
+  background-color: rgb(26, 27, 28) !important;
+}
+
+a.dropdown-item:active {
+  background-color: rgb(31, 100, 197) !important;
 }
