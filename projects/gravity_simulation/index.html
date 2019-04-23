@@ -38,7 +38,6 @@
         
         if(localStorage.getItem("dark-mode") == "off")
         {
-          console.log("dark-off");
           dark = false;
           document.getElementById("mode").setAttribute("href","/light.css");
           document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
@@ -46,18 +45,6 @@
           localStorage.setItem("dark-mode", "off");
         }
         today = new Date();
-
-        // $.getJSON('/projects.json', function(data) {
-
-        //   var projects = new Array(data.projects.length);
-          
-        //   for(var i = 0; i < data.projects.length; i++)
-        //   {
-        //     projects[i] = data.projects[i];
-        //   }
-        //   console.log(projects);
-          
-        // })
       });
 
 

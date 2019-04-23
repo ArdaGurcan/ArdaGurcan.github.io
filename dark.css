@@ -32,6 +32,7 @@ body {
 .card {
   border: 1px rgb(58,58,58) solid;
   background-color: rgb(20,21,24);
+  height: 100%;
 }
 .nav-link {
   color: rgba(232, 231, 227, 0.5) !important;
@@ -62,8 +63,9 @@ img.cover-image {
   height: auto;
 }
 
-.card {
-  height: 100%;
+.card-body {
+  position: relative;
+  padding-bottom: 58px;
 }
 
 .dropdown-menu {
