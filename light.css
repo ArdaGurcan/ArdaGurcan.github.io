@@ -57,9 +57,11 @@ img.cover-image {
   height: 100%;
 }
 
-.dropdown-menu {
+.dropdown-menu.show {
   border: 1px gainsboro solid;
-  background-color: #FFFFFF;  
+  background-color: #FFFFFF;
+  max-width: 110px !important;
+  min-width: 50px;
 }
 
 .card-body {
