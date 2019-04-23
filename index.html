@@ -94,7 +94,8 @@
                         '<b>Category:</b> ' + "!CATEGORY!" + '<br>'+
                         '<b>Made with</b>: ' + "!ENGINE!" + '<br>'+
                       '</p>'+
-                      '<button type="button" href="!LINK!" class="btn btn-primary align-self-end">' + "!BUTTONMESSAGE!" + '</button>'+
+                      '<a href="!LINK!" class="btn btn-primary"' + ((deviceSize() == "md" || deviceSize() == "lg") ? ' style="position: absolute;bottom: 20px;"' : "") +
+                      ">!BUTTONMESSAGE!" + '</a>'+
                     '</div>'+
                   '</div>'+
               '</div>';
