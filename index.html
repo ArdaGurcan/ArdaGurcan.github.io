@@ -63,13 +63,13 @@
               });
               break;
             case "new":
-              projects.sort(function(a, b)
+              projects.sort(function(b, a)
               {
                 return new Date(a.releaseDate) - new Date(b.releaseDate);
               });
               break;
             case "old":
-              projects.sort(function(b, a)
+              projects.sort(function(a, b)
               {
                 return new Date(a.releaseDate) - new Date(b.releaseDate);
               });
@@ -133,7 +133,7 @@
             }
 
           }
-          document.getElementById("projects").innerHTML += addString;
+          document.getElementById("projects").innerHTML = addString;
         })
       }
 
@@ -207,7 +207,7 @@
             }
 
           }
-          document.getElementById("projects").innerHTML += addString;
+          document.getElementById("projects").innerHTML = addString;
         })
       });
 
