@@ -71,7 +71,7 @@ img.cover-image {
 .dropdown-menu {
   border: 1px rgb(58,58,58) solid;
   background-color: rgb(20,21,24);
-  max-width: 110px !important;
+  max-width: 110px!important;
   min-width: 50px;
 }
 
