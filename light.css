@@ -68,3 +68,7 @@ img.cover-image {
   position: relative;
   padding-bottom: 58px;
 }
+
+canvas#canvas {
+  border-radius: 1rem;
+}

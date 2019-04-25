@@ -86,3 +86,7 @@ a.dropdown-item:hover, a.dropdown-item:focus {
 a.dropdown-item:active {
   background-color: rgb(31, 100, 197) !important;
 }
+
+canvas#canvas {
+  border-radius: 1rem;
+}
