@@ -40,10 +40,10 @@
       $(window).resize(function(){
           document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
       });
-
+      var projects;
       function sortBy(categoryName) {
         $.getJSON('projects.json', function(data) {
-          var projects = data.projects;
+          projects = data.projects;
           switch(categoryName)
           {
             case "a-z":
@@ -157,12 +157,9 @@
 
         $.getJSON('projects.json', function(data) {
 
-          var projects = new Array(data.projects.length);
+          projects = data.projects;
           
-          for(var i = 0; i < data.projects.length; i++)
-          {
-            projects[i] = data.projects[i];
-          }
+          
           for (let i = projects.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             [projects[i], projects[j]] = [projects[j], projects[i]];
