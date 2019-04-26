@@ -31,6 +31,11 @@
         today = new Date();
       });
 
+      $(document).onresize = function(){
+        $("canvas").setAttribute("height","800");
+        $("canvas").setAttribute("width","450");
+      }
+
 
 
       function toggleMode() {
