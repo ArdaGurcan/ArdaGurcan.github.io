@@ -31,13 +31,6 @@
         today = new Date();
       });
 
-      $(document).onresize = function(){
-        $("canvas").attr("height","800");
-        $("canvas").attr("width","450");
-      }
-
-
-
       function toggleMode() {
         dark = !dark;
         if(dark)
@@ -93,7 +86,7 @@
     <div class="container mt-4">
       <div class="jumbotron text-center">
         <div class="container">
-            <div id="unityContainer"></div>
+          <div id="unityContainer" style="width: 800px; height: 450px; margin: auto"></div>
             <br><br>
             <h1 class="jumbotron-heading .d-none">Home Builder</h1>      
         </div>
