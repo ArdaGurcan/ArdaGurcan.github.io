@@ -74,6 +74,7 @@ canvas {
 }
 
 div#unityContainer {
+  border-radius: 1rem !important;
   width: 100%;
-  padding-top: 56.25%;
+  padding-top: 56.25% !important;
 }
