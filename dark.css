@@ -87,6 +87,11 @@ a.dropdown-item:active {
   background-color: rgb(31, 100, 197) !important;
 }
 
-canvas#canvas {
+canvas {
   border-radius: 1rem;
+}
+
+div#unityContainer {
+  width: 100%;
+  padding-top: 56.25%;
 }

@@ -69,6 +69,11 @@ img.cover-image {
   padding-bottom: 58px;
 }
 
-canvas#canvas {
+canvas {
   border-radius: 1rem;
+}
+
+div#unityContainer {
+  width: 100%;
+  padding-top: 56.25%;
 }
