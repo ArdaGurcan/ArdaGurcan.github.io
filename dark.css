@@ -87,8 +87,8 @@ a.dropdown-item:active {
   background-color: rgb(31, 100, 197) !important;
 }
 
-/*div#unityContainer {
+div#unityContainer {
   border-radius: 1rem !important;
-  width: 100%;
-  height: auto;
-} */
+  width: 100% !important;
+  height: auto !important;
+} 
