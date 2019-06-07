@@ -33,6 +33,14 @@
       "releaseDate": "20 April 2019",
       "purpose": "School Project",
       "engine": "Processing 3"
+    },
+    {
+      "name": "Maze Solver",
+      "category": "Simulation",
+      "fileType": "Download",
+      "releaseDate": "7 June 2019",
+      "purpose": "METU Competition",
+      "engine": "Unity"
     }
   ]
 }
