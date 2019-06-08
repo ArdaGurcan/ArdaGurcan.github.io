@@ -5,6 +5,7 @@
       "category": "Game",
       "fileType": "Website",
       "link" : "https://agurcan.itch.io/bulbhead",
+      "eventLink" : "https://itch.io/jam/brackeys/rate/299092",
       "releaseDate": "1 September 2018",
       "purpose": "Brackeys Game Jam #1",
       "engine": "Unity"
@@ -14,6 +15,7 @@
       "category": "Game",
       "fileType": "Website",
       "link": "https://agurcan.itch.io/homebuilder",
+      "eventLink" : "https://globalgamejam.org/2019/games/home-builder",
       "releaseDate": "27 January 2019",
       "purpose": "Global Game Jam 2019",
       "engine": "Unity"
@@ -38,6 +40,7 @@
       "name": "Maze Solver",
       "category": "Simulation",
       "fileType": "Download",
+      "eventLink": "https://www.odturobotgunleri.org.tr/pages/maze-solver",
       "releaseDate": "7 June 2019",
       "purpose": "METU Robot Competition 2020",
       "engine": "Unity"
@@ -47,6 +50,7 @@
       "category": "Game",
       "fileType": "Website",
       "link" : "https://agurcan.itch.io/welcome",
+      "eventLink" : "https://ldjam.com/events/ludum-dare/44/welcome",
       "releaseDate": "29 April 2019",
       "purpose": "Ludum Dare 44",
       "engine": "Unity"

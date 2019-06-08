@@ -109,7 +109,7 @@
                       '</h5>'+
                       '<p class="card-text">'+
                         '<b>Release Date:</b> ' + "!RELEASEDATE!" + '<br>'+
-                        '<b>Release Purpose:</b> ' + "<a href='!EVENTLINK!'>!PURPOSE!</a>" + '<br>'+
+                        '<b>Release Purpose:</b> ' + "!PURPOSE!" + '<br>'+
                         '<b>Category:</b> ' + "!CATEGORY!" + '<br>'+
                         '<b>Made with</b>: ' + "!ENGINE!" + '<br>'+
                       '</p>'+
@@ -120,7 +120,7 @@
               addString = addString.replace(/!NAME!/g,  projects[i].name);
               addString = addString.replace(/!NEWPILL!/g,((today.getMonth() - (new Date(projects[i].releaseDate)).getMonth()+ (12 *(today.getFullYear() - (new Date(projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
               addString = addString.replace(/!RELEASEDATE!/g, projects[i].releaseDate);
-              addString = addString.replace(/!PURPOSE!/g, projects[i].purpose);
+              addString = addString.replace(/!PURPOSE!/g, (projects[i].eventLink != undefined) ? ('<a href="' + projects[i].eventLink + '">' +) : ("") + projects[i].purpose + (projects[i].eventLink != undefined) ? '</a>':"");
               addString = addString.replace(/!CATEGORY!/g, projects[i].category);
               addString = addString.replace(/!ENGINE!/g, projects[i].engine);
               addString = addString.replace(/!BUTTONMESSAGE!/g, (projects[i].category == "Game") ? "Play!" : "View!");
@@ -192,7 +192,7 @@
               addString = addString.replace(/!NAME!/g,  projects[i].name);
               addString = addString.replace(/!NEWPILL!/g,((today.getMonth() - (new Date(projects[i].releaseDate)).getMonth()+ (12 *(today.getFullYear() - (new Date(projects[i].releaseDate)).getFullYear()))>2) ? '':' <span class="badge badge-pill badge-danger align-middle">New</span>'));
               addString = addString.replace(/!RELEASEDATE!/g, projects[i].releaseDate);
-              addString = addString.replace(/!PURPOSE!/g, projects[i].purpose);
+              addString = addString.replace(/!PURPOSE!/g, (projects[i].eventLink != undefined) ? ('<a href="' + projects[i].eventLink + '">' +) : ("") + projects[i].purpose + (projects[i].eventLink != undefined) ? '</a>':"");
               addString = addString.replace(/!CATEGORY!/g, projects[i].category);
               addString = addString.replace(/!ENGINE!/g, projects[i].engine);
               addString = addString.replace(/!BUTTONMESSAGE!/g, (projects[i].category == "Game") ? "Play!" : "View!");
