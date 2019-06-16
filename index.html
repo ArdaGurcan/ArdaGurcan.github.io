@@ -37,9 +37,13 @@
         document.body.removeChild(el);
         return curEnv;
       }
-      // $(window).resize(function(){
-      //     document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
-      // });
+
+      $(window).resize(function(){
+          document.getElementsByClassName("jumbotron-image")[0].setAttribute("width",(deviceSize() == 'xs' || deviceSize() == 'sm') ? "65%" : "35%");
+          document.getElementsByClassName("last-edit")[0].innerHTML = (((window.innerWidth > 0) ? window.innerWidth : screen.width) <= 360) ?  "": "Last edited: " + lastEditDate.getDate() + "." + (lastEditDate.getMonth()+1) + "." + lastEditDate.getFullYear();
+          console.log(deviceSize());
+      });
+
       var projects;
       function sortBy(categoryName) {
         $.getJSON('projects.json', function(data) {
@@ -146,12 +150,13 @@
       }
 
       $(document).ready(function(){
-        
+        document.getElementsByClassName("jumbotron-image")[0].setAttribute("width",(deviceSize() == 'xs' || deviceSize() == 'sm') ? "65%" : "35%");
+
 
         // document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
         lastEditDate = new Date(document.lastModified);
-        document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + (lastEditDate.getMonth()+1) + "." + lastEditDate.getFullYear();
-        console.log("last-edit: " + document.lastModified);
+        document.getElementsByClassName("last-edit")[0].innerHTML = (((window.innerWidth > 0) ? window.innerWidth : screen.width) <= 360) ?  "": "Last edited: " + lastEditDate.getDate() + "." + (lastEditDate.getMonth()+1) + "." + lastEditDate.getFullYear();
+        console.log("last edit: " + document.lastModified);
 
         if(localStorage.getItem("dark-mode") == "off")
         {
@@ -306,7 +311,7 @@
     <div class="container mt-4">
       <div class="jumbotron text-center">
         <div class="container">
-            <img src="ico.png" width="40%" class="icon">
+            <img src="ico.png" width="35%" class="jumbotron-image icon">
             <br>
             <br>
             <h1 class="jumbotron-heading .d-none">Arda Gürcan</h1>
@@ -323,7 +328,7 @@
       <hr>
       <p style="text-align:left;">
         Made by Arda Gürcan
-        <span style="float:right;font-style: italic">Last edited: <span class="last-edit"></span></span>
+        <span style="float:right;font-style: italic"><span class="last-edit"></span></span>
       </p>
     </footer>
 
