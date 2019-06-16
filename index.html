@@ -37,9 +37,9 @@
         document.body.removeChild(el);
         return curEnv;
       }
-      $(window).resize(function(){
-          document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
-      });
+      // $(window).resize(function(){
+      //     document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
+      // });
       var projects;
       function sortBy(categoryName) {
         $.getJSON('projects.json', function(data) {
@@ -146,8 +146,9 @@
       }
 
       $(document).ready(function(){
+        
 
-        document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
+        // document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
         lastEditDate = new Date(document.lastModified);
         document.getElementsByClassName("last-edit")[0].innerHTML = lastEditDate.getDate() + "." + (lastEditDate.getMonth()+1) + "." + lastEditDate.getFullYear();
         console.log("last-edit: " + document.lastModified);
@@ -158,6 +159,8 @@
           document.getElementById("mode").setAttribute("href","light.css");
           document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
           document.getElementsByClassName("toggle-icon")[0].setAttribute("src","moon.svg");
+          document.getElementsByClassName("icon")[0].setAttribute("src","ico-light.png");
+          document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
           localStorage.setItem("dark-mode", "off");
         }
         today = new Date();
@@ -233,6 +236,8 @@
           document.getElementById("mode").setAttribute("href","dark.css");
           document.getElementsByClassName("navbar-light")[0].className = document.getElementsByClassName("navbar-light")[0].className.replace('navbar-light', 'navbar-dark');
           document.getElementsByClassName("toggle-icon")[0].setAttribute("src","sun.svg");
+          document.getElementsByClassName("icon")[0].setAttribute("src","ico.png");
+          document.getElementsByClassName("icon")[1].setAttribute("src","ico.png");
           localStorage.setItem("dark-mode", "on");
         }
         else
@@ -240,6 +245,8 @@
           document.getElementById("mode").setAttribute("href","light.css");
           document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
           document.getElementsByClassName("toggle-icon")[0].setAttribute("src","moon.svg");
+          document.getElementsByClassName("icon")[0].setAttribute("src","ico-light.png");
+          document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
           localStorage.setItem("dark-mode", "off");
         }
       }
@@ -253,7 +260,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
       <div class="container">
         <a class="navbar-brand" href="/">
-          <img src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="ɐ">
+          <img class="icon" src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
           Arda Gürcan
         </a>
 
@@ -299,8 +306,11 @@
     <div class="container mt-4">
       <div class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading .d-none">www.ardagurcan.com</h1>
-            <p class="lead text-muted">Games, Projects, 3D Models, Simulations...</p>
+            <img src="ico.png" width="40%" class="icon">
+            <br>
+            <br>
+            <h1 class="jumbotron-heading .d-none">Arda Gürcan</h1>
+            <p class="lead text-muted">Games, Projects, Simulations...</p>
         </div>
       </div>
     </div>
