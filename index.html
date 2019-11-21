@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="lazyload.js"></script>
     <link id="mode" rel="stylesheet" type="text/css" href="dark.css">
     <script type="text/javascript">
       var dark = true;
@@ -39,7 +40,7 @@
       }
 
       $(window).resize(function(){
-          document.getElementsByClassName("jumbotron-image")[0].setAttribute("width",(deviceSize() == 'xs' || deviceSize() == 'sm') ? "65%" : "35%");
+          document.getElementsByClassName("jumbotron-image")[0].setAttribute("width",(deviceSize() == 'xs' || deviceSize() == 'sm') ? "65%" : "30%");
           document.getElementsByClassName("last-edit")[0].innerHTML = (((window.innerWidth > 0) ? window.innerWidth : screen.width) <= 360) ?  "": "Last edited: " + lastEditDate.getDate() + "." + (lastEditDate.getMonth()+1) + "." + lastEditDate.getFullYear();
           console.log(deviceSize());
       });
@@ -106,7 +107,7 @@
              addString += 
                 '<div class="col-md-6 my-3">'+
                   '<div class="card">'+
-                    '<a href="!LINK!"><img src="!IMGLINK!" class="card-img-top cover-image" alt="!NAME! Cover Image"></a>'+
+                    '<a href="!LINK!"><img data-src="!IMGLINK!" class="card-img-top cover-image lazyload" alt="!NAME! Cover Image"></a>'+
                     '<div class="card-body" style="padding-bottom: 58px;position: relative;">'+
                       '<h5 class="card-title">' + 
                       '<a href="!LINK!"><b>!NAME!</b></a>' + "!NEWPILL!" + 
@@ -146,11 +147,14 @@
 
           }
           document.getElementById("projects").innerHTML = addString;
+          lazyload();
+
         })
       }
 
       $(document).ready(function(){
-        document.getElementsByClassName("jumbotron-image")[0].setAttribute("width",(deviceSize() == 'xs' || deviceSize() == 'sm') ? "65%" : "35%");
+        
+        document.getElementsByClassName("jumbotron-image")[0].setAttribute("width",(deviceSize() == 'xs' || deviceSize() == 'sm') ? "65%" : "30%");
 
 
         // document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
@@ -165,7 +169,7 @@
           document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
           document.getElementsByClassName("toggle-icon")[0].setAttribute("src","moon.svg");
           document.getElementsByClassName("icon")[0].setAttribute("src","ico-light.png");
-          document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
+          document.getElementsByClassName("icon")[1].setAttribute("data-src","ico-light.png");
           localStorage.setItem("dark-mode", "off");
         }
         today = new Date();
@@ -189,7 +193,7 @@
              addString += 
                 '<div class="col-md-6 my-3">'+
                   '<div class="card">'+
-                    '<a href="!LINK!"><img src="!IMGLINK!" class="card-img-top cover-image" alt="!NAME! Cover Image"></a>'+
+                    '<a href="!LINK!"><img data-src="!IMGLINK!" class="card-img-top cover-image lazyload" alt="!NAME! Cover Image"></a>'+
                     '<div class="card-body" style="padding-bottom: 58px;position: relative;">'+
                       '<h5 class="card-title">' + 
                       '<a href="!LINK!"><b>!NAME!</b></a>' + "!NEWPILL!" + 
@@ -227,6 +231,7 @@
 
           }
           document.getElementById("projects").innerHTML = addString;
+          lazyload();
         })
       });
 
@@ -311,7 +316,7 @@
     <div class="container mt-4">
       <div class="jumbotron text-center">
         <div class="container">
-            <img src="ico.png" width="35%" class="jumbotron-image icon">
+            <img data-src="ico.png" width="30%" class="jumbotron-image icon lazyload">
             <br>
             <br>
             <h1 class="jumbotron-heading .d-none">Arda Gürcan</h1>
