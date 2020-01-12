@@ -34,6 +34,13 @@
         }
 
         function setup() {
+            w = windowWidth
+            h = windowHeight
+            if (w > h) {
+                w = h;
+            } else {
+                h = w;
+            }
             createCanvas(w, h);
             grid = createArray(19, 19)
             for (var y = 0; y < n; y++) {
@@ -46,7 +53,7 @@
 
         function draw() {
             // background("#d49b34");
-            image(img, 0, 0,w,h);
+            image(img, 0, 0, w, h);
             for (var i = 1; i < n + 1; i++) {
                 line(w / (n + 1) * i, h / (n + 1), w / (n + 1) * i, h - h / (n + 1))
                 line(w / (n + 1), h / (n + 1) * i, w - w / (n + 1), h / (n + 1) * i)
@@ -83,6 +90,21 @@
 
 
 
+        }
+
+        function touchEnded() {
+            
+            if (grid[Math.round(mouseY * (n + 1) / h - 1)][Math.round(mouseX * (n + 1) / w - 1)] == 0) {
+                if (whiteToPlay) {
+                    grid[Math.round(mouseY * (n + 1) / h - 1)][Math.round(mouseX * (n + 1) / w - 1)] = 1
+                } else {
+                    grid[Math.round(mouseY * (n + 1) / h - 1)][Math.round(mouseX * (n + 1) / w - 1)] = -1
+                }
+                whiteToPlay = !whiteToPlay
+
+            }
+
+            return false;
         }
     </script>
 </head>
