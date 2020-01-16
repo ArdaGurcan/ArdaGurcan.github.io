@@ -21,12 +21,12 @@ function drawArrow(start, target, offset, coefficient, color = "#22963f", weight
     strokeWeight(weight)
     stroke("green")
     fill("green")
-    push() //start new drawing state
+    push()
     line(start.x, start.y, end.x, end.y)
-    var angle = atan2(start.y - end.y, start.x - end.x); //gets the angle of the line
-    translate(end.x, end.y); //translates to the destination vertex
-    rotate(angle - HALF_PI); //rotates the arrow point
-    triangle(-offset * 0.5, offset, offset * 0.5, offset, 0, -offset / 2); //draws the arrow point as a triangle
+    var angle = atan2(start.y - end.y, start.x - end.x);
+    translate(end.x, end.y);
+    rotate(angle - HALF_PI);
+    triangle(-offset * 0.5, offset, offset * 0.5, offset, 0, -offset / 2);
     pop();
     strokeWeight(1)
     stroke("black")
@@ -51,28 +51,23 @@ function rotateVector(vector, angle) {
 }
 
 function resolveCollision(o1, o2) {
-    if (o1.hasCollision && o2.hasCollision) { //(o1.constructor.name == o2.constructor.name && o1.constructor.name == "Circle") {
+    if (o1.hasCollision && o2.hasCollision) {
         const xVelocityDiff = o1.velocity.x - o2.velocity.x;
         const yVelocityDiff = o1.velocity.y - o2.velocity.y;
 
         const xDist = o2.location.x - o1.location.x;
         const yDist = o2.location.y - o1.location.y;
 
-        // Prevent accidental overlap of particles
         if (xVelocityDiff * xDist + yVelocityDiff * yDist >= 0) {
 
-            // Grab angle between the two colliding particles
             const angle = -Math.atan2(o2.location.y - o1.location.y, o2.location.x - o1.location.x);
 
-            // Store mass in var for better readability in collision equation
             const m1 = o1.mass;
             const m2 = o2.mass;
 
-            // Velocity before equation
             const u1 = rotateVelocity(o1.velocity, angle);
             const u2 = rotateVelocity(o2.velocity, angle);
 
-            // Velocity after 1d collision equation
             const v1 = {
                 x: u1.x * (m1 - m2) / (m1 + m2) + u2.x * 2 * m2 / (m1 + m2),
                 y: u1.y
@@ -82,22 +77,18 @@ function resolveCollision(o1, o2) {
                 y: u2.y
             };
 
-            // Final velocity after rotating axis back to original location
             const vFinal1 = rotateVelocity(v1, -angle);
             const vFinal2 = rotateVelocity(v2, -angle);
 
-            // Swap particle velocities for realistic bounce effect
-            let c= 0.97
-            o1.velocity.x = vFinal1.x*c;
-            o1.velocity.y = vFinal1.y*c;
+            let c = 0.97
+            o1.velocity.x = vFinal1.x * c;
+            o1.velocity.y = vFinal1.y * c;
 
-            o2.velocity.x = vFinal2.x*c;
-            o2.velocity.y = vFinal2.y*c;
+            o2.velocity.x = vFinal2.x * c;
+            o2.velocity.y = vFinal2.y * c;
         }
     }
-    // else if (o1.constructor.name == o2.constructor.name && o1.constructor.name == "Rectangle") {
 
-    // }
 
 
 }
@@ -141,13 +132,14 @@ function setup() {
         balls[i].gravity = false;
 
     }
-    // balls[0].fixed = true;
 
-    //balls[5].followMouse = true;
 }
 
 function restart() {
     balls = []
+
+    selectedIndex = -1;
+
     for (let i = 0; i < objectCount; i++) {
         let r = rand(objectSize + 1, objectSize + 20);
         let x = rand(r, w - r);
@@ -171,7 +163,6 @@ function draw() {
 
             if (balls[i] != balls[j] && areColliding(balls[i], balls[j])) {
                 if (balls[i].grounded || balls[j].grounded) {
-                    // console.log(balls[i].location.y, balls[j].location.y)
                     if (balls[i].location.y > balls[j].location.y) {
                         balls[j].grounded = true;
                     }
@@ -180,30 +171,12 @@ function draw() {
                         balls[i].grounded = true;
                     }
                 }
-                // {
-
-                // }
-                // console.log(balls[i].location.dist(balls[j].location)); //!(balls[i].x < balls[j].x + balls[j].width || balls[j].x < balls[i].x + balls[i].width)
 
                 let a1 = balls[i].location;
                 let a2 = createVector(a1.x + balls[i].width, a1.y + balls[i].height);
                 let b1 = balls[j].location;
                 let b2 = createVector(b1.x + balls[j].width, b1.y + balls[j].height);
 
-                // if (!(a2.x < b1.x || a1.x > b2.x) && (a1.y > b2.y || a2.y < b1.y)) {
-                //     if (balls[i].y > balls[j].y) {
-                //         balls[j].addForce(createVector(0, -9.8));
-                //         balls[j].color = "#000";
-                //         balls[i].color = "#fff";
-                //     } else {
-                //         balls[i].addForce(createVector(0, -9.8));
-                //         balls[i].color = "#000";
-                //         balls[j].color = "#fff";
-                //     }
-                // } else {
-                //     balls[i].color = "#900";
-                //     balls[j].color = "#900";
-                // }
 
 
 
@@ -243,29 +216,6 @@ function draw() {
 
                     balls[i].addForce(fi)
                     balls[j].addForce(fj)
-                    // push()
-                    // var angle = atan2(balls[j].y - balls[i].y, balls[j].x - balls[i].x); //gets the angle of the line
-                    // let m1 = balls[j].mass
-                    // let m2 = balls[i].mass
-                    // let d = Math.abs(balls[j].location.y-balls[i].location.y)
-                    // rotate(angle-HALF_PI)
-                    // console.log(balls[j].location,balls[i].location)
-
-                    // let f1 = createVector(0,0)
-                    // if(balls[i].y > balls[j].y)
-                    // {
-                    //     f1 = createVector(0,(G*m1*m2/d**2))
-                    // }
-                    // else{
-                    //     f1 = createVector(0,-(G*m1*m2/d**2))
-                    // }
-
-                    // console.log(f1)
-                    // pop()
-                    // let final = rotateVector(f1,(-angle))
-                    // console.log(final)
-                    // balls[j].addForce(final);
-
 
                 }
             }
@@ -288,7 +238,6 @@ function draw() {
 
         let target = balls[i].velocity;
 
-        // console.log(balls[0].forces)
         balls[i].netForce = createVector(0, 0)
 
 
@@ -298,8 +247,8 @@ function draw() {
 }
 
 function mousePressed() {
-    
-    if (mouseX < w && mouseX > 0 && mouseY < h && mouseY > 0){
+
+    if (mouseX < w && mouseX > 0 && mouseY < h && mouseY > 0) {
         if (selectedIndex >= 0) {
             balls[selectedIndex].fixed = false;
             balls[selectedIndex].grounded = false;
@@ -315,14 +264,13 @@ function mousePressed() {
         }
 
     }
-    
+
 }
 
 function mouseReleased() {
     for (let i = 0; i < balls.length; i++) {
 
         balls[i].followMouse = false;
-        // balls[i].fixed = true;
 
     }
 }

@@ -1,15 +1,11 @@
 const colors = [
-	// "hsl(0, 90%, 70%)",
-	// "hsl(72, 90%, 70%)",
-	// "hsl(144, 90%, 70%)",
-	// "hsl(216, 90%, 70%)",
-	// "hsl(288, 90%, 70%)",
+
 	"#D14944",
 	"#CAA638",
 	"#CCD962",
-	
+
 	"#5BB79C",
-	
+
 ]
 
 class PhysicsObject {
@@ -38,7 +34,6 @@ class PhysicsObject {
 	}
 
 	move() {
-		// this.grounded = this.followMouse || this.fixed;
 
 		if (this.followMouse || this.fixed) {
 			this.grounded = true;
@@ -76,36 +71,34 @@ class Circle extends PhysicsObject {
 		this.radius = radius;
 	}
 	wallCollision() {
-		// wall collision
 		if (!this.fixed && !this.followMouse) {
 			if (this.location.x < (this.radius)) {
 				this.location.x = (this.radius);
-				this.velocity.x = -this.velocity.x;
+				this.velocity.x = -this.velocity.x * 0.97;
 
 
 			} else if (this.location.x > width - (this.radius)) {
 				this.location.x = width - (this.radius);
-				this.velocity.x = -this.velocity.x;
+				this.velocity.x = -this.velocity.x * 0.97;
 
 			}
 			if (this.location.y < (this.radius)) {
 				this.grounded = false;
 				this.location.y = (this.radius);
-				this.velocity.y = -this.velocity.y;
+				this.velocity.y = -this.velocity.y * 0.97;
 
 
 			}
 			if (this.location.y > height - (this.radius)) {
 				this.grounded = true;
 				this.location.y = height - (this.radius);
-				this.velocity.y = -this.velocity.y;
+				this.velocity.y = -this.velocity.y * 0.97;
 
 			} else {
 				this.grounded = false;
 			}
 
-			// this.velocity.y *= .9
-			// this.velocity.x *= .9
+
 
 			if (height - (this.radius) - this.location.y < 5) {
 				if (Math.abs(this.velocity.y) < 2) {
@@ -133,7 +126,6 @@ class Rectangle extends PhysicsObject {
 		this.height = height;
 	}
 	wallCollision() {
-		// wall collision
 		if (this.location.x < 0) {
 			this.location.x = 0;
 			this.velocity.x = -this.velocity.x;
@@ -149,8 +141,7 @@ class Rectangle extends PhysicsObject {
 			this.grounded = true;
 			this.location.y = height - (this.height);
 			this.velocity.y = -this.velocity.y;
-		}
-		else{
+		} else {
 			this.grounded = false;
 		}
 
