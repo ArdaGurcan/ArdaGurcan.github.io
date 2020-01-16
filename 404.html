@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>404 Not Found</title>
-    <link rel="icon" type="image/png" href="../ico.png">
+    <link rel="icon" type="image/png" href="/ico.png">
     <meta name="keywords" content="404,Not Found,Error">
     <meta name="description" content="404 Not Found">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link id="mode" rel="stylesheet" type="text/css" href="../dark.css">
+    <link id="mode" rel="stylesheet" type="text/css" href="/dark.css">
     <script type="text/javascript">
       var dark = true;
 
@@ -161,10 +161,10 @@
         if(localStorage.getItem("dark-mode") == "off")
         {
           dark = false;
-          document.getElementById("mode").setAttribute("href","../light.css");
+          document.getElementById("mode").setAttribute("href","/light.css");
           document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
-          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","../moon.svg");
-          document.getElementsByClassName("icon")[0].setAttribute("src","../ico-light.png");
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
+          document.getElementsByClassName("icon")[0].setAttribute("src","/ico-light.png");
           //document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
           localStorage.setItem("dark-mode", "off");
         }
@@ -238,10 +238,10 @@
         dark = !dark;
         if(dark)
         {
-          document.getElementById("mode").setAttribute("href","../dark.css");
+          document.getElementById("mode").setAttribute("href","/dark.css");
           document.getElementsByClassName("navbar-light")[0].className = document.getElementsByClassName("navbar-light")[0].className.replace('navbar-light', 'navbar-dark');
-          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","../sun.svg");
-          document.getElementsByClassName("icon")[0].setAttribute("src","../ico.png");
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/sun.svg");
+          document.getElementsByClassName("icon")[0].setAttribute("src","/ico.png");
           //document.getElementsByClassName("icon")[1].setAttribute("src","ico.png");
           localStorage.setItem("dark-mode", "on");
         }
@@ -249,8 +249,8 @@
         {
           document.getElementById("mode").setAttribute("href","//light.css");
           document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
-          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","../moon.svg");
-          document.getElementsByClassName("icon")[0].setAttribute("src","../ico-light.png");
+          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
+          document.getElementsByClassName("icon")[0].setAttribute("src","/ico-light.png");
           //document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
           localStorage.setItem("dark-mode", "off");
         }
@@ -265,7 +265,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
       <div class="container">
         <a class="navbar-brand" href="/">
-          <img class="icon" src="../ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
+          <img class="icon" src="/ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
           Arda Gürcan
         </a>
 
@@ -286,7 +286,7 @@
 
           </div>
           <div class="container">
-            <img src="../sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();" title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
+            <img src="/sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();" title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
           </div>
         </div>
       </div>
@@ -311,7 +311,7 @@
     <div class="container mt-4">
       <div class="jumbotron text-center">
         <div class="container">
-            <img src="../ico-scrambled.png" width="35%" class="jumbotron-image icon">
+            <img src="/ico-scrambled.png" width="35%" class="jumbotron-image icon">
             <br>
             <br>
             <h1 class="jumbotron-heading .d-none">Error 404 - Not Found</h1>
