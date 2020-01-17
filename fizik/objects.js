@@ -72,40 +72,50 @@ class Circle extends PhysicsObject {
 	}
 	wallCollision() {
 		if (!this.fixed && !this.followMouse) {
+			let c= 1//0.97
 			if (this.location.x < (this.radius)) {
 				this.location.x = (this.radius);
-				this.velocity.x = -this.velocity.x * 0.97;
+				this.velocity.x = -this.velocity.x * c;
 
 
 			} else if (this.location.x > width - (this.radius)) {
 				this.location.x = width - (this.radius);
-				this.velocity.x = -this.velocity.x * 0.97;
+				this.velocity.x = -this.velocity.x * c;
 
 			}
 			if (this.location.y < (this.radius)) {
-				this.grounded = false;
+				
 				this.location.y = (this.radius);
-				this.velocity.y = -this.velocity.y * 0.97;
+				this.velocity.y = -this.velocity.y * c;
 
 
 			}
 			if (this.location.y > height - (this.radius)) {
 				this.grounded = true;
 				this.location.y = height - (this.radius);
-				this.velocity.y = -this.velocity.y * 0.97;
+				this.velocity.y = -this.velocity.y * c;
 
-			} else {
-				this.grounded = false;
-			}
+			} 
 
 
 
-			if (height - (this.radius) - this.location.y < 5) {
+			if (height - (this.radius) - this.location.y < 10) {
+				this.grounded = true;
+				// this.color = "#000"
 				if (Math.abs(this.velocity.y) < 2) {
 					this.velocity.y = 0;
-					this.grounded = true;
+					
+					
+				}
+				else {
+					// this.grounded = false;
+					
 				}
 			}
+			else {
+				this.grounded = false;
+				// this.color = "#999"
+			}	
 
 		}
 

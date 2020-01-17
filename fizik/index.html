@@ -93,6 +93,12 @@
                 GSlider.oninput = function () {
                     G = this.value;
                 }
+                
+                var elasticitySlider = $("input.elasticity")[0]
+                elasticitySlider.value = elasticity;
+                elasticitySlider.oninput = function () {
+                    elasticity = this.value;
+                }
 
                 var arrowSlider = $("input.arrowLength")[0]
                 arrowSlider.value = arrowLength;
@@ -175,7 +181,7 @@
 
                 }
 
-
+                
             }
 
 
@@ -229,7 +235,7 @@
                     $("input[name='color']")[0].value = b.color;
                     $("input.collision")[0].checked = b.hasCollision;
                     $("input.fixed")[0].checked = b.fixed;
-
+                    $("input.elasticity")[0].value = elasticity;
 
                 }
             }
@@ -264,6 +270,8 @@
                 <h5>Objects</h5>
                 <li>Object Count<br><input type="range" min="1" max="100" value="10" step="1" class="objectCount"></li>
                 <li>Object Size<br><input type="range" min="5" max="80" value="30" step="1" class="objectSize"></li>
+                <li>Elasticity<br><input type="range" min="0.8` " max="1" value="30" step="0.0001" class="elasticity"></li>
+                
 
 
             </ul>

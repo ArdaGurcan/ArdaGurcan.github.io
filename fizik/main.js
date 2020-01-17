@@ -9,6 +9,7 @@ var selectedIndex = -1;
 var previousSelection = -1;
 var w = 700;
 var h = 700;
+var elasticity = 1;
 
 function rand(min, max) {
     return Math.random() * (max - min) + min;
@@ -73,19 +74,19 @@ function resolveCollision(o1, o2) {
                 y: u1.y
             };
             const v2 = {
-                x: u2.x * (m1 - m2) / (m1 + m2) + u1.x * 2 * m2 / (m1 + m2),
+                x: v1.x+u1.x-u2.x,///*u2.x * (m1 - m2) / (m1 + m2) +*/ u1.x * 2 * m1 / (m1 + m2),
                 y: u2.y
             };
 
             const vFinal1 = rotateVelocity(v1, -angle);
             const vFinal2 = rotateVelocity(v2, -angle);
 
-            let c = 0.97
-            o1.velocity.x = vFinal1.x * c;
-            o1.velocity.y = vFinal1.y * c;
+            
+            o1.velocity.x = vFinal1.x * elasticity;
+            o1.velocity.y = vFinal1.y * elasticity;
 
-            o2.velocity.x = vFinal2.x * c;
-            o2.velocity.y = vFinal2.y * c;
+            o2.velocity.x = vFinal2.x * elasticity;
+            o2.velocity.y = vFinal2.y * elasticity;
         }
     }
 
@@ -157,12 +158,16 @@ function draw() {
 
     for (let i = 0; i < balls.length; i++) {
 
-
+        
+        let x1 = balls[i].location
+        
         for (let j = 0; j < balls.length; j++) {
 
 
             if (balls[i] != balls[j] && areColliding(balls[i], balls[j])) {
                 if (balls[i].grounded || balls[j].grounded) {
+                    balls[j].grounded = true;
+                    balls[i].grounded = true;
                     if (balls[i].location.y > balls[j].location.y) {
                         balls[j].grounded = true;
                     }
@@ -172,14 +177,10 @@ function draw() {
                     }
                 }
 
-                let a1 = balls[i].location;
-                let a2 = createVector(a1.x + balls[i].width, a1.y + balls[i].height);
-                let b1 = balls[j].location;
-                let b2 = createVector(b1.x + balls[j].width, b1.y + balls[j].height);
-
-
-
-
+                // let a1 = balls[i].location;
+                // let a2 = createVector(a1.x + balls[i].width, a1.y + balls[i].height);
+                // let b1 = balls[j].location;
+                // let b2 = createVector(b1.x + balls[j].width, b1.y + balls[j].height);
 
                 resolveCollision(balls[i], balls[j]);
             } else if (balls[i] != balls[j]) {
@@ -221,14 +222,14 @@ function draw() {
             }
 
         }
+        balls[i].wallCollision();
+        balls[i].move();
+        balls[i].display();
         if (!balls[i].grounded && gravity) {
             balls[i].addForce(createVector(0, G * 0.098 * balls[i].mass))
 
         }
-        balls[i].wallCollision();
-        let x1 = balls[i].location
-        balls[i].move();
-        balls[i].display();
+        
         if (arrowType == "netForce") {
             drawArrow(x1, balls[i].netForce, 5, arrowLength)
         } else if (arrowType == "velocity") {
