@@ -1,7 +1,9 @@
 <html>
 
 <head>
-    <title>Physics Simulator</title>
+    <title>
+        Fizik Simülasyonu
+    </title>
     <link rel="shortcut icon" href="../ico.png" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
@@ -247,30 +249,28 @@
 <body>
     <div class="row">
         <div class="column left" style="background-color:#44A5BA;">
-            <h2>World Settings</h2>
+            <h2>Simülasyon Ayarları</h2>
             <ul>
-                <h5>Gravity</h5>
-                <li><input type="checkbox" onclick="toggleObjectGravity()" class="objectGravity"> Gravity between
-                    objects</li>
-                <li><input type="checkbox" onclick="toggleGroundGravity()" class="groundGravity" checked> Gravity of the
-                    ground</li>
-                <li>Gravity constant (G)<input type="range" min="0.5" max="10.5" value="6" step="0.1" class="G"></li>
-                <li><input type="checkbox" onclick="toggleCollisions()" class="collisions" checked> Object collisions
+                <h5>Kütle Çekimi</h5>
+                <li><input type="checkbox" onclick="toggleObjectGravity()" class="objectGravity"> Cisimler arası kütle çekimi</li>
+                <li><input type="checkbox" onclick="toggleGroundGravity()" class="groundGravity" checked> Yer Çekimi</li>
+                <li>Kütle çekim sabiti (G)<input type="range" min="0.5" max="10.5" value="6" step="0.1" class="G"></li>
+                <li><input type="checkbox" onclick="toggleCollisions()" class="collisions" checked> Cisim çarpışmaları
                 </li>
                 <br>
 
-                <h5>Arrows</h5>
-                <li>Arrow length<br><input type="range" min="0.001" max="5.001" value="6" step="0.001"
+                <h5>Oklar</h5>
+                <li>Ok uzunluğu<br><input type="range" min="0.001" max="5.001" value="6" step="0.001"
                         class="arrowLength"></li>
-                <li><input type="radio" onclick="changeArrows('netForce')" name="arrow" checked> Show net force</li>
-                <li><input type="radio" onclick="changeArrows('velocity')" name="arrow"> Show velocity</li>
-                <li><input type="radio" onclick="changeArrows('')" name="arrow"> Hide arrows</li>
+                <li><input type="radio" onclick="changeArrows('netForce')" name="arrow" checked> Net kuvveti göster</li>
+                <li><input type="radio" onclick="changeArrows('velocity')" name="arrow"> Hızı göster</li>
+                <li><input type="radio" onclick="changeArrows('')" name="arrow"> Okları gösterme</li>
 
                 <br>
-                <h5>Objects</h5>
-                <li>Object Count<br><input type="range" min="1" max="100" value="10" step="1" class="objectCount"></li>
-                <li>Object Size<br><input type="range" min="5" max="80" value="30" step="1" class="objectSize"></li>
-                <li>Elasticity<br><input type="range" min="0.8` " max="1" value="30" step="0.0001" class="elasticity"></li>
+                <h5>Cisimler</h5>
+                <li>Cisim Sayısı<br><input type="range" min="1" max="100" value="10" step="1" class="objectCount"></li>
+                <li>Cisim Boyutu<br><input type="range" min="5" max="80" value="30" step="1" class="objectSize"></li>
+                <li>Elastiklik<br><input type="range" min="0.8` " max="1" value="30" step="0.0001" class="elasticity"></li>
                 
 
 
@@ -279,25 +279,25 @@
         <div class="column middle" style="background-color:#AACBE8;" id="physics"></div>
 
         <div class="column right" style="background-color:#F0ECD1;">
-            <h2>Object Settings</h2>
-            <p class="missing">Click on an object</p>
+            <h2>Cisim Ayarları</h2>
+            <p class="missing">Bir cisme tıklayınız...</p>
             <ul class="objectSettings" style="visibility: hidden;">
-                <li>Location<br><input type="text" name="locationX" style="width:30%"><input type="text"
+                <li>Konum<br><input type="text" name="locationX" style="width:30%"><input type="text"
                         name="locationY" style="width:30%">
                 </li>
-                <li>Velocity<br><input type="text" name="velocityX" style="width:30%"><input type="text"
+                <li>Sürat<br><input type="text" name="velocityX" style="width:30%"><input type="text"
                         name="velocityY" style="width:30%">
                 </li>
                 <!-- <li>Acceleration<br><input type="text" name="accelerationX" style="width:30%"><input type="text"
                         name="accelerationY" style="width:30%">
                 </li> -->
-                <li>Mass<br><input type="text" name="mass" style="width:60%"></li>
-                <li>Radius<br><input type="text" name="radius" style="width:60% "></li>
-                <li>Color<br><input type="color" name="color" style="width:60%; border: none;padding: 0"></li>
-                <li><input type="checkbox" onclick="toggleSingleObjectCollision()" class="collision" checked> Collisions
+                <li>Kütle<br><input type="text" name="mass" style="width:60%"></li>
+                <li>Yarıçap<br><input type="text" name="radius" style="width:60% "></li>
+                <li>Renk<br><input type="color" name="color" style="width:60%; border: none;padding: 0"></li>
+                <li><input type="checkbox" onclick="toggleSingleObjectCollision()" class="collision" checked> Çarpışmalar
                 </li>
                 <li style="visibility:hidden"><input type="checkbox" onclick="toggleSingleObjectCollision()"
-                        class="fixed" checked> Fixed
+                        class="fixed" checked> Sabitle
 
 
             </ul>
