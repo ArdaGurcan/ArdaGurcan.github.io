@@ -1,4 +1,4 @@
-let dim = 3;
+let dim = 4;
 
 let cube = [];
 let sideLength = 80;
