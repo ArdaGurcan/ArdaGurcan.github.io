@@ -1,10 +1,10 @@
-let dim = 4;
+let dim = 3;
 
 let cube = [];
 let sideLength = 80;
 let locked = false;
 let angle = 3;
-let interval = 15
+let interval = 5
 var easyCam;
 
 let colors = [];
@@ -75,7 +75,7 @@ function setup() {
     easyCam.setRotationConstraint(true, false, false);
     easyCam.setDistance(700,0)
     easyCam.removeMouseListeners()
-    noLoop();
+    // noLoop();
 
     let canvasScale = (deviceSize() == 'xs' || deviceSize() == 'sm' || deviceSize() == 'md') ? .65 : .4
           // console.log(canvasScale)
@@ -218,9 +218,8 @@ function draw() {
         }
     }
 }
-
-function mouseWheel(){
-    if(abs(window.scrollY-lastScroll) > 5)
+window.onscroll = function(){
+    if(Math.abs(window.scrollY-lastScroll) > 5)
     {
         redraw()
         lastScroll = window.scrollY;
