@@ -1,3 +1,7 @@
+/*
+Copyright © Arda Gürcan
+*/
+
 let dim = 4;
 
 let cube = [];
@@ -20,7 +24,11 @@ let rotZCCW;
 
 let canvasSize;
 let bgColor = "#141518";
+
 let lastScroll = 0;
+let scrollFactor = 1;
+
+let normalMode = true;
 
 function matmul(mat, vec) {
     return createVector(
@@ -57,7 +65,7 @@ function compareVectors(a, b) {
 
 function fixCanvas(x, y) {
     resizeCanvas(x, y);
-    perspective(48);
+    perspective(48 + (dim - 4)*10);
     redraw();
 }
 
@@ -71,6 +79,15 @@ function setup() {
     easyCam.setDistance(700, 0);
     easyCam.removeMouseListeners();
     // noLoop();
+
+    tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+            tmp = item.split("=");
+            if (tmp[0] === "dim") dim = parseInt(decodeURIComponent(tmp[1]));
+        });
 
     let canvasScale =
         deviceSize() == "xs" || deviceSize() == "sm" || deviceSize() == "md"
@@ -286,7 +303,7 @@ function l() {
 }
 
 function L() {
-    for (let i = dim ** 2; i < dim ** 2 * (dim - 2); i++) {
+    for (let i = dim ** 2; i < dim ** 2 * 2; i++) {
         for (let j = 0; j < 90 / angle; j++) {
             cube[i].pos = matmul(rotXCCW, cube[i].pos);
         }
@@ -382,9 +399,8 @@ function scramble() {
 }
 
 function draw() {
-
     translate(0, -20, 0);
-    rotateY(48 + window.scrollY / 2);
+    rotateY(48 + (window.scrollY / 2) * scrollFactor);
     rotateX(-22.5);
     rotateZ(-22.5);
 
@@ -407,361 +423,728 @@ window.onscroll = function () {
 function keyPressed() {
     if (!locked) {
         if (key == "f") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 3; i++) {
-                    if ((i + 1) % dim == 0) {
-                        index++;
-                        if (cube[i].rot.z >= 90) {
-                            cube[i].pos = createVector(
-                                round(cube[i].pos.x),
-                                round(cube[i].pos.y),
-                                round(cube[i].pos.z)
-                            );
-                            cube[i].rot = createVector(0, 0, 0);
-                            cube[i].zCW();
-                            if (index == dim ** 2) {
-                                clearInterval(f);
-                                locked = false;
-                                cube = cube.sort(compareVectors);
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if ((i + 1) % dim == 0) {
+                            index++;
+                            if (cube[i].rot.z >= 90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].zCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotZCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, 0, angle));
                             }
-                        } else {
-                            cube[i].pos = matmul(rotZCW, cube[i].pos);
-                            cube[i].rot.add(createVector(0, 0, angle));
                         }
                     }
-                }
-                redraw();
-            }, interval);
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if ((i + 2) % dim == 0) {
+                            index++;
+                            if (cube[i].rot.z >= 90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].zCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotZCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, 0, angle));
+                            }
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
         }
 
         if (key == "F") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 3; i++) {
-                    if ((i + 1) % dim == 0) {
-                        index++;
-                        if (cube[i].rot.z <= -90) {
-                            cube[i].pos = createVector(
-                                round(cube[i].pos.x),
-                                round(cube[i].pos.y),
-                                round(cube[i].pos.z)
-                            );
-                            cube[i].rot = createVector(0, 0, 0);
-                            cube[i].zCCW();
-                            if (index == dim ** 2) {
-                                clearInterval(f);
-                                locked = false;
-                                cube = cube.sort(compareVectors);
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if ((i + 1) % dim == 0) {
+                            index++;
+                            if (cube[i].rot.z <= -90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].zCCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotZCCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, 0, -angle));
                             }
-                        } else {
-                            cube[i].pos = matmul(rotZCCW, cube[i].pos);
-                            cube[i].rot.add(createVector(0, 0, -angle));
                         }
                     }
-                }
-                redraw();
-            }, interval);
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if ((i + 2) % dim == 0) {
+                            index++;
+                            if (cube[i].rot.z <= -90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].zCCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotZCCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, 0, -angle));
+                            }
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
         }
 
         if (key == "b") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 3; i++) {
-                    if (i % dim == 0) {
-                        index++;
-                        if (cube[i].rot.z <= -90) {
-                            cube[i].pos = createVector(
-                                round(cube[i].pos.x),
-                                round(cube[i].pos.y),
-                                round(cube[i].pos.z)
-                            );
-                            cube[i].rot = createVector(0, 0, 0);
-                            cube[i].zCCW();
-                            if (index == dim ** 2) {
-                                clearInterval(f);
-                                locked = false;
-                                cube = cube.sort(compareVectors);
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (i % dim == 0) {
+                            index++;
+                            if (cube[i].rot.z <= -90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].zCCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotZCCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, 0, -angle));
                             }
-                        } else {
-                            cube[i].pos = matmul(rotZCCW, cube[i].pos);
-                            cube[i].rot.add(createVector(0, 0, -angle));
                         }
                     }
-                }
-                redraw();
-            }, interval);
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if ((i - 1) % dim == 0) {
+                            index++;
+                            if (cube[i].rot.z <= -90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].zCCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotZCCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, 0, -angle));
+                            }
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
         }
 
         if (key == "B") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 3; i++) {
-                    if (i % dim == 0) {
-                        index++;
-                        if (cube[i].rot.z >= 90) {
-                            cube[i].pos = createVector(
-                                round(cube[i].pos.x),
-                                round(cube[i].pos.y),
-                                round(cube[i].pos.z)
-                            );
-                            cube[i].rot = createVector(0, 0, 0);
-                            cube[i].zCW();
-                            if (index == dim ** 2) {
-                                clearInterval(f);
-                                locked = false;
-                                cube = cube.sort(compareVectors);
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (i % dim == 0) {
+                            index++;
+                            if (cube[i].rot.z >= 90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].zCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotZCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, 0, angle));
                             }
-                        } else {
-                            cube[i].pos = matmul(rotZCW, cube[i].pos);
-                            cube[i].rot.add(createVector(0, 0, angle));
                         }
                     }
-                }
-                redraw();
-            }, interval);
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if ((i - 1) % dim == 0) {
+                            index++;
+                            if (cube[i].rot.z >= 90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].zCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotZCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, 0, angle));
+                            }
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
         }
 
         if (key == "r") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = dim ** 2 * (dim - 1); i < dim ** 3; i++) {
-                    index++;
-                    if (cube[i].rot.x >= 90) {
-                        cube[i].pos = createVector(
-                            round(cube[i].pos.x),
-                            round(cube[i].pos.y),
-                            round(cube[i].pos.z)
-                        );
-                        cube[i].rot = createVector(0, 0, 0);
-                        cube[i].xCCW();
-                        if (index == dim ** 2) {
-                            clearInterval(f);
-                            locked = false;
-                            cube = cube.sort(compareVectors);
-                        }
-                    } else {
-                        cube[i].pos = matmul(rotXCW, cube[i].pos);
-                        cube[i].rot.add(createVector(angle, 0, 0));
-                    }
-                }
-                redraw();
-            }, interval);
-        }
-        if (key == "R") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = dim ** 2 * (dim - 1); i < dim ** 3; i++) {
-                    index++;
-                    if (cube[i].rot.x <= -90) {
-                        cube[i].pos = createVector(
-                            round(cube[i].pos.x),
-                            round(cube[i].pos.y),
-                            round(cube[i].pos.z)
-                        );
-                        cube[i].rot = createVector(0, 0, 0);
-                        cube[i].xCW();
-                        if (index == dim ** 2) {
-                            clearInterval(f);
-                            locked = false;
-                            cube = cube.sort(compareVectors);
-                        }
-                    } else {
-                        cube[i].pos = matmul(rotXCCW, cube[i].pos);
-                        cube[i].rot.add(createVector(-angle, 0, 0));
-                    }
-                }
-                redraw();
-            }, interval);
-        }
-
-        if (key == "l") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 2; i++) {
-                    index++;
-                    if (cube[i].rot.x <= -90) {
-                        cube[i].pos = createVector(
-                            round(cube[i].pos.x),
-                            round(cube[i].pos.y),
-                            round(cube[i].pos.z)
-                        );
-                        cube[i].rot = createVector(0, 0, 0);
-                        cube[i].xCW();
-                        if (index == dim ** 2) {
-                            clearInterval(f);
-                            locked = false;
-                            cube = cube.sort(compareVectors);
-                        }
-                    } else {
-                        cube[i].pos = matmul(rotXCCW, cube[i].pos);
-                        cube[i].rot.add(createVector(-angle, 0, 0));
-                    }
-                }
-                redraw();
-            }, interval);
-        }
-        if (key == "L") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 2; i++) {
-                    index++;
-                    if (cube[i].rot.x >= 90) {
-                        cube[i].pos = createVector(
-                            round(cube[i].pos.x),
-                            round(cube[i].pos.y),
-                            round(cube[i].pos.z)
-                        );
-                        cube[i].rot = createVector(0, 0, 0);
-                        cube[i].xCCW();
-                        if (index == dim ** 2) {
-                            clearInterval(f);
-                            locked = false;
-                            cube = cube.sort(compareVectors);
-                        }
-                    } else {
-                        cube[i].pos = matmul(rotXCW, cube[i].pos);
-                        cube[i].rot.add(createVector(angle, 0, 0));
-                    }
-                }
-                redraw();
-            }, interval);
-        }
-
-        if (key == "u") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 3; i++) {
-                    if (i % dim ** 2 < dim) {
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = dim ** 2 * (dim - 1); i < dim ** 3; i++) {
                         index++;
-                        if (cube[i].rot.y <= -90) {
+                        if (cube[i].rot.x >= 90) {
                             cube[i].pos = createVector(
                                 round(cube[i].pos.x),
                                 round(cube[i].pos.y),
                                 round(cube[i].pos.z)
                             );
                             cube[i].rot = createVector(0, 0, 0);
-                            cube[i].yCW();
+                            cube[i].xCCW();
                             if (index == dim ** 2) {
                                 clearInterval(f);
                                 locked = false;
                                 cube = cube.sort(compareVectors);
                             }
                         } else {
-                            cube[i].pos = matmul(rotYCCW, cube[i].pos);
-                            cube[i].rot.add(createVector(0, -angle, 0));
+                            cube[i].pos = matmul(rotXCW, cube[i].pos);
+                            cube[i].rot.add(createVector(angle, 0, 0));
                         }
                     }
-                }
-                redraw();
-            }, interval);
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (
+                        let i = dim ** 2 * (dim - 2);
+                        i < dim ** 2 * (dim - 1);
+                        i++
+                    ) {
+                        index++;
+                        if (cube[i].rot.x >= 90) {
+                            cube[i].pos = createVector(
+                                round(cube[i].pos.x),
+                                round(cube[i].pos.y),
+                                round(cube[i].pos.z)
+                            );
+                            cube[i].rot = createVector(0, 0, 0);
+                            cube[i].xCCW();
+                            if (index == dim ** 2) {
+                                clearInterval(f);
+                                locked = false;
+                                cube = cube.sort(compareVectors);
+                            }
+                        } else {
+                            cube[i].pos = matmul(rotXCW, cube[i].pos);
+                            cube[i].rot.add(createVector(angle, 0, 0));
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
+        }
+        if (key == "R") {
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = dim ** 2 * (dim - 1); i < dim ** 3; i++) {
+                        index++;
+                        if (cube[i].rot.x <= -90) {
+                            cube[i].pos = createVector(
+                                round(cube[i].pos.x),
+                                round(cube[i].pos.y),
+                                round(cube[i].pos.z)
+                            );
+                            cube[i].rot = createVector(0, 0, 0);
+                            cube[i].xCW();
+                            if (index == dim ** 2) {
+                                clearInterval(f);
+                                locked = false;
+                                cube = cube.sort(compareVectors);
+                            }
+                        } else {
+                            cube[i].pos = matmul(rotXCCW, cube[i].pos);
+                            cube[i].rot.add(createVector(-angle, 0, 0));
+                        }
+                    }
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (
+                        let i = dim ** 2 * (dim - 2);
+                        i < dim ** 2 * (dim - 1);
+                        i++
+                    ) {
+                        index++;
+                        if (cube[i].rot.x <= -90) {
+                            cube[i].pos = createVector(
+                                round(cube[i].pos.x),
+                                round(cube[i].pos.y),
+                                round(cube[i].pos.z)
+                            );
+                            cube[i].rot = createVector(0, 0, 0);
+                            cube[i].xCW();
+                            if (index == dim ** 2) {
+                                clearInterval(f);
+                                locked = false;
+                                cube = cube.sort(compareVectors);
+                            }
+                        } else {
+                            cube[i].pos = matmul(rotXCCW, cube[i].pos);
+                            cube[i].rot.add(createVector(-angle, 0, 0));
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
+        }
 
+        if (key == "l") {
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 2; i++) {
+                        index++;
+                        if (cube[i].rot.x <= -90) {
+                            cube[i].pos = createVector(
+                                round(cube[i].pos.x),
+                                round(cube[i].pos.y),
+                                round(cube[i].pos.z)
+                            );
+                            cube[i].rot = createVector(0, 0, 0);
+                            cube[i].xCW();
+                            if (index == dim ** 2) {
+                                clearInterval(f);
+                                locked = false;
+                                cube = cube.sort(compareVectors);
+                            }
+                        } else {
+                            cube[i].pos = matmul(rotXCCW, cube[i].pos);
+                            cube[i].rot.add(createVector(-angle, 0, 0));
+                        }
+                    }
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = dim ** 2; i < dim ** 2 * 2; i++) {
+                        index++;
+                        if (cube[i].rot.x <= -90) {
+                            cube[i].pos = createVector(
+                                round(cube[i].pos.x),
+                                round(cube[i].pos.y),
+                                round(cube[i].pos.z)
+                            );
+                            cube[i].rot = createVector(0, 0, 0);
+                            cube[i].xCW();
+                            if (index == dim ** 2) {
+                                clearInterval(f);
+                                locked = false;
+                                cube = cube.sort(compareVectors);
+                            }
+                        } else {
+                            cube[i].pos = matmul(rotXCCW, cube[i].pos);
+                            cube[i].rot.add(createVector(-angle, 0, 0));
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
+        }
+        if (key == "L") {
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 2; i++) {
+                        index++;
+                        if (cube[i].rot.x >= 90) {
+                            cube[i].pos = createVector(
+                                round(cube[i].pos.x),
+                                round(cube[i].pos.y),
+                                round(cube[i].pos.z)
+                            );
+                            cube[i].rot = createVector(0, 0, 0);
+                            cube[i].xCCW();
+                            if (index == dim ** 2) {
+                                clearInterval(f);
+                                locked = false;
+                                cube = cube.sort(compareVectors);
+                            }
+                        } else {
+                            cube[i].pos = matmul(rotXCW, cube[i].pos);
+                            cube[i].rot.add(createVector(angle, 0, 0));
+                        }
+                    }
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = dim ** 2; i < dim ** 2 * 2; i++) {
+                        index++;
+                        if (cube[i].rot.x >= 90) {
+                            cube[i].pos = createVector(
+                                round(cube[i].pos.x),
+                                round(cube[i].pos.y),
+                                round(cube[i].pos.z)
+                            );
+                            cube[i].rot = createVector(0, 0, 0);
+                            cube[i].xCCW();
+                            if (index == dim ** 2) {
+                                clearInterval(f);
+                                locked = false;
+                                cube = cube.sort(compareVectors);
+                            }
+                        } else {
+                            cube[i].pos = matmul(rotXCW, cube[i].pos);
+                            cube[i].rot.add(createVector(angle, 0, 0));
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
+        }
+
+        if (key == "u") {
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (i % dim ** 2 < dim) {
+                            index++;
+                            if (cube[i].rot.y <= -90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].yCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotYCCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, -angle, 0));
+                            }
+                        }
+                    }
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (i % dim ** 2 < 2 * dim && i % dim ** 2 >= dim) {
+                            index++;
+                            if (cube[i].rot.y <= -90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].yCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotYCCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, -angle, 0));
+                            }
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
             cube = cube.sort(compareVectors);
         }
 
         if (key == "U") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 3; i++) {
-                    if (i % dim ** 2 < dim) {
-                        index++;
-                        if (cube[i].rot.y >= 90) {
-                            cube[i].pos = createVector(
-                                round(cube[i].pos.x),
-                                round(cube[i].pos.y),
-                                round(cube[i].pos.z)
-                            );
-                            cube[i].rot = createVector(0, 0, 0);
-                            cube[i].yCCW();
-                            if (index == dim ** 2) {
-                                clearInterval(f);
-                                locked = false;
-                                cube = cube.sort(compareVectors);
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (i % dim ** 2 < dim) {
+                            index++;
+                            if (cube[i].rot.y >= 90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].yCCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotYCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, angle, 0));
                             }
-                        } else {
-                            cube[i].pos = matmul(rotYCW, cube[i].pos);
-                            cube[i].rot.add(createVector(0, angle, 0));
                         }
                     }
-                }
-                redraw();
-            }, interval);
-
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (i % dim ** 2 < 2 * dim && i % dim ** 2 >= dim) {
+                            index++;
+                            if (cube[i].rot.y >= 90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].yCCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotYCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, angle, 0));
+                            }
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
             cube = cube.sort(compareVectors);
         }
 
         if (key == "d") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 3; i++) {
-                    if (dim ** 2 - (i % dim ** 2) <= dim) {
-                        index++;
-                        if (cube[i].rot.y >= 90) {
-                            cube[i].pos = createVector(
-                                round(cube[i].pos.x),
-                                round(cube[i].pos.y),
-                                round(cube[i].pos.z)
-                            );
-                            cube[i].rot = createVector(0, 0, 0);
-                            cube[i].yCCW();
-                            if (index == dim ** 2) {
-                                clearInterval(f);
-                                locked = false;
-                                cube = cube.sort(compareVectors);
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (dim ** 2 - (i % dim ** 2) <= dim) {
+                            index++;
+                            if (cube[i].rot.y >= 90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].yCCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotYCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, angle, 0));
                             }
-                        } else {
-                            cube[i].pos = matmul(rotYCW, cube[i].pos);
-                            cube[i].rot.add(createVector(0, angle, 0));
                         }
                     }
-                }
-                redraw();
-            }, interval);
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (
+                            dim ** 2 - (i % dim ** 2) <= 2 * dim &&
+                            dim ** 2 - (i % dim ** 2) > dim
+                        ) {
+                            index++;
+                            if (cube[i].rot.y >= 90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].yCCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotYCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, angle, 0));
+                            }
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
 
             cube = cube.sort(compareVectors);
         }
 
         if (key == "D") {
-            locked = true;
-            let f = setInterval(() => {
-                let index = 0;
-                for (let i = 0; i < dim ** 3; i++) {
-                    if (dim ** 2 - (i % dim ** 2) <= dim) {
-                        index++;
-                        if (cube[i].rot.y <= -90) {
-                            cube[i].pos = createVector(
-                                round(cube[i].pos.x),
-                                round(cube[i].pos.y),
-                                round(cube[i].pos.z)
-                            );
-                            cube[i].rot = createVector(0, 0, 0);
-                            cube[i].yCW();
-                            if (index == dim ** 2) {
-                                clearInterval(f);
-                                locked = false;
-                                cube = cube.sort(compareVectors);
+            if (normalMode) {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (dim ** 2 - (i % dim ** 2) <= dim) {
+                            index++;
+                            if (cube[i].rot.y <= -90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].yCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotYCCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, -angle, 0));
                             }
-                        } else {
-                            cube[i].pos = matmul(rotYCCW, cube[i].pos);
-                            cube[i].rot.add(createVector(0, -angle, 0));
                         }
                     }
-                }
-                redraw();
-            }, interval);
+                    redraw();
+                }, interval);
+            } else {
+                locked = true;
+                let f = setInterval(() => {
+                    let index = 0;
+                    for (let i = 0; i < dim ** 3; i++) {
+                        if (
+                            dim ** 2 - (i % dim ** 2) <= 2 * dim &&
+                            dim ** 2 - (i % dim ** 2) > dim
+                        ) {
+                            index++;
+                            if (cube[i].rot.y <= -90) {
+                                cube[i].pos = createVector(
+                                    round(cube[i].pos.x),
+                                    round(cube[i].pos.y),
+                                    round(cube[i].pos.z)
+                                );
+                                cube[i].rot = createVector(0, 0, 0);
+                                cube[i].yCW();
+                                if (index == dim ** 2) {
+                                    clearInterval(f);
+                                    locked = false;
+                                    cube = cube.sort(compareVectors);
+                                }
+                            } else {
+                                cube[i].pos = matmul(rotYCCW, cube[i].pos);
+                                cube[i].rot.add(createVector(0, -angle, 0));
+                            }
+                        }
+                    }
+                    redraw();
+                }, interval);
+            }
 
             cube = cube.sort(compareVectors);
         }
+    }
+    if (key == "Tab") {
+        normalMode = !normalMode;
     }
 }
