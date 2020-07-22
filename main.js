@@ -58,8 +58,10 @@ function compareVectors(a, b) {
 
 function fixCanvas(x,y)
 {
+    
     resizeCanvas(x,y)
     perspective(48)
+    redraw()
 }
 
 function setup() {
