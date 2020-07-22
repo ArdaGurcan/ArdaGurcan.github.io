@@ -1,5 +1,5 @@
 /*
-Copyright © Arda Gürcan
+Copyright © Arda Gürcan 2020
 */
 
 let dim = 4;
