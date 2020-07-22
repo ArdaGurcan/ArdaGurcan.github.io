@@ -78,7 +78,7 @@ function setup() {
     easyCam.setRotationConstraint(true, false, false);
     easyCam.setDistance(700, 0);
     easyCam.removeMouseListeners();
-    // noLoop();
+    noLoop();
 
     tmp = [];
     location.search
