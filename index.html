@@ -168,7 +168,7 @@
           "navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
         document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "moon.svg");
         
-        let buttons = $("button#controls")
+        let buttons = $("button#controls,button#letter-controls")
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].setAttribute("class", "btn btn-outline-dark")
         }
@@ -259,7 +259,7 @@
         document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "sun.svg");
         // document.getElementsByClassName("icon")[0].setAttribute("src","ico.png");
         // document.getElementsByClassName("icon")[1].setAttribute("src","ico.png");
-        let buttons = $("button#controls")
+        let buttons = $("button#controls,button#letter-controls")
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].setAttribute("class", "btn btn-outline-secondary")
         }
@@ -273,7 +273,7 @@
         document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "moon.svg");
         // document.getElementsByClassName("icon")[0].setAttribute("src","ico-light.png");
         // document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
-        let buttons = $("button#controls")
+        let buttons = $("button#controls,button#letter-controls")
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].setAttribute("class", "btn btn-outline-dark")
         }

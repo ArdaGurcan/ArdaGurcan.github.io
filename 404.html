@@ -75,7 +75,7 @@
           "navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
         document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "/moon.svg");
         //document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
-        let buttons = $("button#controls")
+        let buttons = $("button#controls,button#letter-controls")
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].setAttribute("class", "btn btn-outline-dark")
         }
@@ -102,7 +102,7 @@
         document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "sun.svg");
         // document.getElementsByClassName("icon")[0].setAttribute("src","ico.png");
         // document.getElementsByClassName("icon")[1].setAttribute("src","ico.png");
-        let buttons = $("button#controls")
+        let buttons = $("button#controls,button#letter-controls")
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].setAttribute("class", "btn btn-outline-secondary")
         }
@@ -116,7 +116,7 @@
         document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "moon.svg");
         // document.getElementsByClassName("icon")[0].setAttribute("src","ico-light.png");
         // document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
-        let buttons = $("button#controls")
+        let buttons = $("button#controls,button#letter-controls")
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].setAttribute("class", "btn btn-outline-dark")
         }
@@ -176,7 +176,6 @@
           <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">l</button>
           <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">u</button>
           <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">d</button>
-
         </div>
         <div class="btn-group" role="group">
           <button type="button" onclick="pressKey(this)" id="controls" class="btn btn-outline-secondary">Shift</button>
