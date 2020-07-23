@@ -70,6 +70,7 @@ function fixCanvas(x, y) {
 }
 
 function setup() {
+    console.log("* * * * * * * * * * * * * * * * * * * * * * * * *\n*\tCUBE CONTROLS:\t\t\t\t\t\t\t\t*\n*\t\tKeyboard:\t\t\t\t\t\t\t\t*\n*\t\t\tl,r,u,d,f,b,+shift,tab\t\t\t\t*\n*\t\tConsole:\t\t\t\t\t\t\t\t*\n*\t\t\tscramble()\t\t\t\t\t\t\t*\n*\t\t\tscrollFactor = 2\t\t\t\t\t*\n*\t\t\tscrollFactor = 0.5\t\t\t\t\t*\n*\t\tURL:\t\t\t\t\t\t\t\t\t*\n*\t\t\twww.ardagurcan.com/?dim=2\t\t\t*\n*\t\t\twww.ardagurcan.com/?dim=5\t\t\t*\n*\t\t\twww.ardagurcan.com/404.html?dim=3\t*\n*\t\t\t\t\t\t\t\t\t\t\t\t*\n* * * * * * * * * * * * * * * * * * * * * * * * *")
     let c = createCanvas(300, 250, WEBGL);
     c.parent("cube");
     frameRate(30);
@@ -396,6 +397,7 @@ function scramble() {
         let n = Math.round(Math.random() * (moves.length - 1));
         moves[n]();
     }
+    redraw()
 }
 
 function draw() {
