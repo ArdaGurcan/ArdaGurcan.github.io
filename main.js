@@ -11,6 +11,7 @@ let angle = 3;
 let interval = 5;
 var easyCam;
 
+
 let colors = [];
 
 let rotXCW;
@@ -27,6 +28,7 @@ let bgColor = "#141518";
 
 let lastScroll = 0;
 let scrollFactor = 1;
+let capsLock = false;
 
 let normalMode = true;
 
@@ -398,6 +400,39 @@ function scramble() {
         moves[n]();
     }
     redraw()
+}
+
+function pressKey(targetKey) {
+    if(targetKey.innerHTML == "Shift")
+    {
+        capsLock = !capsLock
+        targetKey.classList.toggle("active")
+        if(capsLock)
+        {
+            let buttons = $("button#letter-controls")
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].innerHTML = buttons[i].innerHTML.toUpperCase()
+            }
+        }
+        else
+        {
+            let buttons = $("button#letter-controls")
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].innerHTML = buttons[i].innerHTML.toLowerCase()
+            }
+        }
+        
+    }
+    else
+    {
+        key = targetKey.innerHTML
+        if(capsLock && key != "Tab")
+        {
+            key = key.toUpperCase()
+        }
+        keyPressed()
+    }
+    
 }
 
 function draw() {

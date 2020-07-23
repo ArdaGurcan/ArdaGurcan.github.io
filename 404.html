@@ -1,171 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>404 Not Found</title>
-    <link rel="icon" type="image/png" href="/ico.png">
-    <meta name="keywords" content="404,Not Found,Error">
-    <meta name="description" content="404 Not Found">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
-    <script src="main.js"></script>
-    <script src="cubelet.js"></script>
-    <script src="easycam.js"></script>
-    <link id="mode" rel="stylesheet" type="text/css" href="/dark.css">
 
-    <script type="text/javascript">
-      var dark = true;
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>404 Not Found</title>
+  <link rel="icon" type="image/png" href="/ico.png">
+  <meta name="keywords" content="404,Not Found,Error">
+  <meta name="description" content="404 Not Found">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+  <script src="main.js"></script>
+  <script src="cubelet.js"></script>
+  <script src="easycam.js"></script>
+  <link id="mode" rel="stylesheet" type="text/css" href="/dark.css">
 
-      
-
-      function deviceSize() {
-        let envs = ['xs', 'sm', 'md', 'lg', 'xl'];
-
-        let el = document.createElement('div');
-        document.body.appendChild(el);
-
-        let curEnv = envs.shift();
-
-        for (let env of envs.reverse()) {
-            el.classList.add(`d-${env}-none`);
-
-            if (window.getComputedStyle(el).display === 'none') {
-                curEnv = env;
-                break;
-            }
-        }
-
-        document.body.removeChild(el);
-        return curEnv;
-      }
-
-      $(window).resize(function(){
-        let canvasScale = (deviceSize() == 'xs' || deviceSize() == 'sm' || deviceSize() == 'md') ? .65 : .4
-          // console.log(canvasScale)
-          fixCanvas($("#cube").width()*canvasScale,$("#cube").width() * 5/6 * canvasScale)
-          document.getElementsByClassName("last-edit")[0].innerHTML = (((window.innerWidth > 0) ? window.innerWidth : screen.width) <= 360) ?  "": "Last edited: " + lastEditDate.getDate() + "." + (lastEditDate.getMonth()+1) + "." + lastEditDate.getFullYear();
-          console.log(deviceSize());
-      });
+  <script type="text/javascript">
+    var dark = true;
 
 
-      $(document).ready(function(){
-        // let canvasScale = (deviceSize() == 'xs' || deviceSize() == 'sm' || deviceSize() == 'md') ? .65 : .4
-          // console.log(canvasScale)
-          // fixCanvas($("#cube").width()*canvasScale,$("#cube").width() * 5/6 * canvasScale)
 
+    function deviceSize() {
+      let envs = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-        // document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
-        // lastEditDate = new Date(document.lastModified);
-        // document.getElementsByClassName("last-edit")[0].innerHTML = (((window.innerWidth > 0) ? window.innerWidth : screen.width) <= 360) ?  "": "Last edited: " + lastEditDate.getDate() + "." + (lastEditDate.getMonth()+1) + "." + lastEditDate.getFullYear();
-        // console.log("last edit: " + document.lastModified);
-       
-     
+      let el = document.createElement('div');
+      document.body.appendChild(el);
 
-        if(localStorage.getItem("dark-mode") == "off")
-        {
-          dark = false;
-          document.getElementById("mode").setAttribute("href","/light.css");
-          document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
-          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
-          //document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
+      let curEnv = envs.shift();
 
-          localStorage.setItem("dark-mode", "off");
-        }
-        
-      });
+      for (let env of envs.reverse()) {
+        el.classList.add(`d-${env}-none`);
 
-      window.onload = ()=>{scramble()}
-      function writeProjects(){
-
-      }
-
-      function toggleMode() {
-        dark = !dark;
-        if(dark)
-        {
-          document.getElementById("mode").setAttribute("href","/dark.css");
-          document.getElementsByClassName("navbar-light")[0].className = document.getElementsByClassName("navbar-light")[0].className.replace('navbar-light', 'navbar-dark');
-          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/sun.svg");
-          document.getElementsByClassName("icon")[0].setAttribute("src","/ico.png");
-          //document.getElementsByClassName("icon")[1].setAttribute("src","ico.png");
-          redraw()
-          localStorage.setItem("dark-mode", "on");
-        }
-        else
-        {
-          document.getElementById("mode").setAttribute("href","//light.css");
-          document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
-          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
-          // document.getElementsByClassName("icon")[0].setAttribute("src","/ico-light.png");
-          //document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
-          redraw()
-          localStorage.setItem("dark-mode", "off");
+        if (window.getComputedStyle(el).display === 'none') {
+          curEnv = env;
+          break;
         }
       }
-      
-    </script>
- </head>
-  
-  <body>
+
+      document.body.removeChild(el);
+      return curEnv;
+    }
+
+    $(window).resize(function () {
+      let canvasScale = (deviceSize() == 'xs' || deviceSize() == 'sm' || deviceSize() == 'md') ? .65 : .4
+      // console.log(canvasScale)
+      fixCanvas($("#cube").width() * canvasScale, $("#cube").width() * 5 / 6 * canvasScale)
+      document.getElementsByClassName("last-edit")[0].innerHTML = (((window.innerWidth > 0) ? window.innerWidth :
+        screen.width) <= 360) ? "" : "Last edited: " + lastEditDate.getDate() + "." + (lastEditDate.getMonth() +
+        1) + "." + lastEditDate.getFullYear();
+      console.log(deviceSize());
+    });
 
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
-      <div class="container">
-        <a class="navbar-brand" href="/">
-          <img class="icon" src="/ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
-          Arda Gürcan
-        </a>
-
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="navbar-collapse collapse" id="navbarNav" >
-          <div class="container">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link active" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About Me</a>
-              </li>
-            </ul> 
-
-          </div>
-          <div class="container">
-            <img src="/sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();" title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
-          </div>
-        </div>
-      </div>
-    </nav>
+    $(document).ready(function () {
+      // let canvasScale = (deviceSize() == 'xs' || deviceSize() == 'sm' || deviceSize() == 'md') ? .65 : .4
+      // console.log(canvasScale)
+      // fixCanvas($("#cube").width()*canvasScale,$("#cube").width() * 5/6 * canvasScale)
 
 
-    <div class="container mt-4">
-      <div class="jumbotron text-center">
+      // document.getElementsByClassName("jumbotron-heading")[0].innerHTML = (deviceSize() == 'xs') ? "Arda Gürcan" : "www.ardagurcan.com";
+      // lastEditDate = new Date(document.lastModified);
+      // document.getElementsByClassName("last-edit")[0].innerHTML = (((window.innerWidth > 0) ? window.innerWidth : screen.width) <= 360) ?  "": "Last edited: " + lastEditDate.getDate() + "." + (lastEditDate.getMonth()+1) + "." + lastEditDate.getFullYear();
+      // console.log("last edit: " + document.lastModified);
+
+
+
+      if (localStorage.getItem("dark-mode") == "off") {
+        dark = false;
+        document.getElementById("mode").setAttribute("href", "/light.css");
+        document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName(
+          "navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
+        document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "/moon.svg");
+        //document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
+        let buttons = $("button#controls")
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].setAttribute("class", "btn btn-outline-dark")
+        }
+        bgColor = "#fff";
+        localStorage.setItem("dark-mode", "off");
+      }
+
+    });
+
+    window.onload = () => {
+      scramble()
+    }
+
+    function writeProjects() {
+
+    }
+
+    function toggleMode() {
+      dark = !dark;
+      if (dark) {
+        document.getElementById("mode").setAttribute("href", "dark.css");
+        document.getElementsByClassName("navbar-light")[0].className = document.getElementsByClassName("navbar-light")[
+          0].className.replace('navbar-light', 'navbar-dark');
+        document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "sun.svg");
+        // document.getElementsByClassName("icon")[0].setAttribute("src","ico.png");
+        // document.getElementsByClassName("icon")[1].setAttribute("src","ico.png");
+        let buttons = $("button#controls")
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].setAttribute("class", "btn btn-outline-secondary")
+        }
+        bgColor = "#141518";
+        localStorage.setItem("dark-mode", "on");
+
+      } else {
+        document.getElementById("mode").setAttribute("href", "light.css");
+        document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0]
+          .className.replace('navbar-dark', 'navbar-light');
+        document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "moon.svg");
+        // document.getElementsByClassName("icon")[0].setAttribute("src","ico-light.png");
+        // document.getElementsByClassName("icon")[1].setAttribute("src","ico-light.png");
+        let buttons = $("button#controls")
+        for (let i = 0; i < buttons.length; i++) {
+          buttons[i].setAttribute("class", "btn btn-outline-dark")
+        }
+        bgColor = "#fff";
+        localStorage.setItem("dark-mode", "off");
+      }
+      redraw()
+
+    }
+  </script>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img class="icon" src="/ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
+        Arda Gürcan
+      </a>
+
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarNav">
         <div class="container">
-            <div id="cube"></div>
-            <h1 class="jumbotron-heading .d-none">Error 404 - Not Found</h1>
-            <p class="lead text-muted">Sorry, the page you were looking for/directed to could not be found.</p>
-            <a class="btn btn-primary" href="/">Go to Main Page</a>
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Me</a>
+            </li>
+          </ul>
+
+        </div>
+        <div class="container">
+          <img src="/sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();"
+            title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
         </div>
       </div>
     </div>
+  </nav>
 
 
-    <div class="container" id="projects">
+  <div class="container mt-4">
+    <div class="jumbotron text-center">
+      <div class="container">
+        <div id="cube"></div>
+        <div class="btn-group" role="group">
+          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">f</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">b</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">r</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">l</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">u</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">d</button>
+
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" onclick="pressKey(this)" id="controls" class="btn btn-outline-secondary">Shift</button>
+          <button type="button" onclick="pressKey(this)" id="controls" class="btn btn-outline-secondary">Tab</button>
+        </div>
+        <br><br>
+        <h1 class="jumbotron-heading .d-none">Error 404 - Not Found</h1>
+        <p class="lead text-muted">Sorry, the page you were looking for/directed to could not be found.</p>
+        <a class="btn btn-primary" href="/">Go to Main Page</a>
+      </div>
     </div>
-    
-    <footer class="container py-2">
-      <hr>
-      <p style="text-align:left;">
-        Made by Arda Gürcan
-        <!-- <span style="float:right;font-style: italic"><span class="last-edit"></span></span> -->
-      </p>
-    </footer>
+  </div>
 
-  </body>
+
+  <div class="container" id="projects">
+  </div>
+
+  <footer class="container py-2">
+    <hr>
+    <p style="text-align:left;">
+      Made by Arda Gürcan
+      <!-- <span style="float:right;font-style: italic"><span class="last-edit"></span></span> -->
+    </p>
+  </footer>
+
+</body>
+
 </html>
