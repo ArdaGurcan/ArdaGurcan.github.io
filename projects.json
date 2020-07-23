@@ -54,6 +54,16 @@
       "releaseDate": "29 April 2019",
       "purpose": "Ludum Dare 44",
       "engine": "Unity"
+    },
+    {
+    "name": "Jumbled",
+      "category": "Game",
+      "fileType": "Website",
+      "link" : "https://agurcan.itch.io/jumbled",
+      "eventLink" : "https://itch.io/jam/gmtk-2020/rate/698340",
+      "releaseDate": "12 July 2020",
+      "purpose": "GMTK Game Jam 2020",
+      "engine": "Unity"
     }
   ]
 }
