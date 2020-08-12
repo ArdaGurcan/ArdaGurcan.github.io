@@ -64,6 +64,15 @@
       "releaseDate": "12 July 2020",
       "purpose": "GMTK Game Jam 2020",
       "engine": "Unity"
+    },
+    {
+    "name": "Retro Rewind",
+      "category": "Game",
+      "fileType": "Download",
+      "eventLink" : "https://itch.io/jam/brackeys-4/rate/723458",
+      "releaseDate": "8 August 2020",
+      "purpose": "Brackeys Game Jam 2020.2",
+      "engine": "Unity"
     }
   ]
 }
