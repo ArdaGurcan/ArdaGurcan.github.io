@@ -1,5 +1,5 @@
 /*
-Copyright © Arda Gürcan 2020
+©️ 2020 Derin Durak All rights reserved
 */
 
 let dim = 4;
