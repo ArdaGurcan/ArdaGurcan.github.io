@@ -1,32 +1,43 @@
 <html>
+
 <head>
     <title>Tetris</title>
     <style>
-        body{
-            background-color:hsl(230, 15%, 19%) !important;
+        body {
+            background-color: hsl(230, 15%, 14%) !important;
         }
-        #score{
+
+        #score {
             display: inline-block;
         }
-        div{
-            font-size: 25px;
+
+        div {
+            font-size: 40px;
             font-weight: bold;
-            color: whitesmoke;
+            color: rgb(223, 223, 223);
             font-family: Arial, Helvetica, sans-serif;
             text-align: center;
         }
-        canvas{
+
+        canvas {
             display: block;
-            margin:0 auto;
+            margin: 0 auto;
+            border-style: solid;
+            border-width: 3px;
+            border-radius: 5px;
+            border-color: black;
         }
     </style>
 </head>
+
 <body>
     <canvas id="tetris" width="400" height="800"></canvas>
     <div>
+        <br>
         Score : <div id="score">0</div><br>
     </div>
     <script src="tetrominoes.js"></script>
     <script src="tetris.js"></script>
 </body>
+
 </html>
