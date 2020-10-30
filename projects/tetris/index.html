@@ -4,7 +4,8 @@
     <title>Tetris</title>
     <style>
         body {
-            background-color: hsl(230, 15%, 14%) !important;
+            background-color: hsl(229, 15%, 21%) !important;
+            overflow: hidden;
         }
 
         #score {
@@ -27,17 +28,27 @@
             border-radius: 5px;
             border-color: black;
         }
+        .panel {
+            float: left;
+            margin: 0%;
+            width: 25%;
+        }
     </style>
 </head>
 
 <body>
-    <canvas id="tetris" width="400" height="800"></canvas>
-    <div>
-        <br>
-        Score : <div id="score">0</div><br>
+    <div style="margin-top: 5%;">
+        <div class="panel"><canvas id="tetris1" width="320" height="640"></canvas><br> P1: <span id="score1">0</span></div>
+        <div class="panel"><canvas id="tetris2" width="320" height="640"></canvas><br>P2: <span id="score2">0</span></div>
+        <!-- <div class="panel"><canvas id="tetris1" width="320" height="640"></canvas><br>P1: <span id="score1">0</span></div>
+        <div class="panel"><canvas id="tetris2" width="320" height="640"></canvas><br>P2: <span id="score2">0</span></div> -->
     </div>
-    <script src="tetrominoes.js"></script>
-    <script src="tetris.js"></script>
+    
+    
+    <script src="/tetrominoes.js"></script>
+    <script src="/piece.js"></script>
+    <script src="/player.js"></script>
+    <script src="/tetris.js"></script>
 </body>
 
 </html>
