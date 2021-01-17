@@ -11,6 +11,7 @@ class Piece {
         this.x = 3;
         this.y = -2;
     }
+    
     fill(color) {
         for (let r = 0; r < this.activeTetromino.length; r++) {
             for (let c = 0; c < this.activeTetromino.length; c++) {
