@@ -66,13 +66,24 @@
       "engine": "Unity"
     },
     {
-    "name": "Retro Rewind",
-      "category": "Game",
-      "fileType": "Download",
-      "eventLink" : "https://itch.io/jam/brackeys-4/rate/723458",
-      "releaseDate": "8 August 2020",
-      "purpose": "Brackeys Game Jam 2020.2",
-      "engine": "Unity"
-    }
+      "name": "Retro Rewind",
+        "category": "Game",
+        "fileType": "Download",
+        "eventLink" : "https://itch.io/jam/brackeys-4/rate/723458",
+        "releaseDate": "8 August 2020",
+        "purpose": "Brackeys Game Jam 2020.2",
+        "engine": "Unity"
+      }
+      ,
+    {
+      "name": "Chromofusion",
+        "category": "Game",
+        "fileType": "Download",
+        "eventLink" : "https://itch.io/jam/blackthornprod-game-jam-3/rate/899890",
+        "releaseDate": "29 January 2021",
+        "purpose": "Blackthornprod Game Jam #3",
+        "engine": "Unity"
+      }
+      
   ]
 }
