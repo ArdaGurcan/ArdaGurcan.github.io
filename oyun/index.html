@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OYUN</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+	<!-- <div class="jumbotron">
+        <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div> -->
+	<script>
+		setInterval(() => {
+			let now = new Date();
+			console.log(now.getMonth() + " " + now.getDate() + " " + now.getHours() + " " + now.getMinutes());
+			if (now.getMonth() == 4 && now.getDate() == 9 && now.getHours() == 17 && now.getMinutes() >= 16 && now
+				.getMinutes() < 18) {
+				console.log("open")
+			}
+		}, 1000);
+	</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+		function postToGoogle() {
+			var field1 = $('.feed1').val();
+			var field2 = $('.feed2').val();
+			console.log(field1 + " " + field2)
+			$.ajax({
+				url: "https://docs.google.com/forms/d/e/1FAIpQLSfEaMZWMTb8CyeKi-Q2B5nuGFFEzVO51_14hWHEoKK5CoSRBQ/formResponse",
+				data: {
+					"entry.54371004": field1,
+					"entry.804900423": field2
+				},
+				type: "POST",
+				dataType: "xml",
+				statusCode: {
+					0: function () {
+						//Success message
+					},
+					200: function () {
+						//Success Message
+					}
+				}
+			});
+		}
+	</script>
+	<strong>Test Google Form</strong>
+	<form id="form" target="_self" onsubmit="" action="javascript: postToGoogle()">
+		<fieldset>
+			<label>Question 1</label>
+			<input class="feed1" type="text" value="Yes" name="feed1" />
+			
+		</fieldset>
+
+		<fieldset>
+			<label>Question 2</label>
+			<input class="feed2" type="text" value="no" name="feed2" />
+			
+		</fieldset>
+		<div style="width: 100%; display: block; float: right;">
+			<button id="send" type="submit">
+				Send
+			</button>
+		</div>
+	</form>
+	<br /><br />
+	The <a href="https://docs.google.com/spreadsheets/d/1bVeLfK2gm6emaGRKHnMllpeb_P4HwwZoIfZB5MCcyZg/pubhtml">Result</a>
+	takes few minutes to be shown, but it is sent to the google sheet instantaneously.
+	<br /><br />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</body>
+
+</html>
