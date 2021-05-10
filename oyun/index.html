@@ -51,9 +51,9 @@
 		}
 	</script>
 	<script>
-		startDate = new Date("Sun May 10 2021 00:12")
-		t = 20
-		a = 5
+		startDate = new Date("Sun May 11 2021 11:00")
+		let t = 20
+		let a = 5
 		setInterval(() => {
 			let now = new Date();
 			console.log(startDate)
@@ -61,11 +61,21 @@
 			let diff = (now.getTime() - startDate.getTime()) / 1000
 			console.log(diff)
 			// console.log(now.getMonth() + " " + now.getDate() + " " + now.getHours() + " " + now.getMinutes());
+			let forms = $("form")
+			if (diff < 0) {
+
+				$("#text").text("Sınav " + startDate.getHours() + ":" + ((startDate.getMinutes() < 10) ? "0": "") +startDate.getMinutes() +
+					" saatinde başlayacaktır.")
+			} else if (diff > (forms.length) * t + (forms.length-1) * a) {
+				$("#text")[0].setAttribute("style","");
+				$("#text").text("Sınav bitmiştir.")
+			}
 			if (now.getMonth() == startDate.getMonth() && now.getDate() == startDate.getDate() && now.getHours() ==
 				startDate.getHours()) {
-				forms = $("form")
+				
 				for (let i = 0; i < forms.length; i++) {
-					if (diff < (i + 1) * t + i * a && diff > i * (t+a)) {
+					if (diff < (i + 1) * t + i * a && diff > i * (t + a)) {
+						$("#text")[0].setAttribute("style","width:0px;height:0px;visibility:hidden");
 						forms[i].setAttribute("style", "")
 					} else {
 						if (forms[i].getAttribute("style") == null || forms[i].getAttribute("style") == "") {
@@ -81,217 +91,253 @@
 			}
 		}, 1000);
 	</script>
+	<style>
+		.jumbotron {
+			background-color: rgb(208, 226, 253) !important;
+			margin: 30px;
+			height: calc(100vh - 100px - 3rem);
+			padding-top: 1.5rem;
+			
+		}
+		body {
+			background-color: rgb(175, 192, 230) !important;
+			overflow-y: hidden;
+			}
+	</style>
 </head>
 
-<body style="overflow: hidden;">
-	<div class="jumbotron" style="height: 4000px;">
-		<div class="container" style="width: 40%;">
+<body style="height: 100%;">
+	<div style="text-align: center;">
+		<h1 style="font-size: 3rem; padding-top: 30px;"><strong>Nesibe Aydın Matematik Yarışması</strong></h1>
+	</div>
+	
+	<div class="jumbotron">
+		
+		<div class="container" style="width: 60%;">
+			<div style="text-align: center;">
+				<h1 id="text"></h1>
+			</div>
 			<form id="q1" style="width: 0px; height: 0px; visibility: hidden;">
 				<div class="form-group">
 					<label for="ad_soyad">Ad Soyad*
 					</label>
 					<input type="text" name="ad_soyad" class="form-control" id="ad_soyad">
-				  </div>
+				</div>
 				<h2>Soru 1</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap1">Cevabınız</label>
-				  <input type="text" name="cevap1" class="form-control" id="cevap1">
+					<label for="cevap1">Cevabınız</label>
+					<input type="text" name="cevap1" class="form-control" id="cevap1">
 				</div>
 				<div class="form-group">
-				  <label for="aciklama1">Açıklamanız</label>
-				  <textarea  name="aciklama1" class="form-control" id="aciklama1" rows="3"></textarea>
+					<label for="aciklama1">Açıklamanız</label>
+					<textarea name="aciklama1" class="form-control" id="aciklama1" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
-			  <form id="q2" style="width: 0px; height: 0px; visibility: hidden;">
+			<form id="q2" style="width: 0px; height: 0px; visibility: hidden;">
 				<h2>Soru 2</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap2">Cevabınız</label>
-				  <input type="text" name="cevap2" class="form-control" id="cevap2">
+					<label for="cevap2">Cevabınız</label>
+					<input type="text" name="cevap2" class="form-control" id="cevap2">
 				</div>
 				<div class="form-group">
-				  <label for="aciklama2">Açıklamanız</label>
-				  <textarea  name="aciklama2" class="form-control" id="aciklama2" rows="3"></textarea>
+					<label for="aciklama2">Açıklamanız</label>
+					<textarea name="aciklama2" class="form-control" id="aciklama2" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
-			  <form id="q3" style="width: 0px; height: 0px; visibility: hidden;">
-			  
-			  <!-- style="width: 0px; height: 0px; visibility: hidden;"> -->
+			<form id="q3" style="width: 0px; height: 0px; visibility: hidden;">
+
+				<!-- style="width: 0px; height: 0px; visibility: hidden;"> -->
 				<h2>Soru 3</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap3">Cevabınız</label>
-				  <br>
-				  <div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="A">
-					<label class="form-check-label" for="inlineRadio1">A</label>
-				  </div>
-				  <div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="B">
-					<label class="form-check-label" for="inlineRadio2">B</label>
-				  </div>
-				  <div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="C" >
-					<label class="form-check-label" for="inlineRadio3">C</label>
-				  </div>
-				  <div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="D" >
-					<label class="form-check-label" for="inlineRadio4">D</label>
-				  </div>
-				  <div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="E" >
-					<label class="form-check-label" for="inlineRadio5">E</label>
-				  </div>
+					<label for="cevap3">Cevabınız</label>
+					<br>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+							value="A">
+						<label class="form-check-label" for="inlineRadio1">A</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+							value="B">
+						<label class="form-check-label" for="inlineRadio2">B</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+							value="C">
+						<label class="form-check-label" for="inlineRadio3">C</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+							value="D">
+						<label class="form-check-label" for="inlineRadio4">D</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5"
+							value="E">
+						<label class="form-check-label" for="inlineRadio5">E</label>
+					</div>
 				</div>
 				<div class="form-group">
-				  <label for="aciklama3">Açıklamanız</label>
-				  <textarea  name="aciklama3" class="form-control" id="aciklama3" rows="3"></textarea>
+					<label for="aciklama3">Açıklamanız</label>
+					<textarea name="aciklama3" class="form-control" id="aciklama3" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
 
-			  <form id="q4" style="width: 0px; height: 0px; visibility: hidden;">
+			<form id="q4" style="width: 0px; height: 0px; visibility: hidden;">
 				<h2>Soru 4</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap4">Cevabınız</label>
-				  <input type="text" name="cevap4" class="form-control" id="cevap4">
+					<label for="cevap4">Cevabınız</label>
+					<input type="text" name="cevap4" class="form-control" id="cevap4">
 				</div>
 				<div class="form-group">
-				  <label for="aciklama4">Açıklamanız</label>
-				  <textarea  name="aciklama4" class="form-control" id="aciklama4" rows="3"></textarea>
+					<label for="aciklama4">Açıklamanız</label>
+					<textarea name="aciklama4" class="form-control" id="aciklama4" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
-			  <form id="q5" style="width: 0px; height: 0px; visibility: hidden;">
+			<form id="q5" style="width: 0px; height: 0px; visibility: hidden;">
 				<h2>Soru 5</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap5">Cevabınız</label>
-				  <input type="text" name="cevap5" class="form-control" id="cevap5">
+					<label for="cevap5">Cevabınız</label>
+					<input type="text" name="cevap5" class="form-control" id="cevap5">
 				</div>
 				<div class="form-group">
-				  <label for="aciklama5">Açıklamanız</label>
-				  <textarea  name="aciklama5" class="form-control" id="aciklama5" rows="3"></textarea>
+					<label for="aciklama5">Açıklamanız</label>
+					<textarea name="aciklama5" class="form-control" id="aciklama5" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
-			  <form id="q6" style="width: 0px; height: 0px; visibility: hidden;">
+			<form id="q6" style="width: 0px; height: 0px; visibility: hidden;">
 
 				<h2>Soru 6</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap6">Cevabınız</label>
-				  <input type="text" name="cevap6" class="form-control" id="cevap6">
+					<label for="cevap6">Cevabınız</label>
+					<input type="text" name="cevap6" class="form-control" id="cevap6">
 				</div>
 				<div class="form-group">
-				  <label for="aciklama6">Açıklamanız</label>
-				  <textarea  name="aciklama6" class="form-control" id="aciklama6" rows="3"></textarea>
+					<label for="aciklama6">Açıklamanız</label>
+					<textarea name="aciklama6" class="form-control" id="aciklama6" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
-			  <form id="q7" style="width: 0px; height: 0px; visibility: hidden;">
+			<form id="q7" style="width: 0px; height: 0px; visibility: hidden;">
 
 				<h2>Soru 7</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap7">Cevabınız</label>
-				  <input type="text" name="cevap7" class="form-control" id="cevap7">
+					<label for="cevap7">Cevabınız</label>
+					<input type="text" name="cevap7" class="form-control" id="cevap7">
 				</div>
 				<div class="form-group">
-				  <label for="aciklama7">Açıklamanız</label>
-				  <textarea  name="aciklama7" class="form-control" id="aciklama7" rows="3"></textarea>
+					<label for="aciklama7">Açıklamanız</label>
+					<textarea name="aciklama7" class="form-control" id="aciklama7" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
-			  <form id="q8" style="width: 0px; height: 0px; visibility: hidden;">
+			<form id="q8" style="width: 0px; height: 0px; visibility: hidden;">
 
 				<h2>Soru 8</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap8">Cevabınız</label>
-				  <input type="text" name="cevap8" class="form-control" id="cevap8">
+					<label for="cevap8">Cevabınız</label>
+					<input type="text" name="cevap8" class="form-control" id="cevap8">
 				</div>
 				<div class="form-group">
-				  <label for="aciklama8">Açıklamanız</label>
-				  <textarea  name="aciklama8" class="form-control" id="aciklama8" rows="3"></textarea>
+					<label for="aciklama8">Açıklamanız</label>
+					<textarea name="aciklama8" class="form-control" id="aciklama8" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
-			  <form id="q9" style="width: 0px; height: 0px; visibility: hidden;">
+			<form id="q9" style="width: 0px; height: 0px; visibility: hidden;">
 				<h2>Soru 9</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap9">Cevabınız</label>
-				  <input type="text" name="cevap9" class="form-control" id="cevap9">
+					<label for="cevap9">Cevabınız</label>
+					<input type="text" name="cevap9" class="form-control" id="cevap9">
 				</div>
 				<div class="form-group">
-				  <label for="aciklama9">Açıklamanız</label>
-				  <textarea  name="aciklama9" class="form-control" id="aciklama9" rows="3"></textarea>
+					<label for="aciklama9">Açıklamanız</label>
+					<textarea name="aciklama9" class="form-control" id="aciklama9" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
-			  <form id="q10" style="width: 0px; height: 0px; visibility: hidden;">
+			<form id="q10" style="width: 0px; height: 0px; visibility: hidden;">
 				<h2>Soru 10</h2>
 				<br>
 				<div class="form-group" style="text-align: center;">
-					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300" style="border: 2px solid gray;border-radius: 5px;">
+					<img src="https://www.ardagurcan.com/ico.png" alt="" width="300"
+						style="border: 2px solid #212529;border-radius: 5px;">
 				</div>
 				<br>
 				<div class="form-group">
-				  <label for="cevap10">Cevabınız</label>
-				  <input type="text" name="cevap10" class="form-control" id="cevap10">
+					<label for="cevap10">Cevabınız</label>
+					<input type="text" name="cevap10" class="form-control" id="cevap10">
 				</div>
 				<div class="form-group">
-				  <label for="aciklama10">Açıklamanız</label>
-				  <textarea  name="aciklama10" class="form-control" id="aciklama10" rows="3"></textarea>
+					<label for="aciklama10">Açıklamanız</label>
+					<textarea name="aciklama10" class="form-control" id="aciklama10" rows="3"></textarea>
 				</div>
-			  </form>
+			</form>
 
-			
+
 		</div>
 	</div>
-	
-	
+
+
 	<!-- <form id="q1" style="width: 0px; height: 0px; visibility: hidden;">
 		<div class="form-group">
 			<label>Ad Soyad</label>
