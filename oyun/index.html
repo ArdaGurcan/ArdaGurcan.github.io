@@ -64,8 +64,7 @@
 			let forms = $("form")
 			if (diff < 0) {
 
-				$("#text").text("Sınav " + startDate.getHours() + ":" + ((startDate.getMinutes() < 10) ? "0": "") +startDate.getMinutes() +
-					" saatinde başlayacaktır.")
+				$("#text").text("Sınav başlama saati: " + startDate.getHours() + ":" + ((startDate.getMinutes() < 10) ? "0": "") +startDate.getMinutes())
 			} else if (diff > (forms.length) * t + (forms.length-1) * a) {
 				$("#text")[0].setAttribute("style","");
 				$("#text").text("Sınav bitmiştir.")
