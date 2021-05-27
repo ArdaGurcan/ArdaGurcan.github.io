@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Wallet</title>
+    <link rel="shortcut icon" href="icon.png">
     <link rel="stylesheet" href="bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -17,6 +18,7 @@
         <h1 style="font-size: 5rem !important;">Wallet</h1>
         <p class="prices" style="font-size: x-large; margin-left: 1.9rem;"></p>
         <script>
+            let currency = "try"
             let amounts = {
                 "matic": 0,
                 "link": 0,
@@ -29,29 +31,46 @@
                 "comp": 0
             }
             if (document.cookie.length > 0) {
-                amounts = JSON.parse(document.cookie)
+                amounts = JSON.parse(document.cookie.slice(0, document.cookie.length-3))
+                currency = document.cookie.slice(document.cookie.length-3)
             }
 
             function update() {
-                document.cookie = JSON.stringify(amounts)
+                document.cookie = JSON.stringify(amounts) + currency
             }
 
             function fetch() {
                 let promises = []
                 let sum = 0
+                let prices = []
                 $(".prices")[0].innerHTML = ""
+
                 Object.keys(amounts).forEach(key => {
-                    promises.push($.getJSON("https://api.cryptonator.com/api/ticker/" + key + "-try", function (
-                        data) {
-                        if (amounts[key] > 0) {
-                            $(".prices").append("<b>" + key.toUpperCase() + ":</b> " + Math.round((
-                                amounts[key] * data.ticker.price) * 100) / 100 + "<br>");
-                            sum += amounts[key] * data.ticker.price;
-                        }
-                    }))
+                    promises.push($.getJSON("https://api.cryptonator.com/api/ticker/" + key + "-" + currency,
+                        function (
+                            data) {
+
+                            if (amounts[key] > 0) {
+                                prices.push([key, amounts[key] * data.ticker.price])
+                            }
+                        }))
+
                 });
 
-                Promise.all(promises).then(() => $(".prices").append("<br><b>SUM:</b> " + Math.round(sum * 100) / 100))
+
+
+                Promise.all(promises).then(() => {
+                    prices.sort((a, b) => b[1] - a[1])
+
+                    for (let i = 0; i < prices.length; i++) {
+
+                        $(".prices").append("<b>" + prices[i][0].toUpperCase() + ":</b> " + Math.round((
+                            prices[i][1]) * 100) / 100 + "<br>");
+                        sum += prices[i][1];
+                    }
+                    $(".prices").append("<br><b>SUM:</b> " + Math.round(sum * 100) / 100)
+                })
+
                 setTimeout(() => {
                     fetch()
                 }, 5000);
