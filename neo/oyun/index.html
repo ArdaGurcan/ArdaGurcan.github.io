@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Yarışma</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="shortcut icon" href="https://portal.nesibeaydin.com.tr/favicon.ico" type="image/x-icon">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+	<script>
+		let ad_soyad = ""
+
+		function SubForm(form) {
+			if (form == 1 || ad_soyad === "") {
+				ad_soyad = $("#q" + form).serializeArray()[0].value;
+				if (ad_soyad !== "") {
+					$.ajax({
+						url: "https://api.apispreadsheets.com/data/12139/",
+						type: "post",
+						data: {
+							["ad_soyad"]: $("#q" + form).serializeArray()[0].value,
+							["cevap" + form]: ($("#q" + form).serializeArray()[1]) ? $("#q" + form).serializeArray()[
+								1].value : ""
+						},
+						success: function () {
+							console.log("Form Data Submitted :)")
+						},
+						error: function () {
+							console.log("There was an error :(")
+							console.log({
+								["ad_soyad"]: $("#q" + form).serializeArray()[0].value,
+								["cevap" + form]: ($("#q" + form).serializeArray()[1]) ? $("#q" + form)
+									.serializeArray()[1].value : ""
+							})
+						}
+					});
+				}
+			} else {
+				fetch("https://api.apispreadsheets.com/data/12139/", {
+					method: "POST",
+					body: JSON.stringify({
+						"data": {
+							["cevap" + form]: $("#q" + form).serializeArray()[1] ? $("#q" + form)
+								.serializeArray()[1].value : ""
+						},
+						"query": "select*from12139wheread_soyad='" + ad_soyad + "'"
+					}),
+				}).then(res => {
+					if (res.status === 201) {
+						console.log("Form Data Updated :)")
+					} else {
+						console.log("There was an error :(")
+					}
+				})
+				console.log({
+					"data": {
+						["cevap" + form]: $("#q" + form).serializeArray()[1] ? $("#q" + form).serializeArray()[1]
+							.value : ""
+						// ["aciklama" + form]: $("#q" + form).serializeArray()[1].value
+					},
+					"query": "select*from12139wheread_soyad='" + ad_soyad + "'"
+				})
+			}
+
+		}
+	</script>
+	<script>
+		startDate = new Date("Sun May 16 2021 00:21")
+		let t = 360
+		let a = 120
+		setInterval(() => {
+			let now = new Date();
+			// console.log(startDate)
+			// console.log(now)
+			let diff = (now.getTime() - startDate.getTime()) / 1000
+			// console.log(diff)
+			// console.log(now.getMonth() + " " + now.getDate() + " " + now.getHours() + " " + now.getMinutes());
+			let forms = $("form")
+			if (diff < 0) {
+
+				$("#text").text("Sınav başlama saati: " + startDate.getHours() + ":" + ((startDate.getMinutes() <
+					10) ? "0" : "") + startDate.getMinutes())
+			} else if (diff > (forms.length) * t + (forms.length - 1) * a) {
+				$("#text")[0].setAttribute("style", "");
+				$("#text").text("Sınav bitmiştir.")
+			}
+			if (now.getMonth() == startDate.getMonth() && now.getDate() == startDate.getDate() && now.getHours() ==
+				startDate.getHours()) {
+
+				for (let i = 0; i < forms.length; i++) {
+					if (diff < (i + 1) * t + i * a && diff > i * (t + a)) {
+						$("#text")[0].setAttribute("style", "width:0px;height:0px;visibility:hidden");
+						if (ad_soyad !== "") {
+							$("#q" + (i + 1) + " > .form-group > input#ad_soyad")[0].value = ad_soyad
+							$("#q" + (i + 1) + " > .form-group > input#ad_soyad")[0].readOnly = true
+						}
+
+						forms[i].setAttribute("style", "")
+
+					} else {
+						if (forms[i].getAttribute("style") == null || forms[i].getAttribute("style") == "") {
+							forms[i].setAttribute("style", "width:0px;height:0px;visibility:hidden")
+							if (diff < (forms.length) * t + (forms.length - 1) * a) {
+								$("#text").text((a / 60) + " dakika ara")
+								$("#text")[0].setAttribute("style", "");
+							}
+
+							if (diff > i * 10) {
+								SubForm(i + 1)
+							}
+						}
+
+					}
+
+				}
+
+			}
+		}, 1000);
+	</script>
+	<style>
+		html {
+			position: relative;
+			min-height: 100%;
+		}
+
+		.jumbotron {
+			background-color: rgb(208, 226, 253) !important;
+			/* height: calc(100vh - 100px - 3rem); */
+			padding-bottom: 2.5rem;
+			padding-top: 2.5rem;
+			width: 70%;
+			margin: auto;
+			margin-top: 2.5rem;
+			margin-bottom: 2.5rem;
+			border-radius: 1rem;
+		}
+
+		body {
+			background-color: rgb(175, 192, 230) !important;
+			overflow-y: auto;
+			margin: auto;
+			margin-bottom: 60px;
+		}
+
+		.container {
+			overflow-y: hidden;
+		}
+
+		.footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			/* Vertically center the text there
+			background-color: #f5f5f5; */
+		}
+
+		.form-group>img {
+			padding: 1px;
+			background-color: #ced4da;
+			border: 0px solid #ced4da;
+			border-radius: 5px;
+			height: 2% !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div style="text-align: center;">
+		<h1 style="font-size: 3rem; padding-top: 30px;"><strong>Nesibe Aydın Matematik Yarışması</strong></h1>
+	</div>
+
+	<div class="jumbotron">
+
+		<div class="container">
+			<div style="text-align: center;">
+				<h1 id="text"></h1>
+			</div>
+			<form id="q1" style="width: 0px; height: 0px; visibility: hidden; ">
+				<div class="form-group">
+					<label for="ad_soyad">Ad Soyad*
+					</label>
+					<input type="text" name="ad_soyad" class="form-control" id="ad_soyad"
+						placeholder="Lütfen ad soyad giriniz">
+
+				</div>
+				<h2>Soru 1</h2>
+				<br>
+				<div class="form-group" style="text-align: center;">
+					<img src="https://www.ardagurcan.com/q1.png">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="cevap1">Cevap</label>
+					<input type="text" name="cevap1" class="form-control" id="cevap1" placeholder="Cevabınız">
+				</div>
+				<!-- <div class="form-group">
+					<label for="aciklama1">Açıklamanız</label>
+					<textarea name="aciklama1" class="form-control" id="aciklama1" rows="3"></textarea>
+				</div> -->
+			</form>
+
+			<form id="q2" style="width: 0px; height: 0px; visibility: hidden;">
+				<div class="form-group">
+					<label for="ad_soyad">Ad Soyad*
+					</label>
+					<input type="text" name="ad_soyad" class="form-control" id="ad_soyad"
+						placeholder="Lütfen ad soyad giriniz">
+
+				</div>
+				<h2>Soru 2</h2>
+				<br>
+				<div class="form-group" style="text-align: center;">
+					<img src="https://www.ardagurcan.com/q2.png">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="cevap2">Cevap</label>
+					<input type="text" name="cevap2" class="form-control" id="cevap2" placeholder="Cevabınız">
+				</div>
+			</form>
+
+			<form id="q3" style="width: 0px; height: 0px; visibility: hidden;">
+
+				<!-- style="width: 0px; height: 0px; visibility: hidden;"> -->
+				<div class="form-group">
+					<label for="ad_soyad">Ad Soyad*
+					</label>
+					<input type="text" name="ad_soyad" class="form-control" id="ad_soyad"
+						placeholder="Lütfen ad soyad giriniz">
+
+				</div>
+				<h2>Soru 3</h2>
+				<br>
+				<div class="form-group" style="text-align: center;">
+					<img src="https://www.ardagurcan.com/q3.png">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="cevap3">Cevap</label>
+					<input type="text" name="cevap3" class="form-control" id="cevap3" placeholder="Cevabınız">
+				</div>
+			</form>
+
+
+			<form id="q4" style="width: 0px; height: 0px; visibility: hidden;">
+
+				<!-- style="width: 0px; height: 0px; visibility: hidden;"> -->
+				<div class="form-group">
+					<label for="ad_soyad">Ad Soyad*
+					</label>
+					<input type="text" name="ad_soyad" class="form-control" id="ad_soyad"
+						placeholder="Lütfen ad soyad giriniz">
+
+				</div>
+				<h2>Soru 4</h2>
+				<br>
+				<div class="form-group" style="text-align: center;">
+					<img src="https://www.ardagurcan.com/q4.png">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="cevap4">Cevap</label>
+					<input type="text" name="cevap4" class="form-control" id="cevap4" placeholder="Cevabınız">
+				</div>
+			</form>
+
+			<form id="q5" style="width: 0px; height: 0px; visibility: hidden;">
+				<div class="form-group">
+					<label for="ad_soyad">Ad Soyad*
+					</label>
+					<input type="text" name="ad_soyad" class="form-control" id="ad_soyad"
+						placeholder="Lütfen ad soyad giriniz">
+
+				</div>
+				<h2>Soru 5</h2>
+				<br>
+				<div class="form-group" style="text-align: center;">
+					<img src="https://www.ardagurcan.com/q5.png">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="cevap5">Cevap</label>
+					<input type="text" name="cevap5" class="form-control" id="cevap5" placeholder="Cevabınız">
+				</div>
+			</form>
+
+
+
+		</div>
+
+	</div>
+	<footer class="footer">
+		<div class="container">
+			<span class="text-muted">Made by <a href="https://www.ardagurcan.com" target="_blank" class="text-dark">Arda
+					Gürcan‎‎‎‏‏‎‏‏‎‎<img class="icon" src="https://www.ardagurcan.com/ico.png"
+						style="position: relative; padding-left: 3px; padding-bottom: 3px; width: 20px; height: 20px;"></a></span>
+		</div>
+	</footer>
+
+	<!-- <form id="q1" style="width: 0px; height: 0px; visibility: hidden;">
+		<div class="form-group">
+			<label>Ad Soyad</label>
+			<input name="ad_soyad" />
+			<br />
+			<h2>Soru 1</h2>
+			<img src="https://www.ardagurcan.com/ico.png" alt="" width="300">
+			<br>
+			<label>Cevap</label>
+			<input name="cevap1" />
+			<br />
+			<label>Açıklama</label>
+			<input name="aciklama1" />
+		</div>
+	</form> -->
+
+</body>
+
+</html>

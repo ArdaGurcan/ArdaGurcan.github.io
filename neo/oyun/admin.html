@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Yarışma</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        let list = null
+        let answers = null
+        $(document).ready(() => {
+            fetch("https://api.apispreadsheets.com/data/12139/").then(res => {
+                if (res.status === 200) {
+                    // SUCCESS
+                    res.json().then(data => {
+                        list = data
+                    }).then(() => setTimeout(
+                        () => {
+                            answers = Object.entries(list["data"])
+                            for (let i = 0; i < answers.length; i++) {
+                                let score = 0
+                                for (let j = 1; j < Object.entries(answers[i][1]).length; j +=
+                                    1) {
+                                    if (Object.entries(answers[i][1])[j][1] == Object.entries(
+                                            answers[0][1])[j][1]) {
+                                        score += 10
+                                    }
+                                    console.log(Object.entries(answers[i][1])[j][1] + ", " +
+                                        Object.entries(answers[0][1])[j][1])
+                                }
+                                answers[i][1]["puan"] = score
+
+                            }
+                            console.log(answers)
+                            answers = answers.sort((a, b) => b[1]["puan"] - a[1]["puan"])
+                            let html = ""
+                            html +="</br></br><table class='table table-striped'><thead><tr><th scope='col'>Sıralama</th><th scope='col'>Yarışmacı</th><th scope='col'>Puan</th></tr></thead><tbody>"
+                            for (let i = 1; i < answers.length; i++) {
+                                html +=
+                                    "<tr><th scope='row'>" +
+                                    (i) + "</th><td>" + answers[i][1]["ad_soyad"] +
+                                    "</td><td>" + answers[i][1]["puan"] + "</td></tr>";
+
+                            }
+                            html +="</tbody></table>"
+                            $(".container")[0].innerHTML = html
+                        }, 1000))
+                } else {
+                    // ERROR
+                }
+            })
+
+
+        });
+    </script>
+    <style>
+        table {
+            border: 2px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+
+
+
+
+</body>
+
+</html>
