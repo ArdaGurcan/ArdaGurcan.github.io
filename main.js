@@ -441,7 +441,8 @@ function draw() {
     rotateX(-22.5);
     rotateZ(-22.5);
 
-    background(bgColor);
+    // background(bgColor);
+    clear()
     strokeWeight(5);
 
     for (let i = 0; i < cube.length; i++) {
