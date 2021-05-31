@@ -12,12 +12,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script src="lazyload.js"></script>
+  <!-- <script src="lazyload.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
   <script src="main.js"></script>
   <script src="cubelet.js"></script>
   <script src="easycam.js"></script>
-
+  
   <link id="mode" rel="stylesheet" type="text/css" href="dark.css">
   <script type="text/javascript">
     var dark = true;
@@ -101,7 +101,7 @@
           addString +=
             '<div class="col-md-6 my-3">' +
             '<div class="card">' +
-            '<a href="!LINK!"><img data-src="!IMGLINK!" class="card-img-top cover-image lazyload" alt="!NAME! Cover Image"></a>' +
+            '<a href="!LINK!"><img loading="lazy" data-src="!IMGLINK!" class="card-img-top cover-image lazyload" alt="!NAME! Cover Image"></a>' +
             '<div class="card-body" style="padding-bottom: 58px;position: relative;">' +
             '<h5 class="card-title">' +
             '<a href="!LINK!"><b>!NAME!</b></a>' + "!NEWPILL!" +
@@ -167,7 +167,7 @@
         document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName(
           "navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
         document.getElementsByClassName("toggle-icon")[0].setAttribute("src", "moon.svg");
-        
+
         let buttons = $("button#controls,button#letter-controls")
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].setAttribute("class", "btn btn-outline-dark")
@@ -198,7 +198,7 @@
           addString +=
             '<div class="col-md-6 my-3">' +
             '<div class="card">' +
-            '<a href="!LINK!"><img data-src="!IMGLINK!" class="card-img-top cover-image lazyload" alt="!NAME! Cover Image"></a>' +
+            '<a href="!LINK!"><img loading="lazy" data-src="!IMGLINK!" class="card-img-top cover-image lazyload" alt="!NAME! Cover Image"></a>' +
             '<div class="card-body" style="padding-bottom: 58px;position: relative;">' +
             '<h5 class="card-title">' +
             '<a href="!LINK!"><b>!NAME!</b></a>' + "!NEWPILL!" +
@@ -343,12 +343,18 @@
       <div class="container">
         <div id="cube"></div>
         <div class="btn-group" role="group">
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">f</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">b</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">r</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">l</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">u</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">d</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">f</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">b</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">r</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">l</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">u</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">d</button>
 
         </div>
         <div class="btn-group" role="group">

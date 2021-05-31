@@ -11,9 +11,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link id="mode" rel="stylesheet" type="text/css" href="/dark.css">
+    <link id="mode" rel="stylesheet" type="text/css" href="/neo/quartz.css">
+    <style>
+      .cover-image, canvas, img {
+        opacity: 75%;
+      }
+      body {
+          /* width: 100%;
+          height: 100%;
+          position: absolute; */
+          height: 100%;
+          background: linear-gradient(45deg,#F17C58, #E94584, #24AADB , #27DBB1);
+          background-size: 600% 100%;
+          animation: gradient 60s linear infinite;
+          animation-direction: alternate;
+  
+      }
+      @keyframes gradient {
+          0% {background-position: 100%}
+          100% {background-position: 0%}
+      }
+    </style>
     <script type="text/javascript">
-      var dark = true;
+      // var dark = true;
       //var downloads = new Array[];
       var operatingSystems = new Array("Windows","Mac","Linux");
       $(document).ready(function(){
@@ -36,35 +56,35 @@
           });
         }
         
-        if(localStorage.getItem("dark-mode") == "off")
-        {
-          dark = false;
-          document.getElementById("mode").setAttribute("href","/light.css");
-          document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
-          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
-          localStorage.setItem("dark-mode", "off");
-        }
+        // if(localStorage.getItem("dark-mode") == "off")
+        // {
+        //   dark = false;
+        //   document.getElementById("mode").setAttribute("href","/light.css");
+        //   document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
+        //   document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
+        //   localStorage.setItem("dark-mode", "off");
+        // }
         today = new Date();
       });
 
 
 
       function toggleMode() {
-        dark = !dark;
-        if(dark)
-        {
-          document.getElementById("mode").setAttribute("href","/dark.css");
-          document.getElementsByClassName("navbar-light")[0].className = document.getElementsByClassName("navbar-light")[0].className.replace('navbar-light', 'navbar-dark');
-          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/sun.svg");
-          localStorage.setItem("dark-mode", "on");
-        }
-        else
-        {
-          document.getElementById("mode").setAttribute("href","/light.css");
-          document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
-          document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
-          localStorage.setItem("dark-mode", "off");
-        }
+        // dark = !dark;
+        // if(dark)
+        // {
+        //   document.getElementById("mode").setAttribute("href","/dark.css");
+        //   document.getElementsByClassName("navbar-light")[0].className = document.getElementsByClassName("navbar-light")[0].className.replace('navbar-light', 'navbar-dark');
+        //   document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/sun.svg");
+        //   localStorage.setItem("dark-mode", "on");
+        // }
+        // else
+        // {
+        //   document.getElementById("mode").setAttribute("href","/light.css");
+        //   document.getElementsByClassName("navbar-dark")[0].className = document.getElementsByClassName("navbar-dark")[0].className.replace('navbar-dark', 'navbar-light');
+        //   document.getElementsByClassName("toggle-icon")[0].setAttribute("src","/moon.svg");
+        //   localStorage.setItem("dark-mode", "off");
+        // }
       }
       
     </script>
@@ -73,44 +93,46 @@
   <body>
 
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
+    <nav class="navbar navbar-expand-md navbar-secondary bg-secondary sticky-top">
       <div class="container">
-        <a class="navbar-brand" href="/">
-          <img src="/ico.png" width="30" height="30" class="d-inline-block align-top" alt="ɐ">
+        <a class="navbar-brand" href="index.html">
+          <img class="icon" src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
           Arda Gürcan
         </a>
-
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="navbar-collapse collapse" id="navbarNav" style="">
+  
+        <div class="navbar-collapse collapse" id="navbarNav">
           <div class="container">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+              <li class="nav-item active">
+                <a class="nav-link active" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About Me</a>
+                <a class="nav-link" href="about.html">About Me</a>
               </li>
-            </ul> 
-
+            </ul>
+  
           </div>
-          <div class="container">
-            <img src="/sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();" title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
-          </div>
+          <!-- <div class="container">
+            <img src="sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();"
+              title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
+          </div> -->
         </div>
       </div>
     </nav>
     <div class="container mt-4">
-      <div class="jumbotron text-center">
+      <div class="jumbotron bg-secondary text-center">
         <div class="container">
             <img src="cover-image.png" width="100%" height="100%" style="border-radius: 1rem">
             <br><br>
             <h1 class="jumbotron-heading .d-none">Maze Solver</h1>
             <br>
             <div class="btn-group">
-              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-secondary dropdown-toggle text-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Download
               </button>
               <div class="dropdown-menu downloads">
