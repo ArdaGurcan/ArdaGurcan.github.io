@@ -21,34 +21,52 @@
     .cover-image,
     canvas,
     img {
-      opacity: 75%;
+      opacity: 85%;
+    }
+
+    html {
+      margin: 0px;
+      width: 100%;
     }
 
     body {
-      /* width: 100%; */
-      /* height: 100%; */
-      /* position: absolute; */
+      margin: 0px;
+      min-height: 100%;
       height: 100%;
-      background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1) !important;
+    }
+
+    body {
+      /* width: 100%;
+    /* height: 100%;  */
+      /* position: absolute; */
+      background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18);
       background-size: 600% 100%;
       animation: gradient 60s linear infinite;
-      animation-direction: alternate;
-
+      animation-direction: alternate-reverse;
+      animation-delay: 0s;
     }
 
     @keyframes gradient {
-      0% {
-        background-position: 100%
-      }
-
       100% {
         background-position: 0%
+      }
+
+      0% {
+        background-position: 100%
       }
     }
   </style>
   <link id="mode" rel="stylesheet" type="text/css" href="quartz.css">
   <script type="text/javascript">
-    var dark = false;
+    let now = new Date();
+    let offset = -(Math.round(now.getTime() / 1000) % 120)
+    $(document).ready(
+      () => {
+
+        document.body.style.setProperty("animation-delay", offset + "s")
+      }
+    )
+
 
 
 
@@ -339,7 +357,7 @@
               <a class="nav-link active" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Me</a>
+              <a class="nav-link" href="about.html">About Me</a>
             </li>
           </ul>
 
