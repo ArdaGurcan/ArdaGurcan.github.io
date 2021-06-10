@@ -1,89 +1,96 @@
 {
-  "projects": [
-    {
-      "name": "Bulbhead",
-      "category": "Game",
-      "fileType": "Website",
-      "link" : "https://agurcan.itch.io/bulbhead",
-      "eventLink" : "https://itch.io/jam/brackeys/rate/299092",
-      "releaseDate": "1 September 2018",
-      "purpose": "Brackeys Game Jam #1",
-      "engine": "Unity"
-    },
-    {
-      "name": "Home Builder",
-      "category": "Game",
-      "fileType": "Website",
-      "link": "https://agurcan.itch.io/homebuilder",
-      "eventLink" : "https://globalgamejam.org/2019/games/home-builder",
-      "releaseDate": "27 January 2019",
-      "purpose": "Global Game Jam 2019",
-      "engine": "Unity"
-    },
-    {
-      "name": "C-Cube Website",
-      "category": "Website",
-      "fileType": "Website",
-      "releaseDate": "20 August 2016",
-      "purpose": "Fun",
-      "engine": "Notepad++"
-    },
-    {
-      "name": "Gravity Simulation",
-      "category": "Simulation",
-      "fileType": "Download",
-      "releaseDate": "20 April 2019",
-      "purpose": "School Project",
-      "engine": "Processing 3"
-    },
-    {
-      "name": "Maze Solver",
-      "category": "Simulation",
-      "fileType": "Download",
-      "eventLink": "https://www.odturobotgunleri.org.tr/pages/maze-solver",
-      "releaseDate": "7 June 2019",
-      "purpose": "METU Robot Competition 2020",
-      "engine": "Unity"
-    },
-    {
-      "name": "Welcome",
-      "category": "Game",
-      "fileType": "Website",
-      "link" : "https://agurcan.itch.io/welcome",
-      "eventLink" : "https://ldjam.com/events/ludum-dare/44/welcome",
-      "releaseDate": "29 April 2019",
-      "purpose": "Ludum Dare 44",
-      "engine": "Unity"
-    },
-    {
-    "name": "Jumbled",
-      "category": "Game",
-      "fileType": "Website",
-      "link" : "https://agurcan.itch.io/jumbled",
-      "eventLink" : "https://itch.io/jam/gmtk-2020/rate/698340",
-      "releaseDate": "12 July 2020",
-      "purpose": "GMTK Game Jam 2020",
-      "engine": "Unity"
-    },
-    {
-      "name": "Retro Rewind",
-        "category": "Game",
-        "fileType": "Download",
-        "eventLink" : "https://itch.io/jam/brackeys-4/rate/723458",
-        "releaseDate": "8 August 2020",
-        "purpose": "Brackeys Game Jam 2020.2",
-        "engine": "Unity"
-      }
-      ,
-    {
-      "name": "Chromofusion",
-        "category": "Game",
-        "fileType": "Download",
-        "eventLink" : "https://itch.io/jam/blackthornprod-game-jam-3/rate/899890",
-        "releaseDate": "29 January 2021",
-        "purpose": "Blackthornprod Game Jam #3",
-        "engine": "Unity"
-      }
-      
-  ]
+    "projects": [
+        {
+            "name": "Bulbhead",
+            "category": "Game",
+            "fileType": "Website",
+            "link": "https://agurcan.itch.io/bulbhead",
+            "eventLink": "https://itch.io/jam/brackeys/rate/299092",
+            "releaseDate": "1 September 2018",
+            "purpose": "Brackeys Game Jam #1",
+            "engine": "Unity"
+        },
+        {
+            "name": "Home Builder",
+            "category": "Game",
+            "fileType": "Website",
+            "link": "https://agurcan.itch.io/homebuilder",
+            "eventLink": "https://globalgamejam.org/2019/games/home-builder",
+            "releaseDate": "27 January 2019",
+            "purpose": "Global Game Jam 2019",
+            "engine": "Unity"
+        },
+        {
+            "name": "C-Cube Website",
+            "category": "Website",
+            "fileType": "Website",
+            "releaseDate": "20 August 2016",
+            "purpose": "Fun",
+            "engine": "HTML"
+        },
+        {
+            "name": "Gravity Simulation",
+            "category": "Simulation",
+            "fileType": "Download",
+            "releaseDate": "20 April 2019",
+            "purpose": "School Project",
+            "engine": "Processing 3"
+        },
+        {
+            "name": "Maze Solver",
+            "category": "Simulation",
+            "fileType": "Download",
+            "eventLink": "https://www.odturobotgunleri.org.tr/pages/maze-solver",
+            "releaseDate": "7 June 2019",
+            "purpose": "METU Robot Competition 2020",
+            "engine": "Unity"
+        },
+        {
+            "name": "Welcome",
+            "category": "Game",
+            "fileType": "Website",
+            "link": "https://agurcan.itch.io/welcome",
+            "eventLink": "https://ldjam.com/events/ludum-dare/44/welcome",
+            "releaseDate": "29 April 2019",
+            "purpose": "Ludum Dare 44",
+            "engine": "Unity"
+        },
+        {
+            "name": "Jumbled",
+            "category": "Game",
+            "fileType": "Website",
+            "link": "https://agurcan.itch.io/jumbled",
+            "eventLink": "https://itch.io/jam/gmtk-2020/rate/698340",
+            "releaseDate": "12 July 2020",
+            "purpose": "GMTK Game Jam 2020",
+            "engine": "Unity"
+        },
+        {
+            "name": "Retro Rewind",
+            "category": "Game",
+            "fileType": "Download",
+            "eventLink": "https://itch.io/jam/brackeys-4/rate/723458",
+            "releaseDate": "8 August 2020",
+            "purpose": "Brackeys Game Jam 2020.2",
+            "engine": "Unity"
+        },
+        {
+            "name": "Chromofusion",
+            "category": "Game",
+            "fileType": "Download",
+            "eventLink": "https://itch.io/jam/blackthornprod-game-jam-3/rate/899890",
+            "releaseDate": "29 January 2021",
+            "purpose": "Blackthornprod Game Jam #3",
+            "engine": "Unity"
+        },
+        {
+            "name": "Wallet Tracker",
+            "category": "Browser Extension",
+            "fileType": "Website",
+            "link": "https://chrome.google.com/webstore/detail/wallet-tracker/ekpikkcdmgfmlobdlgljkjmpcdjinemm",
+            "releaseDate": "30 May 2021",
+            "purpose": "Fun",
+            "engine": "Javascript"
+        }
+    ]
 }
