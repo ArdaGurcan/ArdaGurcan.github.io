@@ -91,6 +91,16 @@
             "releaseDate": "30 May 2021",
             "purpose": "Fun",
             "engine": "Javascript"
+        },
+        {
+            "name": "Slimecoil",
+            "category": "Game",
+            "fileType": "Website",
+            "link": "https://agurcan.itch.io/slimecoil",
+            "eventLink": "https://itch.io/jam/gmtk-2021/rate/1085110",
+            "releaseDate": "13 June 2021",
+            "purpose": "GMTK Game Jam 2021",
+            "engine": "Unity"
         }
     ]
 }
