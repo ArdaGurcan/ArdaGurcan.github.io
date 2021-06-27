@@ -22,7 +22,7 @@
 
         function writeDownloadLinks(i) {
           $.ajax({
-              url: "downloads/" + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + ".zip",
+              url: "downloads/" + document.getElementsByTagName("TITLE")[0].innerHTML.replaceAll(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + ".zip",
               type:'HEAD',
               error: function()
               {
@@ -30,7 +30,7 @@
               },
               success: function()
               {
-                document.getElementsByClassName("downloads")[0].innerHTML += '<a href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replace(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="dropdown-item">'+ operatingSystems[i] + '</a>';
+                document.getElementsByClassName("downloads")[0].innerHTML += '<a href="downloads/' + document.getElementsByTagName("TITLE")[0].innerHTML.replaceAll(" ","_").toLowerCase() + "_" + operatingSystems[i].toLowerCase() + '.zip" class="dropdown-item">'+ operatingSystems[i] + '</a>';
               }
           });
         }
