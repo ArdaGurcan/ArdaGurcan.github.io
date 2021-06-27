@@ -111,6 +111,15 @@
             "releaseDate": "24 June 2021",
             "purpose": "Free Palestine Jam",
             "engine": "Unity"
+        },
+        {
+            "name": "La Lutte Vers Les Sommets",
+            "category": "Game",
+            "fileType": "Download",
+            "eventLink": "https://itch.io/jam/historically-accurate-4/rate/1105063",
+            "releaseDate": "28 June 2021",
+            "purpose": "Historically Accurate Game Jam 4",
+            "engine": "Unity"
         }
     ]
 }
