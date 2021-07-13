@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
     // echo long2ip($row["ip"]). "<br>";
-    echo json_decode(file_get_contents('http://ipinfo.io/long2ip($row["ip"])/json')) . "<br>";
+    echo json_decode(file_get_contents('http://ipinfo.io/'.long2ip($row["ip"]).'/json')) . "<br>";
   }
 } else {
   echo "0 results";
