@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <?php 
 $servername = "localhost";
 $username = "ardaweb";
@@ -76,7 +77,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
-  echo "<table>";
+  echo '<table class="table table-striped"><thead><tr><th scope="col">IP</th><th scope="col">CITY</th><th scope="col">REGION</th><th scope="col">COUNTRY</th><th scope="col">LOCATION</th></tr></thead>';
   while($row = $result->fetch_assoc()) {
     // echo long2ip($row["ip"]). "<br>";
     $details = json_decode(file_get_contents("https://ipinfo.io/".long2ip($row["ip"])."/json"));// . "<br>";
