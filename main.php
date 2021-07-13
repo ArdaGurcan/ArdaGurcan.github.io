@@ -65,15 +65,15 @@ $longip = ip2long($ip);
 // echo $ip;
 
 
-$sql = "INSERT INTO ips VALUES (". $longip. ",". date('Y-m-d H:i:s',time()) . ")";
-echo $sql;
+$sql = "INSERT INTO ips VALUES (". $longip. ",'". date('Y-m-d H:i:s',time()) . "')";
+// echo $sql;
 if ($conn->query($sql) === TRUE) {
     // echo "New record created successfully";
   } else {
     // echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
-$sql = "SELECT DISTINCT * FROM ips";
+$sql = "SELECT DISTINCT * FROM ips order by time";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
