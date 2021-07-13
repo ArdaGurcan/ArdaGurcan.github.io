@@ -63,14 +63,14 @@ $ip = getip();
 $longip = ip2long($ip);
 echo $ip;
 $query = sprintf("INSERT INTO table ips VALUES (%s)", $longip);
-@mysql_query($query, $link) or die("Error inserting record: " . mysql_error());
+mysql_query($query, $link) or die("Error inserting record: " . mysql_error());
 
 if (mysql_affected_rows() != 1) {
 echo "nothing was inserted";
 } else {
 echo "1 row was inserted";
 }
-$res = @mysql_query("SELECT * FROM table ORDER BY ips DESC")
+$res = mysql_query("SELECT * FROM table ORDER BY ips DESC")
 or die("Error selecting records" . mysql_error());
 
 while ($row = mysql_fetch_assoc($res)) {
