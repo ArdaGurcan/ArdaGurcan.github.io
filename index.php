@@ -383,7 +383,7 @@
     </p>
   </footer>
     <?php 
-    include("main.php")
+    include("ip.php")
     ?>
 </body>
 
