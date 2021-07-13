@@ -61,7 +61,7 @@ if (!empty($ip) && ip2long($ip) != -1) {
 }
 $ip = getip();
 $longip = ip2long($ip);
-echo $longip;
+echo $ip;
 $query = sprintf("INSERT INTO table ips VALUES (%s)", $longip);
 @mysql_query($query, $link) or die("Error inserting record: " . mysql_error());
 
