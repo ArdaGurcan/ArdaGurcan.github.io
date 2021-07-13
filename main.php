@@ -10,7 +10,7 @@ $conn = new mysqli($servername, $username, $password, $db);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+// echo "Connected successfully";
 function getip() {
 if (validip($_SERVER["HTTP_CLIENT_IP"])) {
     return $_SERVER["HTTP_CLIENT_IP"];
@@ -61,7 +61,7 @@ if (!empty($ip) && ip2long($ip) != -1) {
 }
 $ip = getip();
 $longip = ip2long($ip);
-echo $ip;
+// echo $ip;
 
 
 $sql = "INSERT INTO ips VALUES (". $longip. ")";
@@ -71,7 +71,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
-$sql = "SELECT * FROM ips";
+$sql = "SELECT DISTINCT * FROM ips";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
