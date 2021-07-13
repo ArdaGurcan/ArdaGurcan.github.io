@@ -144,7 +144,7 @@ $longip = ip2long($ip);
 // echo $ip;
 
 
-$sql = "INSERT INTO ips VALUES (". $longip. "','". mysqli_real_escape_string($user_agent) . "','" . date('Y-m-d H:i:s',time()) . "')";
+$sql = "INSERT INTO ips VALUES (". $longip. "','". mysqli_real_escape_string($conn,$user_agent) . "','" . date('Y-m-d H:i:s',time()) . "')";
 echo $sql;
 if ($conn->query($sql) === TRUE) {
     // echo "New record created successfully";
