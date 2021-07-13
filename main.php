@@ -1,4 +1,17 @@
-<?php function getip() {
+<?php 
+$servername = "localhost";
+$username = "ardaweb";
+$password = "Papatya*32";
+$db = "arda";
+
+$conn = new mysqli($servername, $username, $password, $db);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+function getip() {
 if (validip($_SERVER["HTTP_CLIENT_IP"])) {
     return $_SERVER["HTTP_CLIENT_IP"];
 }
@@ -57,7 +70,7 @@ echo "nothing was inserted";
 } else {
 echo "1 row was inserted";
 }
-$res = @mysql_query("SELECT * FROM table ORDER BY ipaddr DESC")
+$res = @mysql_query("SELECT * FROM table ORDER BY ips DESC")
 or die("Error selecting records" . mysql_error());
 
 while ($row = mysql_fetch_assoc($res)) {
