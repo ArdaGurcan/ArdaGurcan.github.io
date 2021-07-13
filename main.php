@@ -63,7 +63,7 @@ $ip = getip();
 $longip = ip2long($ip);
 echo $ip;
 $query = sprintf("INSERT INTO table ips VALUES (%s)", $longip);
-mysqli_query($query, $link) or die("Error inserting record: " . mysqli_error());
+mysqli_query($query, $link) or die("Error inserting record: " . mysqli_error($conn));
 
 if (mysqli_affected_rows() != 1) {
 echo "nothing was inserted";
