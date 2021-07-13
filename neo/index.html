@@ -17,6 +17,11 @@
   <script src="main.js"></script>
   <script src="cubelet.js"></script>
   <script src="easycam.js"></script>
+  <script src='https://unpkg.com/trianglify@^4/dist/trianglify.bundle.js'></script>
+<script>
+  
+</script>
+
   <style>
     .cover-image,
     canvas,
@@ -34,13 +39,26 @@
       min-height: 100%;
       height: 100%;
     }
-
+    .jumbotron
+    {
+      /* z-index: 0;
+      position: absolute;
+      width: 60%;
+      align-self: center; */
+    }
     body {
-      /* width: 100%;
-    /* height: 100%;  */
-      /* position: absolute; */
-      background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18);
-      background-size: 600% 100%;
+      width: 100%;
+    height: 100%; 
+      position: absolute;
+      background-attachment: fixed !important;
+
+      /* background-background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);repeat: no-repeat !important; */
+      /* background: linear-gradient(45deg, #F17C58, #E94584, #24AADB, #27DBB1, #FFDC18); */
+     /* background: linear-gradient(45deg, #334, #343, #433); */
+        
+      /* background-color: #445 !important; */
+
+      background-size: 100% 100%;
       animation: gradient 60s linear infinite;
       animation-direction: alternate-reverse;
       animation-delay: 0s;
@@ -62,7 +80,23 @@
     let offset = -(Math.round(now.getTime() / 1000) % 120)
     $(document).ready(
       () => {
-
+        // $(".dropdown-menu")[0].style.setProperty("z-index",100)
+          const pattern = trianglify({
+          width: window.innerWidth,
+          height: window.innerHeight,
+          cellSize: 100,
+          variance: 0.75,
+          seed: null,
+          xColors: ['#35eb93','#2cacd1', '#2b76b9', '#3d3393'], // background-image: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
+          yColors: 'match',
+          fill: true,
+          colorSpace: 'lab',
+          colorFunction: trianglify.colorFunctions.interpolateLinear(.5),
+          strokeWidth: 0,
+        })
+        document.body.style.setProperty("background", 'url("data:image/svg+xml,' + pattern.toSVGTree() + '")')
+        // console.log(pattern.toSVGTree());
+        // console.log(pattern)
         document.body.style.setProperty("animation-delay", offset + "s")
       }
     )
@@ -73,6 +107,13 @@
 
 
     $(window).resize(function () {
+      // const pattern = trianglify({
+      //     width: window.innerWidth,
+      //     height: window.innerHeight,
+      //     cellSize: 40,
+          
+      //   })
+      document.body.style.setProperty("background", 'url("data:image/svg+xml,' + pattern.toSVGTree() + '")')
       // canvasSize = createVector($("cube").width,$("cube").height)
       let canvasScale = (deviceSize() == 'xs' || deviceSize() == 'sm' || deviceSize() == 'md') ? .65 : .4
       // console.log(canvasScale)
@@ -147,7 +188,7 @@
           addString +=
             '<div class="col-md-6 my-3">' +
             '<div class="card">' +
-            '<a href="!LINK!"><div class="duotone"><img data-src="!IMGLINK!" class="card-img-top cover-image lazyload" alt="!NAME! Cover Image"></div></a>' +
+            '<a href="!LINK!"><div class="duotone"><img data-src="!IMGLINK!" class="card-img-top cover-image" alt="!NAME! Cover Image"></div></a>' +
             '<hr>' +
             '<div class="card-body" style="padding-bottom: 58px;position: relative;">' +
             '<h5 class="card-title">' +
@@ -191,8 +232,6 @@
 
         }
         document.getElementById("projects").innerHTML = addString;
-        lazyload();
-
       })
     }
 
@@ -245,7 +284,7 @@
           addString +=
             '<div class="col-md-6 my-3">' +
             '<div class="card">' +
-            '<a href="!LINK!"><div class="duotone"><img data-src="!IMGLINK!" class="card-img-top cover-image lazyload" alt="!NAME! Cover Image"></div></a>' +
+            '<a href="!LINK!"><div class="duotone"><img data-src="!IMGLINK!" class="card-img-top cover-image" alt="!NAME! Cover Image"></div></a>' +
             '<div class="card-body" style="padding-bottom: 58px;position: relative;">' +
             '<h5 class="card-title">' +
             '<a href="!LINK!"><b>!NAME!</b></a>' + "!NEWPILL!" +
@@ -288,7 +327,6 @@
 
         }
         document.getElementById("projects").innerHTML = addString;
-        lazyload();
 
       })
     });
@@ -376,20 +414,21 @@
           aria-haspopup="true" aria-expanded="false">
           Sort by
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item btn-secondary" href="javascript: sortBy('a-z')">A-Z</a>
-          <a class="dropdown-item btn-secondary" href="javascript: sortBy('z-a')">Z-A</a>
-          <a class="dropdown-item btn-secondary" href="javascript: sortBy('new')">Newest</a>
-          <a class="dropdown-item btn-secondary" href="javascript: sortBy('old')">Oldest</a>
-          <a class="dropdown-item btn-secondary" href="javascript: sortBy('category')">Category</a>
-          <a class="dropdown-item btn-secondary" href="javascript: sortBy('engine')">Engine</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item btn-secondary" href="javascript: sortBy('a-z')">A-Z</a>
+            <a class="dropdown-item btn-secondary" href="javascript: sortBy('z-a')">Z-A</a>
+            <a class="dropdown-item btn-secondary" href="javascript: sortBy('new')">Newest</a>
+            <a class="dropdown-item btn-secondary" href="javascript: sortBy('old')">Oldest</a>
+            <a class="dropdown-item btn-secondary" href="javascript: sortBy('category')">Category</a>
+            <a class="dropdown-item btn-secondary" href="javascript: sortBy('engine')">Engine</a>
+
         </div>
       </nav>
   </nav>
 
   <div class="container mt-4">
     <div class="jumbotron bg-secondary text-center">
-
+      
       <div id="cube"></div>
       <div class="btn-group" role="group">
         <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-secondary">f</button>
@@ -411,6 +450,7 @@
             <br> -->
       <h1 class="jumbotron-heading .d-none">Arda Gürcan</h1>
       <p class="lead text-muted">Games, Projects, Simulations...</p>
+
 
     </div>
   </div>

@@ -11,10 +11,12 @@ body {
   word-wrap: break-word;
   border: 1px gainsboro solid;
   background-color: #FFFFFF;
+  backdrop-filter: blur(10px);
 }
 
 .card {
   border: 1px gainsboro solid;
+  backdrop-filter: blur(10px);
 }
 
 .navbar-toggler {
