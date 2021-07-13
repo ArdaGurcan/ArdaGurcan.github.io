@@ -69,7 +69,7 @@ $sql = "INSERT INTO ips VALUES (". $longip. ")";
 if ($conn->query($sql) === TRUE) {
     // echo "New record created successfully";
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    // echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
 $sql = "SELECT DISTINCT * FROM ips";
