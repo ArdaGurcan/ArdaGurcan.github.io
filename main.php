@@ -73,7 +73,7 @@ if ($conn->query($sql) === TRUE) {
     // echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
-$sql = "SELECT DISTINCT * FROM ips order by time";
+$sql = "SELECT DISTINCT * FROM ips order by time desc";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
