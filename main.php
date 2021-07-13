@@ -57,4 +57,11 @@ if (mysql_affected_rows() != 1) {
 } else {
 //1 row was inserted
 }
+$res = @mysql_query("SELECT * FROM table ORDER BY ipaddr DESC")
+or die("Error selecting records" . mysql_error());
+
+while ($row = mysql_fetch_assoc($res)) {
+$ip = long2ip($row['ipaddr']);
+echo "IP: $ip<br />";
+}
 ?>
