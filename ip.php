@@ -1,10 +1,7 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 <?php 
 $url = $_SERVER['REQUEST_URI'];    
-if  ($url == "/ip.php")
-{
-    echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">';
-}
+
 
 $servername = "localhost";
 $username = "ardaweb";
@@ -66,12 +63,88 @@ if (!empty($ip) && ip2long($ip) != -1) {
     return false;
 }
 }
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+function getOS() { 
+
+    global $user_agent;
+
+    $os_platform  = "Unknown OS Platform";
+
+    $os_array     = array(
+                          '/windows nt 10/i'      =>  'Windows 10',
+                          '/windows nt 6.3/i'     =>  'Windows 8.1',
+                          '/windows nt 6.2/i'     =>  'Windows 8',
+                          '/windows nt 6.1/i'     =>  'Windows 7',
+                          '/windows nt 6.0/i'     =>  'Windows Vista',
+                          '/windows nt 5.2/i'     =>  'Windows Server 2003/XP x64',
+                          '/windows nt 5.1/i'     =>  'Windows XP',
+                          '/windows xp/i'         =>  'Windows XP',
+                          '/windows nt 5.0/i'     =>  'Windows 2000',
+                          '/windows me/i'         =>  'Windows ME',
+                          '/win98/i'              =>  'Windows 98',
+                          '/win95/i'              =>  'Windows 95',
+                          '/win16/i'              =>  'Windows 3.11',
+                          '/macintosh|mac os x/i' =>  'Mac OS X',
+                          '/mac_powerpc/i'        =>  'Mac OS 9',
+                          '/linux/i'              =>  'Linux',
+                          '/ubuntu/i'             =>  'Ubuntu',
+                          '/iphone/i'             =>  'iPhone',
+                          '/ipod/i'               =>  'iPod',
+                          '/ipad/i'               =>  'iPad',
+                          '/android/i'            =>  'Android',
+                          '/blackberry/i'         =>  'BlackBerry',
+                          '/webos/i'              =>  'Mobile'
+                    );
+
+    foreach ($os_array as $regex => $value)
+        if (preg_match($regex, $user_agent))
+            $os_platform = $value;
+
+    return $os_platform;
+}
+
+function getBrowser() {
+
+    global $user_agent;
+
+    $browser        = "Unknown Browser";
+
+    $browser_array = array(
+                            '/msie/i'      => 'Internet Explorer',
+                            '/firefox/i'   => 'Firefox',
+                            '/safari/i'    => 'Safari',
+                            '/chrome/i'    => 'Chrome',
+                            '/edge/i'      => 'Edge',
+                            '/opera/i'     => 'Opera',
+                            '/netscape/i'  => 'Netscape',
+                            '/maxthon/i'   => 'Maxthon',
+                            '/konqueror/i' => 'Konqueror',
+                            '/mobile/i'    => 'Handheld Browser'
+                     );
+
+    foreach ($browser_array as $regex => $value)
+        if (preg_match($regex, $user_agent))
+            $browser = $value;
+
+    return $browser;
+}
+
+
+$user_os        = getOS();
+$user_browser   = getBrowser();
+
+// $device_details = "<strong>Browser: </strong>".$user_browser."<br /><strong>Operating System: </strong>".$user_os."";
+
+// print_r($device_details);
+
+// echo("<br /><br /><br />".$_SERVER['HTTP_USER_AGENT']."");
 $ip = getip();
 $longip = ip2long($ip);
 // echo $ip;
 
 
-$sql = "INSERT INTO ips VALUES (". $longip. ",'". date('Y-m-d H:i:s',time()) . "')";
+$sql = "INSERT INTO ips VALUES (". $longip. ",". $user_os . ",". $user_browser . ",'" . date('Y-m-d H:i:s',time()) . "')";
 // echo $sql;
 if ($conn->query($sql) === TRUE) {
     // echo "New record created successfully";
@@ -79,17 +152,23 @@ if ($conn->query($sql) === TRUE) {
     // echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
+  if  ($url == "/ip.php")
+  {
+      echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">';
+  
 $sql = "SELECT DISTINCT * FROM ips order by time desc";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
-  echo '<table class="table-bordered table table-striped"><thead><tr><th scope="col">IP</th><th scope="col">CITY</th><th scope="col">REGION</th><th scope="col">COUNTRY</th><th scope="col">LOCATION</th></tr></thead>';
+  echo '<table class="table-bordered table table-striped"><thead><tr><th scope="col">IP</th><th scope="col">OS</th><th scope="col">Browser</th><th scope="col">City</th><th scope="col">Region</th><th scope="col">Country</th><th scope="col">Location</th></tr></thead>';
   while($row = $result->fetch_assoc()) {
     // echo long2ip($row["ip"]). "<br>";
     $details = json_decode(file_get_contents("https://ipinfo.io/".long2ip($row["ip"])."/json"));// . "<br>";
     echo "<tr>";
     echo "<td>$details->ip</td>";
+    echo "<td>".$row['os']."</td>";
+    echo "<td>".$row['browser']."</td>";
     echo "<td>$details->city</td>";
     echo "<td>$details->region</td>";
     echo "<td>$details->country</td>";
@@ -102,6 +181,7 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
+  }
 $conn->close();
 
 // $query = sprintf("INSERT INTO table ips VALUES (%s)", $longip);
