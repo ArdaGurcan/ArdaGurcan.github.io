@@ -76,11 +76,21 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
+  echo "<table>";
   while($row = $result->fetch_assoc()) {
     // echo long2ip($row["ip"]). "<br>";
-    echo "https://ipinfo.io/".long2ip($row["ip"])."/json";
     $details = json_decode(file_get_contents("https://ipinfo.io/".long2ip($row["ip"])."/json"));// . "<br>";
+    echo "<tr>";
+    echo "<td>$details->ip</td>";
+    echo "<td>$details->city</td>";
+    echo "<td>$details->region</td>";
+    echo "<td>$details->country</td>";
+    echo "<td>$details->loc</td>";
+    echo "</tr>";
+    
+    
   }
+  echo "</table>";
 } else {
   echo "0 results";
 }
