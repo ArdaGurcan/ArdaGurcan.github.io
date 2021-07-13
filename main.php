@@ -62,19 +62,41 @@ if (!empty($ip) && ip2long($ip) != -1) {
 $ip = getip();
 $longip = ip2long($ip);
 echo $ip;
-$query = sprintf("INSERT INTO table ips VALUES (%s)", $longip);
-mysqli_query($query, $link) or die("Error inserting record: " . mysqli_error($conn));
 
-if (mysqli_affected_rows() != 1) {
-echo "nothing was inserted";
+
+$sql = "INSERT INTO ips VALUES (". $longip. ")";
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+
+$sql = "SELECT * FROM ips";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "ip: " . $row["ip"]. "<br>";
+  }
 } else {
-echo "1 row was inserted";
+  echo "0 results";
 }
-$res = mysqli_query("SELECT * FROM table ORDER BY ips DESC")
-or die("Error selecting records" . mysqli_error());
+$conn->close();
 
-while ($row = mysqli_fetch_assoc($res)) {
-$ip = long2ip($row['ipaddr']);
-echo "IP: $ip<br />";
-}
+// $query = sprintf("INSERT INTO table ips VALUES (%s)", $longip);
+// query($query, $link) or die("Error inserting record: " . mysqli_error($conn));
+
+// if (mysqli_affected_rows() != 1) {
+// echo "nothing was inserted";
+// } else {
+// echo "1 row was inserted";
+// }
+// $res = query("SELECT * FROM table ORDER BY ips DESC")
+// or die("Error selecting records" . mysqli_error());
+
+// while ($row = mysqli_fetch_assoc($res)) {
+// $ip = long2ip($row['ipaddr']);
+// echo "IP: $ip<br />";
+// }
 ?>
