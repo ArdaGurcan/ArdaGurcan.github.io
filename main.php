@@ -66,7 +66,7 @@ echo $ip;
 
 $sql = "INSERT INTO ips VALUES (". $longip. ")";
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    // echo "New record created successfully";
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
@@ -77,7 +77,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "ip: " . $row["ip"]. "<br>";
+    echo long2ip($row["ip"]). "<br>";
   }
 } else {
   echo "0 results";
