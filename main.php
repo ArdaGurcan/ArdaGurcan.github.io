@@ -53,9 +53,9 @@ $query = sprintf("INSERT INTO table ips VALUES (%s)", $longip);
 @mysql_query($query, $link) or die("Error inserting record: " . mysql_error());
 
 if (mysql_affected_rows() != 1) {
-//nothing was inserted
+echo "nothing was inserted";
 } else {
-//1 row was inserted
+echo "1 row was inserted";
 }
 $res = @mysql_query("SELECT * FROM table ORDER BY ipaddr DESC")
 or die("Error selecting records" . mysql_error());
