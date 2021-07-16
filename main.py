@@ -9,7 +9,7 @@ def application(environ,start_response):
            '</div>\n' \
            '</body>\n' \
            '</html>\n'
-    os.system("cowsay -f tux | wall -n")
+    os.system("sudo cowsay -f tux | wall -n")
     response_header = [('Content-type','text/html')]
     start_response(status,response_header)
     return [html]
