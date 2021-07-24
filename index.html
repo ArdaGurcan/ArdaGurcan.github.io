@@ -150,6 +150,18 @@
     }
 
     $(document).ready(function () {
+      $(".name").mouseenter(()=>{
+        $("#monkey").css("opacity","40%")
+      })
+      $(".name").mouseleave(()=>{
+        $("#monkey").css("opacity","0%")
+      })
+      $("#monkey").mouseenter(()=>{
+        $("#monkey").css("opacity","40%")
+      })
+      $("#monkey").mouseleave(()=>{
+        $("#monkey").css("opacity","0%")
+      })
 
       // document.getElementsByClassName("jumbotron-image")[0].setAttribute("width",(deviceSize() == 'xs' || deviceSize() == 'sm') ? "65%" : "30%");
 
@@ -369,8 +381,10 @@
 
         <!-- <img data-src="ico.png" width="30%" class="jumbotron-image icon lazyload"> -->
         <!-- <br>
-            <br> -->
-        <h1 class="jumbotron-heading .d-none name"></h1>
+          <br> -->
+          <span style="display:inline; font-size: 30px;visibility: hidden;">🐒</span>
+          <h1 style="display:inline-block" class="jumbotron-heading .d-none name"></h1>
+          <a href="https://en.wikipedia.org/wiki/Infinite_monkey_theorem" style="text-decoration: none;display:inline; font-size: 30px; opacity: 0%;"target="_blank" id="monkey">🐒</a>
         <p class="lead text-muted detail"></p>
       </div>
     </div>

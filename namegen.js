@@ -1,4 +1,4 @@
-let populationSize = 2000;
+let populationSize = 1837;
 
 class Population {
     constructor(_target) {
@@ -90,6 +90,7 @@ class Word {
     }
 }
 let mutationRate = 0.01;
+let totalGenerations = 0;
 
 class DNA {
     constructor(genes, target) {
@@ -175,6 +176,8 @@ const s = (p) => {
             }
         }
         generation++;
+
+        totalGenerations++;
         let endTime = new Date();
         console.groupCollapsed("Gen #" + generation + ":\n");
         console.log("Duration: " + (endTime - startTime) + " ms");
@@ -185,11 +188,11 @@ const s = (p) => {
                 populations[0].fittest.dna.genes.join("").slice(11)
         );
         console.log(
-            "Max Fitness: " + populations[0].recordFitness * Math.pow(10, 5)
+            "Max Fitness: " + (populations[0].recordFitness * Math.pow(10, 7)).toFixed(2)
         );
         console.log(
             "Average Fitness: " +
-                (totalFitness / populationSize) * Math.pow(10, 5)
+                ((totalFitness / populationSize) * Math.pow(10, 7)).toFixed(2)
         );
         console.log("Population Size: " + populationSize);
         console.log("Mutation Chance: " + mutationRate * 100 + "%");
@@ -197,12 +200,12 @@ const s = (p) => {
         $(".name").text(populations[0].fittest.dna.genes.join("").slice(0, 11));
         $(".detail").text(populations[0].fittest.dna.genes.join("").slice(11));
         if (complete) {
-            $(".name").attr("title", "took " + generation + " generations");
-            $(".detail").attr("title", "took " + generation + " generations");
+            $(".name").attr("title", "Typed by " + (populationSize * (totalGenerations-1)+populations[0].matingpool.indexOf(populations[0].fittest)) + " selectively bred monkies.");
+            $(".detail").attr("title", "Typed by " + (populationSize * (totalGenerations-1)+populations[0].matingpool.indexOf(populations[0].fittest)) + " selectively bred monkies.");
             p.noLoop();
             console.log("Found right string in " + (endTime - firstStart) + " ms");
             console.groupEnd();
-        } else if (generation > 60) {
+        } else if (generation > 40) {
             console.log("Failed in " + (endTime - firstStart) + " ms");
             // console.groupEnd();
             myp5 = new p5(s);
