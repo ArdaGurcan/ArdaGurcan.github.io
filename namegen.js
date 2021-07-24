@@ -200,8 +200,8 @@ const s = (p) => {
         $(".name").text(populations[0].fittest.dna.genes.join("").slice(0, 11));
         $(".detail").text(populations[0].fittest.dna.genes.join("").slice(11));
         if (complete) {
-            $(".name").attr("title", "Typed by " + (populationSize * (totalGenerations-1)+populations[0].matingpool.indexOf(populations[0].fittest)) + " selectively bred monkies.");
-            $(".detail").attr("title", "Typed by " + (populationSize * (totalGenerations-1)+populations[0].matingpool.indexOf(populations[0].fittest)) + " selectively bred monkies.");
+            $(".name").attr("title", "Typed by " + (populationSize * (totalGenerations-1)+populations[0].matingpool.indexOf(populations[0].fittest)) + " selectively bred monkeys.");
+            $(".detail").attr("title", "Typed by " + (populationSize * (totalGenerations-1)+populations[0].matingpool.indexOf(populations[0].fittest)) + " selectively bred monkeys.");
             p.noLoop();
             console.log("Found right string in " + (endTime - firstStart) + " ms");
             console.groupEnd();
