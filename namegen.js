@@ -1,4 +1,4 @@
-let populationSize = 1837;
+let populationSize = 2000;
 
 class Population {
     constructor(_target) {
@@ -205,7 +205,7 @@ const s = (p) => {
             p.noLoop();
             console.log("Found right string in " + (endTime - firstStart) + " ms");
             console.groupEnd();
-        } else if (generation > 40) {
+        } else if (generation > 80) {
             console.log("Failed in " + (endTime - firstStart) + " ms");
             // console.groupEnd();
             myp5 = new p5(s);
