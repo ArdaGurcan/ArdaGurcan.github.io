@@ -22,7 +22,7 @@
   <link id="mode" rel="stylesheet" type="text/css" href="dark.css">
   <script type="text/javascript">
     var dark = true;
-
+    
 
 
 
@@ -342,6 +342,8 @@
     <div class="jumbotron text-center" style="padding-top: 0%;">
       <div class="container">
         <div id="cube"></div>
+        <div class="controls">
+
         <div class="btn-group" role="group">
           <button type="button" onclick="pressKey(this)" id="letter-controls"
             class="btn btn-outline-secondary">f</button>
@@ -363,6 +365,8 @@
         </div>
         <br>
         <br>
+      </div>
+
         <!-- <img data-src="ico.png" width="30%" class="jumbotron-image icon lazyload"> -->
         <!-- <br>
             <br> -->
