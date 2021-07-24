@@ -1,15 +1,15 @@
-let populationSize = 100000;
+let populationSize = 10000;
 
 class Population {
     constructor(_target) {
         this.fittest;
-        this.recordFitness=0;
+        this.recordFitness = 0;
         this.words = [];
         this.size = populationSize;
         this.matingpool;
-        this.target = _target
+        this.target = _target;
         for (let i = 0; i < this.size; i++) {
-            this.words[i] = new Word(null,_target);
+            this.words[i] = new Word(null, _target);
         }
     }
 
@@ -36,73 +36,73 @@ class Population {
                 this.matingpool.push(this.words[i]);
             }
         }
-
-        // console.log(this.matingpool.length);
     }
 
     selection() {
         let newWords = [];
         if (this.fittest) {
-            newWords.push(new Word(this.fittest.dna,this.target));
+            newWords.push(new Word(this.fittest.dna, this.target));
         }
         for (let i = 0; i < this.size; i++) {
             let parent1 = random(this.matingpool);
             let parent2 = random(this.matingpool);
             let child = parent1.dna.crossover(parent2.dna);
-            newWords.push(new Word(child,this.target));
+            newWords.push(new Word(child, this.target));
         }
         this.words = newWords;
     }
 }
-// let target;
-function strDistance(a,b)
-{
+
+function strDistance(a, b) {
     let distance = 0;
     for (let i = 0; i < a.length; i++) {
         for (let j = 0; j < b.length; j++) {
-            if(a[i] != b[i])
-            {
+            if (a[i] != b[i]) {
                 distance++;
             }
         }
     }
 
-    return distance
+    return distance;
 }
 class Word {
-    constructor(dna,target) {
+    constructor(dna, target) {
         if (dna) {
-            this.dna =dna;
+            this.dna = dna;
         } else {
-            this.dna = new DNA(null,target);
+            this.dna = new DNA(null, target);
         }
-        if(target)
-        {
+        if (target) {
             this.dna.target = target;
         }
         this.fitness;
     }
 
     calcFitness() {
-        this.fitness = Math.pow(1/(strDistance(this.dna.genes.join(""), this.dna.target)+1),5)
-        totalFitness+=this.fitness
+        this.fitness = Math.pow(
+            1 / (strDistance(this.dna.genes.join(""), this.dna.target)/this.dna.target.length + 1),
+            5
+        );
+        totalFitness += this.fitness;
     }
 }
-let mutationRate = 0.01;
+let mutationRate = 0.001;
 
 class DNA {
     constructor(genes, target) {
-        if(target)
-        {
+        if (target) {
             this.target = target;
         }
         if (genes) {
             this.genes = genes;
         } else {
-            
             this.genes = [];
             for (let i = 0; i < this.target.length; i++) {
-                this.genes[i] = random("ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZabcçdegğhijklmnoöprqsştuüvyxz".split(""));
+                this.genes[i] = random(
+                    "ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZabcçdegğhijklmnoöprqsştuüvyxz,. ".split(
+                        ""
+                    )
+                );
             }
         }
     }
@@ -131,48 +131,70 @@ let generation = 0;
 let allDone = false;
 let obstacles;
 let populations = [];
-function setup() {
-    populations.push(new Population("Arda"));
-    populations.push(new Population("Gürcan"));
-    populations.push(new Population("Games"));
-    populations.push(new Population("Projects"));
-    populations.push(new Population("Simulations"));
-}
 
-function draw() {
-    let complete = true;
-    for (let i = 0; i < populations.length; i++) {
-        if (
-            !populations[i].fittest ||
-            populations[i].fittest.dna.genes.join("") != populations[i].target
-        ) {
-            complete = false;
-            totalFitness = 0;
+const s = (p) => {
+    p.setup = function () {
+        populations.push(
+            new Population("Arda GürcanGames, Projects, Simulations...")
+        );
+        // populations.push(new Population("Gürcan"));
+        // populations.push(new Population("Games"));
+        // populations.push(new Population("Projects"));
+        // populations.push(new Population("Simulations"));
+        console.groupCollapsed("Generations");
+    };
 
-            time++;
+    p.draw = function () {
+        let startTime = new Date();
+        let complete = true;
+        for (let i = 0; i < populations.length; i++) {
+            if (
+                !populations[i].fittest ||
+                populations[i].fittest.dna.genes.join("") !=
+                    populations[i].target
+            ) {
+                totalFitness = 0;
 
-            populations[i].evaluate();
-            populations[i].selection();
-            time = 0;
-            generation++
+                time++;
+
+                populations[i].evaluate();
+                populations[i].selection();
+                time = 0;
+                if (
+                    populations[i].fittest.dna.genes.join("") !=
+                    populations[i].target
+                ) {
+                    complete = false;
+                }
+            }
         }
-    }
-    $(".name").text(populations[0].fittest.dna.genes.join("") + " " + populations[1].fittest.dna.genes.join(""))
-    $(".detail").text(populations[2].fittest.dna.genes.join("") + ", " + populations[3].fittest.dna.genes.join("") + ", " +populations[4].fittest.dna.genes.join("") + "...")
-    // console.log(
-    //     populations[0].fittest.dna.genes.join("") +
-    //         " " +
-    //         populations[1].fittest.dna.genes.join("") +
-    //         "\n" +
-    //         populations[2].fittest.dna.genes.join("") +
-    //         ", " +
-    //         populations[3].fittest.dna.genes.join("") +
-    //         ", " +
-    //         populations[4].fittest.dna.genes.join("") +
-    //         "..."
-    // );
-    if (complete) {
-        console.log(generation)
-        noLoop();
-    }
-}
+        generation++;
+        let endTime = new Date()
+        console.groupCollapsed(
+            "Gen #" +
+                generation+":\n")
+        console.log("Duration: " + (endTime-startTime) + " ms")
+        console.log(        
+                "Fittest: " +
+                populations[0].fittest.dna.genes.join("").slice(0, 11) +
+                "\n" +
+                populations[0].fittest.dna.genes.join("").slice(11)
+                );
+                console.log("Max Fitness: " + (populations[0].recordFitness*Math.pow(10,7)).toFixed(2));
+        console.log(
+                "Average Fitness: " + (totalFitness / populationSize *Math.pow(10,7)).toFixed(2)
+            );
+            console.log("Population Size: " + populationSize);
+            console.log("Mutation Chance: " + mutationRate * 100 + "%");
+            console.groupEnd();   
+        $(".name").text(populations[0].fittest.dna.genes.join("").slice(0, 11));
+        $(".detail").text(populations[0].fittest.dna.genes.join("").slice(11));
+        if (complete) {
+            $(".name").attr("title", "took " + generation + " generations");
+            $(".detail").attr("title", "took " + generation + " generations");
+            p.noLoop();
+            console.groupEnd();
+        }
+    };
+};
+let myp5 = new p5(s);
