@@ -1,4 +1,4 @@
-let populationSize = 1000;
+let populationSize = 2000;
 
 class Population {
     constructor(_target) {
@@ -89,7 +89,7 @@ class Word {
         totalFitness += this.fitness;
     }
 }
-let mutationRate = 0.001;
+let mutationRate = 0.01;
 
 class DNA {
     constructor(genes, target) {
@@ -120,7 +120,7 @@ class DNA {
                     newGenes.push(this.genes[i]);
                 }
             } else {
-                newGenes.push(random("ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZabcçdegğhijklmnoöprqsştuüvyxz,. ".split("")));
+                newGenes.push(random("gprdaücnmesojtiul".split("")));
             }
         }
 
@@ -131,26 +131,28 @@ let population;
 let time = 0;
 let totalFitness = 0;
 let generation = 0;
-let allDone = false;
-let obstacles;
 let populations = [];
-
+let firstStart;
 const s = (p) => {
     p.setup = function () {
+        firstStart = new Date();
+        populations = [];
+        time = 0;
+        totalFitness = 0;
+        generation = 0;
         populations.push(
-            new Population("Arda ")
+            new Population("Arda GürcanGames, Projects, Simulations...")
         );
-        populations.push(new Population("Gürcan"));
-        populations.push(new Population("Games, "));
-        populations.push(new Population("Projects, "));
-        populations.push(new Population("Simulations..."));
         console.groupCollapsed("Generations");
+        // populations.push(new Population("Gürcan"));
+        // populations.push(new Population("Games"));
+        // populations.push(new Population("Projects"));
+        // populations.push(new Population("Simulations"));
     };
 
     p.draw = function () {
-        let complete = true;
-        generation++;
         let startTime = new Date();
+        let complete = true;
         for (let i = 0; i < populations.length; i++) {
             if (
                 !populations[i].fittest ||
@@ -172,33 +174,38 @@ const s = (p) => {
                 }
             }
         }
+        generation++;
         let endTime = new Date();
         console.groupCollapsed("Gen #" + generation + ":\n");
         console.log("Duration: " + (endTime - startTime) + " ms");
         console.log(
             "Fittest: " +
-            populations[0].fittest.dna.genes.join("") + populations[1].fittest.dna.genes.join("") +
+                populations[0].fittest.dna.genes.join("").slice(0, 11) +
                 "\n" +
-                populations[2].fittest.dna.genes.join("") + populations[3].fittest.dna.genes.join("") +populations[4].fittest.dna.genes.join("")
+                populations[0].fittest.dna.genes.join("").slice(11)
         );
         console.log(
-            "Max Fitness: " +
-                ((populations[0].recordFitness + populations[1].recordFitness + populations[2].recordFitness + populations[3].recordFitness + populations[4].recordFitness) * Math.pow(10, 5)).toFixed(2)
+            "Max Fitness: " + populations[0].recordFitness * Math.pow(10, 5)
         );
         console.log(
             "Average Fitness: " +
-                ((totalFitness / populationSize / populations.length) * Math.pow(10, 5)).toFixed(2)
+                (totalFitness / populationSize) * Math.pow(10, 5)
         );
-        console.log("Population Size: " + populationSize * populations.length);
+        console.log("Population Size: " + populationSize);
         console.log("Mutation Chance: " + mutationRate * 100 + "%");
         console.groupEnd();
-        $(".name").text(populations[0].fittest.dna.genes.join("") + populations[1].fittest.dna.genes.join(""));
-        $(".detail").text(populations[2].fittest.dna.genes.join("") + populations[3].fittest.dna.genes.join("") +populations[4].fittest.dna.genes.join(""));
+        $(".name").text(populations[0].fittest.dna.genes.join("").slice(0, 11));
+        $(".detail").text(populations[0].fittest.dna.genes.join("").slice(11));
         if (complete) {
             $(".name").attr("title", "took " + generation + " generations");
             $(".detail").attr("title", "took " + generation + " generations");
             p.noLoop();
+            console.log("Found right string in " + (endTime - firstStart) + " ms");
             console.groupEnd();
+        } else if (generation > 60) {
+            console.log("Failed in " + (endTime - firstStart) + " ms");
+            // console.groupEnd();
+            myp5 = new p5(s);
         }
     };
 };
