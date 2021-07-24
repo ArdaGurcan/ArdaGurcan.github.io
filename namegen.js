@@ -1,4 +1,4 @@
-let populationSize = 10000;
+let populationSize = 1000;
 
 class Population {
     constructor(_target) {
@@ -80,7 +80,10 @@ class Word {
 
     calcFitness() {
         this.fitness = Math.pow(
-            1 / (strDistance(this.dna.genes.join(""), this.dna.target)/this.dna.target.length + 1),
+            1 /
+                (strDistance(this.dna.genes.join(""), this.dna.target) /
+                    this.dna.target.length +
+                    1),
             5
         );
         totalFitness += this.fitness;
@@ -117,7 +120,7 @@ class DNA {
                     newGenes.push(this.genes[i]);
                 }
             } else {
-                newGenes.push(random("gprdaücnmesojtiul".split("")));
+                newGenes.push(random("ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZabcçdegğhijklmnoöprqsştuüvyxz,. ".split("")));
             }
         }
 
@@ -135,18 +138,19 @@ let populations = [];
 const s = (p) => {
     p.setup = function () {
         populations.push(
-            new Population("Arda GürcanGames, Projects, Simulations...")
+            new Population("Arda ")
         );
-        // populations.push(new Population("Gürcan"));
-        // populations.push(new Population("Games"));
-        // populations.push(new Population("Projects"));
-        // populations.push(new Population("Simulations"));
+        populations.push(new Population("Gürcan"));
+        populations.push(new Population("Games, "));
+        populations.push(new Population("Projects, "));
+        populations.push(new Population("Simulations..."));
         console.groupCollapsed("Generations");
     };
 
     p.draw = function () {
-        let startTime = new Date();
         let complete = true;
+        generation++;
+        let startTime = new Date();
         for (let i = 0; i < populations.length; i++) {
             if (
                 !populations[i].fittest ||
@@ -168,27 +172,28 @@ const s = (p) => {
                 }
             }
         }
-        generation++;
-        let endTime = new Date()
-        console.groupCollapsed(
-            "Gen #" +
-                generation+":\n")
-        console.log("Duration: " + (endTime-startTime) + " ms")
-        console.log(        
-                "Fittest: " +
-                populations[0].fittest.dna.genes.join("").slice(0, 11) +
-                "\n" +
-                populations[0].fittest.dna.genes.join("").slice(11)
-                );
-                console.log("Max Fitness: " + (populations[0].recordFitness*Math.pow(10,7)).toFixed(2));
+        let endTime = new Date();
+        console.groupCollapsed("Gen #" + generation + ":\n");
+        console.log("Duration: " + (endTime - startTime) + " ms");
         console.log(
-                "Average Fitness: " + (totalFitness / populationSize *Math.pow(10,7)).toFixed(2)
-            );
-            console.log("Population Size: " + populationSize);
-            console.log("Mutation Chance: " + mutationRate * 100 + "%");
-            console.groupEnd();   
-        $(".name").text(populations[0].fittest.dna.genes.join("").slice(0, 11));
-        $(".detail").text(populations[0].fittest.dna.genes.join("").slice(11));
+            "Fittest: " +
+            populations[0].fittest.dna.genes.join("") + populations[1].fittest.dna.genes.join("") +
+                "\n" +
+                populations[2].fittest.dna.genes.join("") + populations[3].fittest.dna.genes.join("") +populations[4].fittest.dna.genes.join("")
+        );
+        console.log(
+            "Max Fitness: " +
+                ((populations[0].recordFitness + populations[1].recordFitness + populations[2].recordFitness + populations[3].recordFitness + populations[4].recordFitness) * Math.pow(10, 5)).toFixed(2)
+        );
+        console.log(
+            "Average Fitness: " +
+                ((totalFitness / populationSize / populations.length) * Math.pow(10, 5)).toFixed(2)
+        );
+        console.log("Population Size: " + populationSize * populations.length);
+        console.log("Mutation Chance: " + mutationRate * 100 + "%");
+        console.groupEnd();
+        $(".name").text(populations[0].fittest.dna.genes.join("") + populations[1].fittest.dna.genes.join(""));
+        $(".detail").text(populations[2].fittest.dna.genes.join("") + populations[3].fittest.dna.genes.join("") +populations[4].fittest.dna.genes.join(""));
         if (complete) {
             $(".name").attr("title", "took " + generation + " generations");
             $(".detail").attr("title", "took " + generation + " generations");
