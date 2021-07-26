@@ -3,6 +3,10 @@ let target;
 function preload() {
     img = loadImage('rocket.png');
   }
+function sqdist(x1,y1,x2,y2)
+{
+    return (x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)
+}
 class Rocket {
     constructor(_dna) {
         if (_dna) {
@@ -36,19 +40,19 @@ class Rocket {
             if (this.pos.y > height || this.pos.y < 0) {
                 this.crashed = true;
             }
-            if (dist(this.pos.x, this.pos.y, target.x, target.y) < 20) {
+            if (sqdist(this.pos.x, this.pos.y, target.x, target.y) < 400) {
                 this.done = true;
                 this.pos = target.copy();
                 this.reachTime = time;
             }
             for (let i = 0; i < obstacles.length; i++) {
                 if (
-                    dist(
+                    sqdist(
                         this.pos.x,
                         this.pos.y,
                         obstacles[i].x,
                         obstacles[i].y
-                    ) < 42
+                    ) < 1700
                 ) {
                     this.crashed = true;
                 }
@@ -72,7 +76,7 @@ class Rocket {
     }
 
     calcFitness() {
-        let d = dist(this.pos.x, this.pos.y, target.x, target.y);
+        let d = sqdist(this.pos.x, this.pos.y, target.x, target.y);
         this.fitness = 10000 / (d + 1);
         if (this.done) {
             this.fitness *= 10 / Math.pow(this.reachTime / lifespan, 3);

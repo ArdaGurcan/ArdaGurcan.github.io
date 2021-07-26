@@ -56,6 +56,7 @@ function draw() {
             "Average Fitness: " +
                 totalFitness / populationSize / Math.pow(10, 1)
         );
+        console.log("Max Fitness: " + population.recordFitness)
         console.log("Population Size: " + populationSize);
         console.log("Generation: " + generation);
         console.log("Life Span: " + lifespan);

@@ -2,6 +2,8 @@ let populationSize = 1000;
 
 class Population {
     constructor() {
+        this.fittest;
+        this.recordFitness=0;
         this.rockets = [];
         this.size = populationSize;
         this.matingpool;
@@ -13,7 +15,9 @@ class Population {
     run() {
         for (let i = 0; i < this.size; i++) {
             this.rockets[i].update();
-            this.rockets[i].show();
+            if (i <= 2) {
+                this.rockets[i].show();
+            }
         }
     }
 
@@ -25,6 +29,10 @@ class Population {
             let n = this.rockets[i].fitness;
             if (n > maxFitness) {
                 maxFitness = n;
+                if (maxFitness > this.recordFitness) {
+                    this.recordFitness = maxFitness;
+                    this.fittest = this.rockets[i];
+                }
             }
         }
         for (let i = 0; i < this.size; i++) {
@@ -42,6 +50,11 @@ class Population {
 
     selection() {
         let newRockets = [];
+        if (this.fittest) {
+            this.fittest.pos = createVector();
+            this.fittest.vel = createVector();
+            newRockets.push(new Rocket(this.fittest.dna));
+        }
         for (let i = 0; i < this.size; i++) {
             let parent1 = random(this.matingpool);
             let parent2 = random(this.matingpool);
