@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>LOWREZJAM 2021</title>
+  <link rel="stylesheet" href="jquery-ui.css">
+  <script src="jquery-3.6.0.min.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    canvas {
+      image-rendering: optimizeSpeed;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -o-crisp-edges;
+      image-rendering: crisp-edges;
+      -ms-interpolation-mode: nearest-neighbor;
+
+    }
+  </style>
+</head>
+
+<body style="text-align: center">
+  <canvas id="unity-canvas" width=320 height=320 style="width: 320px; height: 320px; background: #231F20"></canvas>
+  <script src="Build/webgl27.loader.js"></script>
+  <script>
+
+    var ctx;
+    $(document).ready(() => {
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content =
+          'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/webgl27.data",
+        frameworkUrl: "Build/webgl27.framework.js",
+        codeUrl: "Build/webgl27.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "LOWREZJAM 2021",
+        productVersion: "1.0",
+        matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      })
+      $("#unity-canvas").draggable({
+        snap: "body",
+        snapTolerance: 0,
+        grid: [$("#unity-canvas")[0].clientWidth / 64, $("#unity-canvas")[0].clientHeight / 64],
+        // drag:function(event,ui){return false},
+      })
+      gl.webkitImageSmoothingEnabled= false;
+      gl.mozImageSmoothingEnabled= false;
+      gl.imageSmoothingEnabled= false;
+      $(document).mouseup(()=>$("canvas").draggable({drag:function(event,ui){return}}))
+
+      // startX = $("#unity-canvas")[0].offsetLeft
+      // startY = $("#unity-canvas")[0].offsetTop
+      // let c = $("#unity-canvas")[0].clientWidth / 8
+      // // $("#unity-canvas").draggable();
+      // setInterval(() => {
+        
+      //   myGameInstance.SendMessage('Main Camera', 'Move', (($("#unity-canvas")[0].offsetLeft - startX) / c +
+      //     "~" + -($("#unity-canvas")[0].offsetTop - startY) / c))
+      // }, 30);
+    });
+  </script>
+
+</body>
+
+</html>

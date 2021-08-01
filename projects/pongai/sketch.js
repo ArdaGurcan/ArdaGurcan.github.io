@@ -130,7 +130,7 @@ function draw() {
         console.log("Life Span: " + lifespan);
         console.log("Mutation Chance: " + mutationRate * 100 + "%");
         genDone = false
-        
+        console.log(JSON.stringify(population.paddles[0].dna.genes))
         $.post( "save.php", { gene: JSON.stringify(population.paddles[0].dna.genes)} );
     }
 }
