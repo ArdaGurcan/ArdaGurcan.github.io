@@ -17,7 +17,15 @@
                 if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url) >= 0))
                 {
                     console.log("https://ardagurcan.com/projects" + url)
-                    location.href = "https://ardagurcan.com/projects" + url;
+                    if(data.projects[i].link)
+                    {
+                        location.href = data.projects[i].link
+                    }
+                    else
+                    {
+
+                        location.href = "https://ardagurcan.com/projects" + url;
+                    }
                 }
                 
             }
