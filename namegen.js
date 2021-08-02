@@ -192,9 +192,9 @@ const s = (p) => {
         console.log("Duration: " + (endTime - startTime) + " ms");
         console.log(
             "Fittest: " +
-                populations[0].fittest.dna.genes.join("").slice(0, 11) +
+                populations[0].fittest.dna.genes.join("").slice(0, -31) +
                 "\n" +
-                populations[0].fittest.dna.genes.join("").slice(11)
+                populations[0].fittest.dna.genes.join("").slice(-31)
         );
         console.log(
             "Max Fitness: " + (populations[0].recordFitness * Math.pow(10, 7)).toFixed(2)
@@ -206,8 +206,9 @@ const s = (p) => {
         console.log("Population Size: " + populationSize);
         console.log("Mutation Chance: " + mutationRate * 100 + "%");
         console.groupEnd();
-        $(".name").text(populations[0].fittest.dna.genes.join("").slice(0, 11));
-        $(".detail").text(populations[0].fittest.dna.genes.join("").slice(11));
+        $(".name").text(populations[0].fittest.dna.genes.join("").slice(0, -31)
+        );
+        $(".detail").text(populations[0].fittest.dna.genes.join("").slice(-31));
         if (complete) {
             $(".name").attr("title", "Typed by " + (populationSize * (totalGenerations-1)+populations[0].matingpool.indexOf(populations[0].fittest)) + " selectively bred monkeys.");
             $(".detail").attr("title", "Typed by " + (populationSize * (totalGenerations-1)+populations[0].matingpool.indexOf(populations[0].fittest)) + " selectively bred monkeys.");
