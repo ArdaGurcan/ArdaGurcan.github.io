@@ -19,13 +19,11 @@ $(document).ready(function () {
                 {
                     if(data.projects[i].link)
                     {
-                        $("frame")[0].setAttribute("src",data.projects[i].link)
-                        // location.href = 
+                        location.href = data.projects[i].link
                     }
                     else
                     {
-                        $("frame")[0].setAttribute("src","https://ardagurcan.com/projects" + url.slice(1))
-                        // location.href = "https://ardagurcan.com/projects" + url.slice(1);
+                        location.href = "https://ardagurcan.com/projects" + url.slice(1);
                     }
                 }
                 
