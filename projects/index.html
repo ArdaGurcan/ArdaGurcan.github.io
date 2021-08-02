@@ -7,6 +7,8 @@
     <title>Arda Gürcan</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+
+$(document).ready(function () {
     if(location.hostname == "arda.games")
         $.getJSON('https://www.ardagurcan.com/projects.json', function (data) {
             let pathname = window.location.href.split("/").slice(-1)[0] 
@@ -17,19 +19,19 @@
                 {
                     if(data.projects[i].link)
                     {
-                        $("frame").setAttr("src",data.projects[i].link)
+                        $("frame").setAttribute("src",data.projects[i].link)
                         // location.href = 
                     }
                     else
                     {
-                        $("frame").setAttr("src","https://ardagurcan.com/projects" + url.slice(1))
+                        $("frame").setAttribute("src","https://ardagurcan.com/projects" + url.slice(1))
                         // location.href = "https://ardagurcan.com/projects" + url.slice(1);
                     }
                 }
                 
             }
 
-        });
+        });});
 </script>
     
 </head>
