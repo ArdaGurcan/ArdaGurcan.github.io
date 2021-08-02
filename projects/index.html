@@ -11,7 +11,8 @@
         $.getJSON('../projects.json', function (data) {
             for (let i = 0; i < data.projects.length; i++) {
                 let url=  "/"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
-                console.log(url)
+                console.log(url + "="+location.pathname)
+                
                 if(location.pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url) >= 0))
                 {
                     console.log("https://ardagurcan.com/projects" + url)
