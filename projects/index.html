@@ -14,6 +14,7 @@
                 console.log(url)
                 if(location.pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url) >= 0))
                 {
+                    console.log("https://ardagurcan.com/projects" + url)
                     location.href = "https://ardagurcan.com/projects" + url;
                 }
                 
