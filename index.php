@@ -175,7 +175,7 @@
 
     $(document).ready(function () {
       if(location.hostname == "arda.games")
-        $.getJSON('https://www.ardagurcan.com/projects.json', function (data) {
+        $.getJSON('/projects.json', function (data) {
             let pathname = window.location.href.split("/").slice(-1)[0] 
             for (let i = 0; i < data.projects.length; i++) {
                 let url=  "?"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
