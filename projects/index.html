@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script>
+        $.getJSON('../projects.json', function (data) {
+            for (let i = 0; i < data.projects.length; i++) {
+                let url=  "/"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
+                console.log(url)
+                if(location.pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url) >= 0))
+                {
+                    location.href = "https://ardagurcan.com/projects" + url;
+                }
+                
+            }
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
