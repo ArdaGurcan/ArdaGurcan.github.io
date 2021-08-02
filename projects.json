@@ -2,6 +2,7 @@
     "projects": [
         {
             "name": "Bulbhead",
+            "aliases" : ["bh"],
             "category": "Game",
             "fileType": "Website",
             "link": "https://agurcan.itch.io/bulbhead",
@@ -12,6 +13,7 @@
         },
         {
             "name": "Home Builder",
+            "aliases" : ["hb"],
             "category": "Game",
             "fileType": "Website",
             "link": "https://agurcan.itch.io/homebuilder",
@@ -22,6 +24,7 @@
         },
         {
             "name": "C-Cube Website",
+            "aliases" : ["ccube"],
             "category": "Website",
             "fileType": "Website",
             "releaseDate": "20 August 2016",
@@ -76,6 +79,7 @@
         },
         {
             "name": "Chromofusion",
+            "aliases" : ["cf"],
             "category": "Game",
             "fileType": "Download",
             "eventLink": "https://itch.io/jam/blackthornprod-game-jam-3/rate/899890",
@@ -85,6 +89,7 @@
         },
         {
             "name": "Wallet Tracker",
+            "aliases" : ["wt"],
             "category": "Browser Extension",
             "fileType": "Website",
             "link": "https://chrome.google.com/webstore/detail/wallet-tracker/ekpikkcdmgfmlobdlgljkjmpcdjinemm",
@@ -94,6 +99,7 @@
         },
         {
             "name": "Slimecoil",
+            "aliases" : ["sc"],
             "category": "Game",
             "fileType": "Website",
             "link": "https://agurcan.itch.io/slimecoil",
@@ -123,6 +129,7 @@
         },
         {
             "name": "Slime Overflow",
+            "aliases" : ["so"],
             "category": "Game",
             "fileType": "Website",
             "link": "https://agurcan.itch.io/slime-overflow",
