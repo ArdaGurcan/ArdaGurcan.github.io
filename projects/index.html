@@ -12,7 +12,7 @@
             let pathname = window.location.href.split("/")[-1]
             for (let i = 0; i < data.projects.length; i++) {
                 let url=  "/"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
-                console.log(url + "="+location.pathname)
+                console.log(url + "="+pathname)
                 
                 if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url) >= 0))
                 {
