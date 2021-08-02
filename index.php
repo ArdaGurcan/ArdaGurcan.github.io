@@ -150,6 +150,13 @@
     }
 
     $(document).ready(function () {
+      if(location.host[location.host.length-1] == "h")
+    {
+      document.title = document.title.replace("Arda","Clara")
+      $(".navbar-brand")[0].innerHTML = $(".navbar-brand")[0].innerHTML.replace("Arda","Clara")
+      $("body > footer > p")[0].innerHTML = $("body > footer > p")[0].innerHTML.replace("Arda","Clara")
+      
+    }
       $(".name").mouseenter(()=>{
         $("#monkey").css("opacity","40%")
       })

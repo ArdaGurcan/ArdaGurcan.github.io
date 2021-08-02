@@ -141,9 +141,18 @@ const s = (p) => {
         time = 0;
         totalFitness = 0;
         generation = 0;
+        if(location.host[location.host.length-1] == "h")
+    {
+        populations.push(
+            new Population("Clara GürcanGames, Projects, Simulations..."))
+        
+    }
+    else{
         populations.push(
             new Population("Arda GürcanGames, Projects, Simulations...")
         );
+
+    }
         console.groupCollapsed("Generations");
         // populations.push(new Population("Gürcan"));
         // populations.push(new Population("Games"));
