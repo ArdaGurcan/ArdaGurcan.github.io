@@ -180,7 +180,7 @@
             for (let i = 0; i < data.projects.length; i++) {
                 let url=  "?"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
                 
-                if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url.slice(1)) >= 0))
+                if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.includes(url.slice(1))))
                 {
                     if(data.projects[i].link)
                     {
@@ -188,7 +188,7 @@
                     }
                     else
                     {
-                        location.href = "https://ardagurcan.com/projects" + url.slice(1);
+                        location.href = "https://ardagurcan.com/projects/" + url.slice(1);
                     }
                 }
                 
