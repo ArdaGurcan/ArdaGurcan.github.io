@@ -141,7 +141,8 @@ const s = (p) => {
         time = 0;
         totalFitness = 0;
         generation = 0;
-        if(location.host[location.host.length-1] == "h")
+        console.log(location.hostname)
+        if(location.hostname[location.hostname.length-1] == "h")
     {
         populations.push(
             new Population("Clara GürcanGames, Projects, Simulations..."))
