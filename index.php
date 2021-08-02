@@ -180,7 +180,7 @@
             for (let i = 0; i < data.projects.length; i++) {
                 let url=  "?"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
                 
-                if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.includes(url.slice(1))))
+                if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.includes(pathname.slice(1))))
                 {
                     if(data.projects[i].link)
                     {
