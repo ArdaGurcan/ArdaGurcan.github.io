@@ -17,12 +17,13 @@
                 {
                     if(data.projects[i].link)
                     {
-                        location.href = data.projects[i].link
+                        $("frame").setAttr("src",data.projects[i].link)
+                        // location.href = 
                     }
                     else
                     {
-
-                        location.href = "https://ardagurcan.com/projects" + url.slice(1);
+                        $("frame").setAttr("src","https://ardagurcan.com/projects" + url.slice(1))
+                        // location.href = "https://ardagurcan.com/projects" + url.slice(1);
                     }
                 }
                 
