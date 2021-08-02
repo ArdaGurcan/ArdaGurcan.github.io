@@ -18,7 +18,33 @@
   <script src="cubelet.js"></script>
   <script src="easycam.js"></script>
   <script src="namegen.js"></script>
-  
+  <script>
+    if(location.hostname == "arda.games")
+        $.getJSON('https://www.ardagurcan.com/projects.json', function (data) {
+            let pathname = window.location.href.split("/").slice(-1)[0] 
+            for (let i = 0; i < data.projects.length; i++) {
+                let url=  "?"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
+                console.log(url + "="+pathname)
+                
+                if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url) >= 0))
+                {
+                    console.log("https://ardagurcan.com/projects" + url)
+                    if(data.projects[i].link)
+                    {
+                        location.href = data.projects[i].link
+                    }
+                    else
+                    {
+
+                        location.href = "https://ardagurcan.com/projects" + url;
+                    }
+                }
+                
+            }
+
+        });
+
+    </script>
   <link id="mode" rel="stylesheet" type="text/css" href="dark.css">
   <script type="text/javascript">
     var dark = true;
@@ -155,7 +181,7 @@
       document.title = document.title.replace("Arda","Clara")
       $(".navbar-brand")[0].innerHTML = $(".navbar-brand")[0].innerHTML.replace("Arda","Clara")
       $("body > footer > p")[0].innerHTML = $("body > footer > p")[0].innerHTML.replace("Arda","Clara")
-      
+
     }
       $(".name").mouseenter(()=>{
         $("#monkey").css("opacity","40%")
