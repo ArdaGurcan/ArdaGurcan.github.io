@@ -19,28 +19,28 @@
   <script src="easycam.js"></script>
   <script src="namegen.js"></script>
   <script>
-    if(location.hostname == "arda.games")
-        $.getJSON('https://www.ardagurcan.com/projects.json', function (data) {
-            let pathname = window.location.href.split("/").slice(-1)[0] 
-            for (let i = 0; i < data.projects.length; i++) {
-                let url=  "?"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
+    // if(location.hostname == "arda.games")
+    //     $.getJSON('https://www.ardagurcan.com/projects.json', function (data) {
+    //         let pathname = window.location.href.split("/").slice(-1)[0] 
+    //         for (let i = 0; i < data.projects.length; i++) {
+    //             let url=  "?"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
                 
-                if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url) >= 0))
-                {
-                    if(data.projects[i].link)
-                    {
-                        location.href = data.projects[i].link
-                    }
-                    else
-                    {
+    //             if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url) >= 0))
+    //             {
+    //                 if(data.projects[i].link)
+    //                 {
+    //                     location.href = data.projects[i].link
+    //                 }
+    //                 else
+    //                 {
 
-                        location.href = "https://ardagurcan.com/projects" + url.slice(1);
-                    }
-                }
+    //                     location.href = "https://ardagurcan.com/projects" + url.slice(1);
+    //                 }
+    //             }
                 
-            }
+    //         }
 
-        });
+    //     });
 
     </script>
   <link id="mode" rel="stylesheet" type="text/css" href="dark.css">
