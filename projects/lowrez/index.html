@@ -28,10 +28,13 @@
 </head>
 
 <body style="text-align: center">
-    <canvas id="unity-canvas"
-        style="width: 320px; height: 320px; background: #000000"></canvas>
+    <canvas id="unity-canvas" style="width: 320px; height: 320px; background: #000000"></canvas>
     <script src="Build/webgl.loader.js"></script>
     <script>
+        if (window.history.replaceState) {
+            window.history.replaceState("", "", "/CLARA" + location.pathname);
+        }
+
         $(document).ready(() => {
 
             if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
