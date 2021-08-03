@@ -167,15 +167,34 @@ function setup() {
 
     //#region logo
     if (dim == 4) {
-        cube[5].left = colors[4];
-        cube[6].left = colors[4];
-        cube[13].left = colors[4];
-        cube[14].left = colors[4];
-
-        cube[5 + 48].right = colors[5];
-        cube[6 + 48].right = colors[5];
-        cube[13 + 48].right = colors[5];
-        cube[14 + 48].right = colors[5];
+        if(location.host[location.host.length-1] == "h")
+        {
+            cube[5].left = colors[4];
+            cube[6].left = colors[4];
+            cube[7].left = colors[4];
+            cube[9].left = colors[4];
+            cube[10].left = colors[4];
+            cube[11].left = colors[4];
+    
+            cube[5 + 48].right = colors[5];
+            cube[6 + 48].right = colors[5];
+            cube[7 + 48].right = colors[5];
+            cube[9 + 48].right = colors[5];
+            cube[10 + 48].right = colors[5];
+            cube[11 + 48].right = colors[5];
+        }
+        else
+        {
+            cube[5].left = colors[4];
+            cube[6].left = colors[4];
+            cube[13].left = colors[4];
+            cube[14].left = colors[4];
+    
+            cube[5 + 48].right = colors[5];
+            cube[6 + 48].right = colors[5];
+            cube[13 + 48].right = colors[5];
+            cube[14 + 48].right = colors[5];
+        }
 
         cube[23].front = colors[3];
         cube[27].front = colors[3];
