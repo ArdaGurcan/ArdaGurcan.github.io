@@ -28,11 +28,10 @@
 </head>
 
 <body style="text-align: center">
-    <canvas id="unity-canvas" style="width: 320px; height: 320px; background: #000000"></canvas>
+    <canvas id="unity-canvas"
+        style="width: 320px; height: 320px; background: #000000"></canvas>
     <script src="Build/webgl.loader.js"></script>
     <script>
-        
-
         $(document).ready(() => {
 
             if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -50,13 +49,7 @@
                 companyName: "DefaultCompany",
                 productName: "LOWREZJAM 2021",
                 productVersion: "1.0",
-            }).then(
-                ()=>{
-                    if (window.history.replaceState) {
-            window.history.replaceState("", "", "/CLARA" + location.pathname);
-        }
-                }
-            )
+            });
             $("#unity-canvas").draggable({
                 snap: "body",
                 snapTolerance: 0,
