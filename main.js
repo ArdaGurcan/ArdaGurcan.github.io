@@ -178,10 +178,10 @@ function setup() {
     
             cube[5 + 48].right = colors[5];
             cube[6 + 48].right = colors[5];
-            cube[4 + 48].right = colors[5];
+            cube[7 + 48].right = colors[5];
             cube[9 + 48].right = colors[5];
             cube[10 + 48].right = colors[5];
-            cube[8 + 48].right = colors[5];
+            cube[11 + 48].right = colors[5];
         }
         else
         {
