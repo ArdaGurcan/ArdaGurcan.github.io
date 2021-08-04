@@ -208,6 +208,21 @@
       $(".name").mouseleave(()=>{
         $("#monkey").css("opacity","0%")
       })
+
+      $(".navbar-brand").mouseenter(()=>{
+        $(".onion").css("opacity","40%")
+      })
+      $(".navbar-brand").mouseleave(()=>{
+        $(".onion").css("opacity","0%")
+      })
+
+      $(".onion").mouseenter(()=>{
+        $(".onion").css("opacity","40%")
+      })
+      $(".onion").mouseleave(()=>{
+        $(".onion").css("opacity","0%")
+      })
+
       $("#monkey").mouseenter(()=>{
         $("#monkey").css("opacity","40%")
       })
@@ -355,9 +370,9 @@
 
   <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="/" style="margin-right: 5px;">
         <img class="icon" src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
-        Arda Gürcan
+        Arda Gürcan <a href="http://ardaquqhrmsunlaf3byzgthhry7bbwt7mj4lglizenuhdisnmjc55wqd.onion/" style="text-decoration: none;display:inline; font-size: 20px; opacity: 0%; margin-left:0;"target="_blank" class="onion"> 🧅</a>
       </a>
 
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
