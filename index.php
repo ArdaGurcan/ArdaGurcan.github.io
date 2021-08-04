@@ -372,7 +372,7 @@
     <div class="container">
       <a class="navbar-brand" href="/" style="margin-right: 5px;">
         <img class="icon" src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
-        Arda Gürcan <a href="http://ardaquqhrmsunlaf3byzgthhry7bbwt7mj4lglizenuhdisnmjc55wqd.onion/" style="text-decoration: none;display:inline; font-size: 20px; opacity: 0%; margin-left:0;" class="onion"> 🧅</a>
+        Arda Gürcan <a href="http://agurcanwyb73gljuby5drl5rm2q4svdv5ovp7c2k2oinwamu7ldiltqd.onion/" style="text-decoration: none;display:inline; font-size: 20px; opacity: 0%; margin-left:0;" class="onion"> 🧅</a>
       </a>
 
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
