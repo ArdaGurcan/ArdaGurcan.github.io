@@ -44,6 +44,7 @@ function setup() {
 function draw() {
   background("#46b0c3");
 
+  bird.show();
 
   for (var i = pipes.length - 1; i >= 0; i--) {
     pipes[i].update();
@@ -63,7 +64,6 @@ function draw() {
   }
 
   bird.update();
-  bird.show();
 
   if ((frameCount - gameoverFrame) % 150 == 0) {
     pipes.push(new Pipe());
@@ -100,10 +100,12 @@ function showScores() {
 
 function gameover() {
   textSize(64);
-  fill(50)
+  fill(0,220)
   noStroke()
+  rect(0,height/2-75,width,150)
   textAlign(CENTER, CENTER);
-  text('GAMEOVER', width / 2, height / 2);
+  fill(208,0,20)
+  text('YOU DIED', width / 2, height / 2);
   textAlign(LEFT, BASELINE);
   stroke(50)
   maxScore = max(score, maxScore);
