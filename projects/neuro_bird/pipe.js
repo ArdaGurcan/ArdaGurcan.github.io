@@ -8,8 +8,8 @@
 
 class Pipe {
   constructor() {
-    this.spacing = 100;
-    this.top = random(height / 6, 3 / 4 * height);
+    this.spacing = 150;
+    this.top = random(spacing, height-spacing);
     this.bottom = this.top + this.spacing;
 
     this.x = width;
@@ -23,13 +23,18 @@ class Pipe {
   hits(bird) {
     let halfBirdHeight = bird.height / 2;
     let halfBirdwidth = bird.width / 2;
-    if (bird.y - halfBirdHeight < this.top - bird.height * 0.1 || bird.y + halfBirdHeight > this.bottom + bird.height * 0.1) {
+    if (bird.y - halfBirdHeight < this.top || bird.y + halfBirdHeight > this.bottom) {
       //if this.w is huge, then we need different collision model
       if (bird.x + halfBirdwidth > this.x && bird.x - halfBirdwidth < this.x + this.w) {
         this.highlight = true;
-        this.passed = true;
         return true;
       }
+    }
+    if(!this.passed && bird.x - halfBirdwidth > this.x + this.w )
+    {
+      this.passed = true;
+      //bird.score += 100
+      score+=10
     }
     this.highlight = false;
     return false;
@@ -37,7 +42,7 @@ class Pipe {
 
   //this function is used to calculate scores and checks if we've went through the pipes
   pass(bird) {
-    if (bird.x > this.x && !this.passed) {
+    if (bird.x > this.x + this.w/2 && !this.passed) {
       this.passed = true;
       return true;
     }
@@ -74,6 +79,7 @@ class Pipe {
   }
 
   offscreen() {
+    // return 31;
     return (this.x < -this.w);
   }
 }
