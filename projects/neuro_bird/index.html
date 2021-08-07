@@ -4,7 +4,7 @@
   <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
   <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
   <script defer src=https://cdn.JsDelivr.net/npm/p5/lib/addons/p5.sound.min.js></script>
-
+  <title>Neuro Bird</title>
   
   <script language="javascript" type="text/javascript" src="ga.js"></script>
 
@@ -13,8 +13,41 @@
   <script language="javascript" type="text/javascript" src="sketch.js"></script>
   <script language="javascript" type="text/javascript" src="bird.js"></script>
   <script language="javascript" type="text/javascript" src="pipe.js"></script>
+  <style>
+.outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  /* Whatever width you want */
+}
+canvas {
+  border-radius: 10px;
   
+  border: 4px solid #212121;
+
+}
+  </style>
 </head>
-<body>
+<body style="background-color: #282134;">
+  <div class="outer">
+    <div class="middle">
+      <div id="inner">
+      </div>
+    </div>
+  </div>
 </body>
 </html>

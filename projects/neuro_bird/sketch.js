@@ -42,10 +42,12 @@ let keyDown = false;
 
 let jumpSound;
 
-function preload() {}
+function preload() {
+
+    jumpSound = loadSound("jump.mp3");
+}
 
 function setup() {
-    jumpSound = loadSound("jump.mp3");
     jumpSound.setVolume(0.1);
     isOver = false;
     score = 0;
@@ -60,7 +62,8 @@ function setup() {
         );
     }
     gameoverFrame = frameCount - 1;
-    createCanvas(800, 600);
+    let myCanvas = createCanvas(800, 600);
+    myCanvas.parent("inner");
     stroke(50);
     strokeWeight(3);
 }
@@ -139,7 +142,7 @@ function showScores() {
     fill(50);
     noStroke();
     text("score: " + score, 16, 32);
-    text("record: " + maxScore, 16, 64);
+    text("best: " + maxScore, 16, 64);
     stroke(50);
 }
 
