@@ -173,7 +173,7 @@
       })
     }
 
-    if(location.hostname == "arda.games")
+    if(location.hostname == "arda.games" || location.host[location.host.length-1] == "h")
       $.getJSON('/projects.json', function (data) {
           let pathname = window.location.href.split("/").slice(-1)[0].split("?").slice(-1)[0] 
           for (let i = 0; i < data.projects.length; i++) {
