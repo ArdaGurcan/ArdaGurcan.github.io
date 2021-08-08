@@ -173,7 +173,7 @@
       })
     }
 
-    if(location.hostname == "arda.games" || location.host[location.host.length-1] == "h")
+    if(location.hostname == "arda.games")
       $.getJSON('/projects.json', function (data) {
           let pathname = window.location.href.split("/").slice(-1)[0].split("?").slice(-1)[0] 
           for (let i = 0; i < data.projects.length; i++) {
@@ -193,6 +193,27 @@
               
           }
           location.href  = "https://ardagurcan.com/projects/"+pathname;
+      });
+      if(location.host[location.host.length-1] == "h")
+      $.getJSON('/projects.json', function (data) {
+          let pathname = window.location.href.split("/").slice(-1)[0].split("?").slice(-1)[0] 
+          for (let i = 0; i < data.projects.length; i++) {
+              let url=  data.projects[i].name.toLowerCase().replaceAll(" ","_")
+              
+              if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.includes(pathname)))
+              {
+                  if(data.projects[i].link)
+                  {
+                      location.href = data.projects[i].link
+                  }
+                  else
+                  {
+                      location.href = "https://theclara.tech/projects/" + url;
+                  }
+              }
+              
+          }
+          location.href  = "https://theclara.tech/projects/"+pathname;
       });
     $(document).ready(function () {
       if(location.host[location.host.length-1] == "h")
