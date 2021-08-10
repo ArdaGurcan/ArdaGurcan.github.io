@@ -1427,191 +1427,191 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 2068: function($0) {
+ 2088: function($0) {
   if (!document.getElementById(UTF8ToString($0))) document.body.appendChild(document.createElement("canvas")).setAttribute("id", UTF8ToString($0));
  },
- 2218: function($0) {
+ 2238: function($0) {
   return document.getElementById(UTF8ToString($0)).width;
  },
- 2278: function($0) {
+ 2298: function($0) {
   return document.getElementById(UTF8ToString($0)).height;
  },
- 2339: function($0, $1) {
+ 2359: function($0, $1) {
   document.getElementById(UTF8ToString($0)).height = $1;
  },
- 2398: function($0, $1) {
+ 2418: function($0, $1) {
   document.getElementById(UTF8ToString($0)).width = $1;
  },
- 2456: function($0, $1, $2, $3, $4) {
+ 2476: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").clearRect($1, $2, $3, $4);
  },
- 2546: function($0, $1, $2, $3, $4) {
+ 2566: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fillRect($1, $2, $3, $4);
  },
- 2635: function($0, $1, $2, $3, $4) {
+ 2655: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").strokeRect($1, $2, $3, $4);
  },
- 2726: function($0, $1, $2, $3) {
+ 2746: function($0, $1, $2, $3) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fillText(UTF8ToString($1), $2, $3);
  },
- 2825: function($0, $1, $2, $3, $4) {
+ 2845: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fillText(UTF8ToString($1), $2, $3, $4);
  },
- 2928: function($0, $1, $2, $3) {
+ 2948: function($0, $1, $2, $3) {
   document.getElementById(UTF8ToString($0)).getContext("2d").strokeText(UTF8ToString($1), $2, $3);
  },
- 3029: function($0, $1, $2, $3, $4) {
+ 3049: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").strokeText(UTF8ToString($1), $2, $3, $4);
  },
- 3134: function($0, $1) {
+ 3154: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").lineWidth = $1;
  },
- 3215: function($0) {
+ 3235: function($0) {
   return document.getElementById(UTF8ToString($0)).getContext("2d").lineWidth;
  },
- 3296: function($0, $1) {
+ 3316: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").lineCap = UTF8ToString($1);
  },
- 3387: function($0) {
+ 3407: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").lineCap;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 3597: function($0, $1) {
+ 3617: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").lineJoin = UTF8ToString($1);
  },
- 3689: function($0) {
+ 3709: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").lineJoin;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 3900: function($0, $1) {
+ 3920: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").font = UTF8ToString($1);
  },
- 3988: function($0) {
+ 4008: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").font;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 4195: function($0, $1) {
+ 4215: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").textAlign = UTF8ToString($1);
  },
- 4288: function($0) {
+ 4308: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").textAlign;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 4500: function($0, $1) {
+ 4520: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fillStyle = UTF8ToString($1);
  },
- 4593: function($0) {
+ 4613: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").fillStyle;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 4805: function($0, $1) {
+ 4825: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").strokeStyle = UTF8ToString($1);
  },
- 4900: function($0) {
+ 4920: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").strokeStyle;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 5114: function($0) {
+ 5134: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").beginPath();
  },
- 5190: function($0) {
+ 5210: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").closePath();
  },
- 5266: function($0, $1, $2) {
+ 5286: function($0, $1, $2) {
   document.getElementById(UTF8ToString($0)).getContext("2d").moveTo($1, $2);
  },
- 5345: function($0, $1, $2) {
+ 5365: function($0, $1, $2) {
   document.getElementById(UTF8ToString($0)).getContext("2d").lineTo($1, $2);
  },
- 5424: function($0, $1, $2, $3, $4, $5, $6) {
+ 5444: function($0, $1, $2, $3, $4, $5, $6) {
   document.getElementById(UTF8ToString($0)).getContext("2d").bezierCurveTo($1, $2, $3, $4, $5, $6);
  },
- 5526: function($0, $1, $2, $3, $4) {
+ 5546: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").quadraticCurveTo($1, $2, $3, $4);
  },
- 5623: function($0, $1, $2, $3, $4, $5) {
+ 5643: function($0, $1, $2, $3, $4, $5) {
   document.getElementById(UTF8ToString($0)).getContext("2d").arc($1, $2, $3, $4, $5);
  },
- 5711: function($0, $1, $2, $3, $4, $5) {
+ 5731: function($0, $1, $2, $3, $4, $5) {
   document.getElementById(UTF8ToString($0)).getContext("2d").arcTo($1, $2, $3, $4, $5);
  },
- 5801: function($0, $1, $2, $3, $4, $5, $6, $7) {
+ 5821: function($0, $1, $2, $3, $4, $5, $6, $7) {
   document.getElementById(UTF8ToString($0)).getContext("2d").ellipse($1, $2, $3, $4, $5, $6, $7);
  },
- 5901: function($0, $1, $2, $3, $4) {
+ 5921: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").rect($1, $2, $3, $4);
  },
- 5986: function($0) {
+ 6006: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fill();
  },
- 6057: function($0) {
+ 6077: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").stroke();
  },
- 6130: function($0) {
+ 6150: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").clip();
  },
- 6201: function($0, $1, $2) {
+ 6221: function($0, $1, $2) {
   return document.getElementById(UTF8ToString($0)).getContext("2d").isPointInPath($1, $2);
  },
- 6294: function($0, $1, $2) {
+ 6314: function($0, $1, $2) {
   return document.getElementById(UTF8ToString($0)).getContext("2d").isPointInStroke($1, $2);
  },
- 6389: function($0, $1) {
+ 6409: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").rotate($1);
  },
- 6464: function($0, $1, $2) {
+ 6484: function($0, $1, $2) {
   document.getElementById(UTF8ToString($0)).getContext("2d").scale($1, $2);
  },
- 6542: function($0, $1, $2) {
+ 6562: function($0, $1, $2) {
   document.getElementById(UTF8ToString($0)).getContext("2d").translate($1, $2);
  },
- 6624: function($0, $1, $2, $3, $4, $5, $6) {
+ 6644: function($0, $1, $2, $3, $4, $5, $6) {
   document.getElementById(UTF8ToString($0)).getContext("2d").transform($1, $2, $3, $4, $5, $6);
  },
- 6722: function($0, $1, $2, $3, $4, $5, $6) {
+ 6742: function($0, $1, $2, $3, $4, $5, $6) {
   document.getElementById(UTF8ToString($0)).getContext("2d").setTransform($1, $2, $3, $4, $5, $6);
  },
- 6823: function($0) {
+ 6843: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").resetTransform();
  },
- 6904: function($0, $1) {
+ 6924: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").globalAlpha = $1;
  },
- 6985: function($0) {
+ 7005: function($0) {
   return document.getElementById(UTF8ToString($0)).getContext("2d").globalAlpha;
  },
- 7068: function($0, $1) {
+ 7088: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").globalCompositeOperation = $1;
  },
- 7162: function($0) {
+ 7182: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").globalCompositeOperation;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 7389: function($0) {
+ 7409: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").save();
  },
- 7460: function($0) {
+ 7480: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").restore();
  }
 };
@@ -4742,6 +4742,14 @@ var ___errno_location = Module["___errno_location"] = createExportWrapper("__err
 
 var _fflush = Module["_fflush"] = createExportWrapper("fflush");
 
+var _emscripten_stack_get_base = Module["_emscripten_stack_get_base"] = function() {
+ return (_emscripten_stack_get_base = Module["_emscripten_stack_get_base"] = Module["asm"]["emscripten_stack_get_base"]).apply(null, arguments);
+};
+
+var _emscripten_stack_get_end = Module["_emscripten_stack_get_end"] = function() {
+ return (_emscripten_stack_get_end = Module["_emscripten_stack_get_end"] = Module["asm"]["emscripten_stack_get_end"]).apply(null, arguments);
+};
+
 var stackSave = Module["stackSave"] = createExportWrapper("stackSave");
 
 var stackRestore = Module["stackRestore"] = createExportWrapper("stackRestore");
@@ -4754,14 +4762,6 @@ var _emscripten_stack_init = Module["_emscripten_stack_init"] = function() {
 
 var _emscripten_stack_get_free = Module["_emscripten_stack_get_free"] = function() {
  return (_emscripten_stack_get_free = Module["_emscripten_stack_get_free"] = Module["asm"]["emscripten_stack_get_free"]).apply(null, arguments);
-};
-
-var _emscripten_stack_get_base = Module["_emscripten_stack_get_base"] = function() {
- return (_emscripten_stack_get_base = Module["_emscripten_stack_get_base"] = Module["asm"]["emscripten_stack_get_base"]).apply(null, arguments);
-};
-
-var _emscripten_stack_get_end = Module["_emscripten_stack_get_end"] = function() {
- return (_emscripten_stack_get_end = Module["_emscripten_stack_get_end"] = Module["asm"]["emscripten_stack_get_end"]).apply(null, arguments);
 };
 
 var _sbrk = Module["_sbrk"] = createExportWrapper("sbrk");
