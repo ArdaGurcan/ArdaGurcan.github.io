@@ -1427,191 +1427,191 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 2088: function($0) {
+ 2104: function($0) {
   if (!document.getElementById(UTF8ToString($0))) document.body.appendChild(document.createElement("canvas")).setAttribute("id", UTF8ToString($0));
  },
- 2238: function($0) {
+ 2254: function($0) {
   return document.getElementById(UTF8ToString($0)).width;
  },
- 2298: function($0) {
+ 2314: function($0) {
   return document.getElementById(UTF8ToString($0)).height;
  },
- 2359: function($0, $1) {
+ 2375: function($0, $1) {
   document.getElementById(UTF8ToString($0)).height = $1;
  },
- 2418: function($0, $1) {
+ 2434: function($0, $1) {
   document.getElementById(UTF8ToString($0)).width = $1;
  },
- 2476: function($0, $1, $2, $3, $4) {
+ 2492: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").clearRect($1, $2, $3, $4);
  },
- 2566: function($0, $1, $2, $3, $4) {
+ 2582: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fillRect($1, $2, $3, $4);
  },
- 2655: function($0, $1, $2, $3, $4) {
+ 2671: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").strokeRect($1, $2, $3, $4);
  },
- 2746: function($0, $1, $2, $3) {
+ 2762: function($0, $1, $2, $3) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fillText(UTF8ToString($1), $2, $3);
  },
- 2845: function($0, $1, $2, $3, $4) {
+ 2861: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fillText(UTF8ToString($1), $2, $3, $4);
  },
- 2948: function($0, $1, $2, $3) {
+ 2964: function($0, $1, $2, $3) {
   document.getElementById(UTF8ToString($0)).getContext("2d").strokeText(UTF8ToString($1), $2, $3);
  },
- 3049: function($0, $1, $2, $3, $4) {
+ 3065: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").strokeText(UTF8ToString($1), $2, $3, $4);
  },
- 3154: function($0, $1) {
+ 3170: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").lineWidth = $1;
  },
- 3235: function($0) {
+ 3251: function($0) {
   return document.getElementById(UTF8ToString($0)).getContext("2d").lineWidth;
  },
- 3316: function($0, $1) {
+ 3332: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").lineCap = UTF8ToString($1);
  },
- 3407: function($0) {
+ 3423: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").lineCap;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 3617: function($0, $1) {
+ 3633: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").lineJoin = UTF8ToString($1);
  },
- 3709: function($0) {
+ 3725: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").lineJoin;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 3920: function($0, $1) {
+ 3936: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").font = UTF8ToString($1);
  },
- 4008: function($0) {
+ 4024: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").font;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 4215: function($0, $1) {
+ 4231: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").textAlign = UTF8ToString($1);
  },
- 4308: function($0) {
+ 4324: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").textAlign;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 4520: function($0, $1) {
+ 4536: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fillStyle = UTF8ToString($1);
  },
- 4613: function($0) {
+ 4629: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").fillStyle;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 4825: function($0, $1) {
+ 4841: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").strokeStyle = UTF8ToString($1);
  },
- 4920: function($0) {
+ 4936: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").strokeStyle;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 5134: function($0) {
+ 5150: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").beginPath();
  },
- 5210: function($0) {
+ 5226: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").closePath();
  },
- 5286: function($0, $1, $2) {
+ 5302: function($0, $1, $2) {
   document.getElementById(UTF8ToString($0)).getContext("2d").moveTo($1, $2);
  },
- 5365: function($0, $1, $2) {
+ 5381: function($0, $1, $2) {
   document.getElementById(UTF8ToString($0)).getContext("2d").lineTo($1, $2);
  },
- 5444: function($0, $1, $2, $3, $4, $5, $6) {
+ 5460: function($0, $1, $2, $3, $4, $5, $6) {
   document.getElementById(UTF8ToString($0)).getContext("2d").bezierCurveTo($1, $2, $3, $4, $5, $6);
  },
- 5546: function($0, $1, $2, $3, $4) {
+ 5562: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").quadraticCurveTo($1, $2, $3, $4);
  },
- 5643: function($0, $1, $2, $3, $4, $5) {
+ 5659: function($0, $1, $2, $3, $4, $5) {
   document.getElementById(UTF8ToString($0)).getContext("2d").arc($1, $2, $3, $4, $5);
  },
- 5731: function($0, $1, $2, $3, $4, $5) {
+ 5747: function($0, $1, $2, $3, $4, $5) {
   document.getElementById(UTF8ToString($0)).getContext("2d").arcTo($1, $2, $3, $4, $5);
  },
- 5821: function($0, $1, $2, $3, $4, $5, $6, $7) {
+ 5837: function($0, $1, $2, $3, $4, $5, $6, $7) {
   document.getElementById(UTF8ToString($0)).getContext("2d").ellipse($1, $2, $3, $4, $5, $6, $7);
  },
- 5921: function($0, $1, $2, $3, $4) {
+ 5937: function($0, $1, $2, $3, $4) {
   document.getElementById(UTF8ToString($0)).getContext("2d").rect($1, $2, $3, $4);
  },
- 6006: function($0) {
+ 6022: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").fill();
  },
- 6077: function($0) {
+ 6093: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").stroke();
  },
- 6150: function($0) {
+ 6166: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").clip();
  },
- 6221: function($0, $1, $2) {
+ 6237: function($0, $1, $2) {
   return document.getElementById(UTF8ToString($0)).getContext("2d").isPointInPath($1, $2);
  },
- 6314: function($0, $1, $2) {
+ 6330: function($0, $1, $2) {
   return document.getElementById(UTF8ToString($0)).getContext("2d").isPointInStroke($1, $2);
  },
- 6409: function($0, $1) {
+ 6425: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").rotate($1);
  },
- 6484: function($0, $1, $2) {
+ 6500: function($0, $1, $2) {
   document.getElementById(UTF8ToString($0)).getContext("2d").scale($1, $2);
  },
- 6562: function($0, $1, $2) {
+ 6578: function($0, $1, $2) {
   document.getElementById(UTF8ToString($0)).getContext("2d").translate($1, $2);
  },
- 6644: function($0, $1, $2, $3, $4, $5, $6) {
+ 6660: function($0, $1, $2, $3, $4, $5, $6) {
   document.getElementById(UTF8ToString($0)).getContext("2d").transform($1, $2, $3, $4, $5, $6);
  },
- 6742: function($0, $1, $2, $3, $4, $5, $6) {
+ 6758: function($0, $1, $2, $3, $4, $5, $6) {
   document.getElementById(UTF8ToString($0)).getContext("2d").setTransform($1, $2, $3, $4, $5, $6);
  },
- 6843: function($0) {
+ 6859: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").resetTransform();
  },
- 6924: function($0, $1) {
+ 6940: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").globalAlpha = $1;
  },
- 7005: function($0) {
+ 7021: function($0) {
   return document.getElementById(UTF8ToString($0)).getContext("2d").globalAlpha;
  },
- 7088: function($0, $1) {
+ 7104: function($0, $1) {
   document.getElementById(UTF8ToString($0)).getContext("2d").globalCompositeOperation = $1;
  },
- 7182: function($0) {
+ 7198: function($0) {
   var string = document.getElementById(UTF8ToString($0)).getContext("2d").globalCompositeOperation;
   var strlen = lengthBytesUTF8(string) + 1;
   var strptr = _malloc(strlen);
   stringToUTF8(string, strptr, strlen);
   return strptr;
  },
- 7409: function($0) {
+ 7425: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").save();
  },
- 7480: function($0) {
+ 7496: function($0) {
   document.getElementById(UTF8ToString($0)).getContext("2d").restore();
  }
 };
