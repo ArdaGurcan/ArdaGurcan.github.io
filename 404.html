@@ -37,34 +37,12 @@
     }
 
 
-    if (location.hostname == "theclara.tech")
-      $.getJSON('https://theclara.tech/projects.json', function (data) {
-        let pathname = window.location.href.split("/").slice(-1)[0]
-        for (let i = 0; i < data.projects.length; i++) {
-          let url = data.projects[i].name.toLowerCase().replaceAll(" ", "_")
-
-          if (pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(pathname) >= 0)) {
-            if (data.projects[i].link) {
-              location.href = data.projects[i].link
-            } else {
-
-              location.href = "https://theclara.tech/projects/" + url
-            }
-          }
-
-        }
-        if (UrlExists("https://theclara.tech/projects/" + pathname)) {
-          location.href = "https://theclara.tech/projects/" + pathname
-        }
-      })
-    else
+      
+    
       $.getJSON('https://www.ardagurcan.com/projects.json', function (data) {
         let pathname = window.location.href.split("/").slice(-1)[0]
         for (let i = 0; i < data.projects.length; i++) {
           let url = data.projects[i].name.toLowerCase().replaceAll(" ", "_")
-          console.log(data.projects)
-          console.log(pathname)
-          console.log(url)
           if (pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(pathname) >= 0)) {
             if (data.projects[i].link) {
               location.href = data.projects[i].link
