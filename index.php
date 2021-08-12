@@ -120,6 +120,10 @@
         }
         var addString = "";
         for (var i = 0; i < projects.length; i++) {
+          if(projects[i].hidden)
+          {
+            continue
+          }
           if (i % 2 == 0) {
             addString += '<div class="card-deck">';
           }
