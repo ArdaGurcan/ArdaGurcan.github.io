@@ -22,13 +22,18 @@
     var dark = true;
 
     function UrlExists(url) {
-      var http = new XMLHttpRequest();
-      http.open('HEAD', url, false);
-      http.send();
-      if (http.status != 404)
+      try {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', url, false);
+        http.send();
+        if (http.status != 404)
+          return true
+        else
+          return false
+        
+      } catch (error) {
         return true
-      else
-        return false
+      }
     }
 
 
