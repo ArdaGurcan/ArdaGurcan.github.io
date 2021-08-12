@@ -20,61 +20,60 @@
 
   <script type="text/javascript">
     var dark = true;
+
     function UrlExists(url) {
-    var http = new XMLHttpRequest();
-    http.open('HEAD', url, false);
-    http.send();
-    if (http.status != 404)
+      var http = new XMLHttpRequest();
+      http.open('HEAD', url, false);
+      http.send();
+      if (http.status != 404)
         return true
-    else
+      else
         return false
-}
+    }
 
-     if(location.hostname == "arda.games")
-        $.getJSON('https://www.ardagurcan.com/projects.json', function (data) {
-            let pathname = window.location.href.split("/").slice(-1)[0]
-            console.log(pathname)
-            for (let i = 0; i < data.projects.length; i++) {
-                let url = data.projects[i].name.toLowerCase().replaceAll(" ","_")
-                
-                if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(pathname) >= 0))
-                {
-                    if(data.projects[i].link)
-                    {
-                        location.href = data.projects[i].link
-                    }
-                    else
-                    {
 
-                        location.href = "https://ardagurcan.com/projects/" + url
-                    }
-                }
-                
+    if (location.hostname == "theclara.tech")
+      $.getJSON('https://theclara.tech/projects.json', function (data) {
+        let pathname = window.location.href.split("/").slice(-1)[0]
+        for (let i = 0; i < data.projects.length; i++) {
+          let url = data.projects[i].name.toLowerCase().replaceAll(" ", "_")
+
+          if (pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(pathname) >= 0)) {
+            if (data.projects[i].link) {
+              location.href = data.projects[i].link
+            } else {
+
+              location.href = "https://theclara.tech/projects/" + url
             }
+          }
 
-        });
-        if(location.hostname == "theclara.tech")
-        $.getJSON('https://theclara.tech/projects.json', function (data) {
-            let pathname = window.location.href.split("/").slice(-1)[0] 
-            for (let i = 0; i < data.projects.length; i++) {
-                let url = data.projects[i].name.toLowerCase().replaceAll(" ","_")
-                
-                if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(pathname) >= 0))
-                {
-                    if(data.projects[i].link)
-                    {
-                        location.href = data.projects[i].link
-                    }
-                    else
-                    {
+        }
+        if (UrlExists("https://theclara.tech/projects/" + pathname)) {
+          location.href = "https://theclara.tech/projects/" + pathname
+        }
+      })
+    else
+      $.getJSON('https://www.ardagurcan.com/projects.json', function (data) {
+        let pathname = window.location.href.split("/").slice(-1)[0]
+        for (let i = 0; i < data.projects.length; i++) {
+          let url = data.projects[i].name.toLowerCase().replaceAll(" ", "_")
 
-                        location.href = "https://theclara.tech/projects/" + url
-                    }
-                }
-                
+          if (pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(pathname) >= 0)) {
+            if (data.projects[i].link) {
+              location.href = data.projects[i].link
+            } else {
+
+              location.href = "https://ardagurcan.com/projects/" + url
             }
+          }
 
-        });
+        }
+
+        if (UrlExists("https://ardagurcan.com/projects/" + pathname)) {
+          location.href = "https://ardagurcan.com/projects/" + pathname
+        }
+
+      });
 
 
 
@@ -225,12 +224,18 @@
       <div class="container">
         <div id="cube"></div>
         <div class="btn-group" role="group">
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">f</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">b</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">r</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">l</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">u</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls" class="btn btn-outline-secondary">d</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">f</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">b</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">r</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">l</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">u</button>
+          <button type="button" onclick="pressKey(this)" id="letter-controls"
+            class="btn btn-outline-secondary">d</button>
         </div>
         <div class="btn-group" role="group">
           <button type="button" onclick="pressKey(this)" id="controls" class="btn btn-outline-secondary">Shift</button>
