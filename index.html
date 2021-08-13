@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Arda Gürcan</title>
+  <script src="https://kit.fontawesome.com/90e8d7d699.js" crossorigin="anonymous"></script>  <title>Arda Gürcan</title>
   <link rel="icon" type="image/png" href="ico.png">
   <meta name="keywords" content="Arda,Gürcan,Gurcan,Arda Gürcan,Arda Gurcan,ardagürcan,ardagurcan">
   <meta name="description" content="A website created by Arda Gürcan for fun.">
@@ -69,6 +69,15 @@
     function sortBy(categoryName) {
       $.getJSON('projects.json', function (data) {
         projects = data.projects;
+        arr = []
+        for (let i = 0; i < projects.length; i++) {
+          if(!projects[i].hidden)
+          {
+            arr.push(projects[i])
+          }
+          
+        }
+        projects = arr
         switch (categoryName) {
           case "a-z":
             projects.sort(function (a, b) {
@@ -120,13 +129,12 @@
         }
         var addString = "";
         for (var i = 0; i < projects.length; i++) {
-          if(projects[i].hidden)
-          {
-            continue
-          }
           if (i % 2 == 0) {
             addString += '<div class="card-deck">';
-          }
+            }
+          
+            
+          
           addString +=
             '<div class="col-md-6 my-3">' +
             '<div class="card">' +
@@ -247,9 +255,18 @@
       $.getJSON('projects.json', function (data) {
 
         projects = data.projects;
-
-
+        arr = []
+        for (let i = 0; i < projects.length; i++) {
+          if(!projects[i].hidden)
+          {
+            arr.push(projects[i])
+          }
+          
+        }
+        projects = arr
+        
         for (let i = projects.length - 1; i > 0; i--) {
+          
           let j = Math.floor(Math.random() * (i + 1));
           [projects[i], projects[j]] = [projects[j], projects[i]];
         }
@@ -257,6 +274,10 @@
         for (var i = 0; i < projects.length; i++) {
           if (i % 2 == 0) {
             addString += '<div class="card-deck">';
+          }
+          if(projects[i].hidden)
+          {
+            continue
           }
           addString +=
             '<div class="col-md-6 my-3">' +
@@ -373,16 +394,44 @@
             <li class="nav-item">
               <a class="nav-link" href="#">About Me</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mailto:ardagurcan2004@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/ArdaGurcan" target="_blank"><i class="fa fa-github"></i></a>
+            </li>
+            <li class="nav-item disabled" aria-disabled="true">
+            <a class="nav-link" style="cursor: not-allowed !important;" target="_blank"><i class="fa fa-linkedin"></i></a>
+            </li>
+            <li class="nav-item disabled" aria-disabled="true">
+            <a class="nav-link" style="cursor: not-allowed !important;" target="_blank"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.chess.com/member/agurcan" target="_blank"><i class="fas fa-chess-pawn"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.worldcubeassociation.org/persons/2018GURC01" target="_blank"><i class="fa fa-cube"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.duolingo.com/profile/ArdaGurcan" target="_blank"><i class="fas fa-language"></i></a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Me</a>
+            </li> -->
           </ul>
 
         </div>
         <div class="container">
+          
           <img src="sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();"
             title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
         </div>
       </div>
     </div>
-  </nav>
+  </nav>  
   <nav class="navbar navbar-expand-md navbar-dark bg-light" style="top: -1px">
     <div class="container justify-content-end">
       <nav class="nav-item active dropdown">
