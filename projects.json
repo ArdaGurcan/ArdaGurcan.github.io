@@ -139,6 +139,17 @@
             "engine": "Unity"
         },
         {
+            "name": "Skullframed",
+            "aliases" : ["sf"],
+            "category": "Game",
+            "fileType": "Website",
+            "link": "https://agurcan.itch.io/skullframed",
+            "eventLink": "https://itch.io/jam/lowrezjam-2021/rate/1159427",
+            "releaseDate": "15 July 2021",
+            "purpose": "LOWREZJAM 2021",
+            "engine": "Unity"
+        },
+        {
             "name": "ClaraMeter",
             "hidden": true,
             "aliases" : ["cm", "meter", "clara"]
