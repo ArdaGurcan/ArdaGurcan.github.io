@@ -397,14 +397,14 @@
             <li class="nav-item">
               <a class="nav-link" href="mailto:ardagurcan2004@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
             </li>
+            <li class="nav-item disabled" aria-disabled="true">
+            <a class="nav-link" href="https://twitter.com/gurcan1729" target="_blank"><i class="fa fa-twitter"></i></a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="https://github.com/ArdaGurcan" target="_blank"><i class="fa fa-github"></i></a>
             </li>
             <li class="nav-item disabled" aria-disabled="true">
             <a class="nav-link" style="cursor: not-allowed !important;" target="_blank"><i class="fa fa-linkedin"></i></a>
-            </li>
-            <li class="nav-item disabled" aria-disabled="true">
-            <a class="nav-link" style="cursor: not-allowed !important;" target="_blank"><i class="fa fa-twitter"></i></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://www.chess.com/member/agurcan" target="_blank"><i class="fas fa-chess-pawn"></i></a>
