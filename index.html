@@ -424,6 +424,7 @@
       anim = setInterval(function () {
         let nextImage = "img/" + ("000" + imageIndex).slice(-4) + ".png"
         $(".animation").attr('src', nextImage);
+        console.log("render " + nextImage)
         imageIndex += forwards * 2 - 1
         if ((forwards && (imageIndex > limit)) || (!forwards && (imageIndex < limit))) {
           state += forwards * 2 - 1
