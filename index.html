@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script src="https://kit.fontawesome.com/90e8d7d699.js" crossorigin="anonymous"></script>  <title>Arda Gürcan</title>
+  <script src="https://kit.fontawesome.com/90e8d7d699.js" crossorigin="anonymous"></script>
+  <title>Arda Gürcan</title>
   <link rel="icon" type="image/png" href="ico.png">
   <meta name="keywords" content="Arda,Gürcan,Gurcan,Arda Gürcan,Arda Gurcan,ardagürcan,ardagurcan">
   <meta name="description" content="A website created by Arda Gürcan for fun.">
@@ -24,7 +25,7 @@
     //         let pathname = window.location.href.split("/").slice(-1)[0] 
     //         for (let i = 0; i < data.projects.length; i++) {
     //             let url=  "?"+data.projects[i].name.toLowerCase().replaceAll(" ","_")
-                
+
     //             if(pathname == url || (data.projects[i].aliases && data.projects[i].aliases.indexOf(url) >= 0))
     //             {
     //                 if(data.projects[i].link)
@@ -37,16 +38,15 @@
     //                     location.href = "https://ardagurcan.com/projects" + url.slice(1);
     //                 }
     //             }
-                
+
     //         }
 
     //     });
-
-    </script>
+  </script>
   <link id="mode" rel="stylesheet" type="text/css" href="dark.css">
   <script type="text/javascript">
     var dark = true;
-    
+
 
 
 
@@ -71,11 +71,10 @@
         projects = data.projects;
         arr = []
         for (let i = 0; i < projects.length; i++) {
-          if(!projects[i].hidden)
-          {
+          if (!projects[i].hidden) {
             arr.push(projects[i])
           }
-          
+
         }
         projects = arr
         switch (categoryName) {
@@ -131,10 +130,10 @@
         for (var i = 0; i < projects.length; i++) {
           if (i % 2 == 0) {
             addString += '<div class="card-deck">';
-            }
-          
-            
-          
+          }
+
+
+
           addString +=
             '<div class="col-md-6 my-3">' +
             '<div class="card">' +
@@ -185,41 +184,40 @@
       })
     }
 
-    
+
     $(document).ready(function () {
-      if(location.host[location.host.length-1] == "h")
-    {
-      document.title = document.title.replace("Arda","Clara")
-      $(".navbar-brand")[0].innerHTML = $(".navbar-brand")[0].innerHTML.replace("Arda","Clara")
-      $("body > footer > p")[0].innerHTML = $("body > footer > p")[0].innerHTML.replace("Arda","Clara")
+      if (location.host[location.host.length - 1] == "h") {
+        document.title = document.title.replace("Arda", "Clara")
+        $(".navbar-brand")[0].innerHTML = $(".navbar-brand")[0].innerHTML.replace("Arda", "Clara")
+        $("body > footer > p")[0].innerHTML = $("body > footer > p")[0].innerHTML.replace("Arda", "Clara")
 
-    }
-      $(".name").mouseenter(()=>{
-        $("#monkey").css("opacity","40%")
+      }
+      $(".name").mouseenter(() => {
+        $("#monkey").css("opacity", "40%")
       })
-      $(".name").mouseleave(()=>{
-        $("#monkey").css("opacity","0%")
-      })
-
-      $(".navbar-brand").mouseenter(()=>{
-        $(".onion").css("opacity","40%")
-      })
-      $(".navbar-brand").mouseleave(()=>{
-        $(".onion").css("opacity","0%")
+      $(".name").mouseleave(() => {
+        $("#monkey").css("opacity", "0%")
       })
 
-      $(".onion").mouseenter(()=>{
-        $(".onion").css("opacity","40%")
+      $(".navbar-brand").mouseenter(() => {
+        $(".onion").css("opacity", "40%")
       })
-      $(".onion").mouseleave(()=>{
-        $(".onion").css("opacity","0%")
+      $(".navbar-brand").mouseleave(() => {
+        $(".onion").css("opacity", "0%")
       })
 
-      $("#monkey").mouseenter(()=>{
-        $("#monkey").css("opacity","40%")
+      $(".onion").mouseenter(() => {
+        $(".onion").css("opacity", "40%")
       })
-      $("#monkey").mouseleave(()=>{
-        $("#monkey").css("opacity","0%")
+      $(".onion").mouseleave(() => {
+        $(".onion").css("opacity", "0%")
+      })
+
+      $("#monkey").mouseenter(() => {
+        $("#monkey").css("opacity", "40%")
+      })
+      $("#monkey").mouseleave(() => {
+        $("#monkey").css("opacity", "0%")
       })
 
       // document.getElementsByClassName("jumbotron-image")[0].setAttribute("width",(deviceSize() == 'xs' || deviceSize() == 'sm') ? "65%" : "30%");
@@ -257,16 +255,15 @@
         projects = data.projects;
         arr = []
         for (let i = 0; i < projects.length; i++) {
-          if(!projects[i].hidden)
-          {
+          if (!projects[i].hidden) {
             arr.push(projects[i])
           }
-          
+
         }
         projects = arr
-        
+
         for (let i = projects.length - 1; i > 0; i--) {
-          
+
           let j = Math.floor(Math.random() * (i + 1));
           [projects[i], projects[j]] = [projects[j], projects[i]];
         }
@@ -275,8 +272,7 @@
           if (i % 2 == 0) {
             addString += '<div class="card-deck">';
           }
-          if(projects[i].hidden)
-          {
+          if (projects[i].hidden) {
             continue
           }
           addString +=
@@ -315,7 +311,8 @@
           addString = addString.replace(/!BUTTONMESSAGE!/g, (projects[i].category == "Game") ? "Play!" :
             "View!");
           addString = addString.replace(/!LINK!/g, (projects[i].fileType == "Website" && projects[i].link !=
-            undefined) ? projects[i].link : "projects/" + projects[i].name.replaceAll(" ", "_").toLowerCase());
+              undefined) ? projects[i].link : "projects/" + projects[i].name.replaceAll(" ", "_")
+            .toLowerCase());
           addString = addString.replace(/!IMGLINK!/g, "projects/" + projects[i].name.replaceAll(" ", "_")
             .toLowerCase() + "/cover-image.png");
 
@@ -368,140 +365,237 @@
 
     }
   </script>
+  <style>
+    body,
+    html,
+    .animation {
+      height: 100%;
+      /* background-color: black; */
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    body {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+  </style>
 </head>
 
 <body>
+  <img style="position: fixed; pointer-events: auto; z-index: 999999;" class="animation" src="img/0023.png"></img>
+  <script>
+    let imageIndex = 23;
+    let limit = 98;
+    let anim = undefined
+    let currentScroll = 0
+    let state = 0
+
+    function loadImg(n, l) {
+      var img = new Image();
+      img.onload = function () {
+        if (n < l) {
+          console.log("loaded " + "img/" + ("000" + n).slice(-4) + ".png")
+          loadImg(n + 1, l)
+        } else {
+          setTimeout(()=>{
+            playAnimation()
+
+          },2000)
+        }
+      }
+      img.src = "img/" + ("000" + imageIndex).slice(-4) + ".png"
+    }
 
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="/" style="margin-right: 5px;">
-        <img class="icon" src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
-        Arda Gürcan <a href="http://agurcanwyb73gljuby5drl5rm2q4svdv5ovp7c2k2oinwamu7ldiltqd.onion/" style="text-decoration: none;display:inline; font-size: 20px; opacity: 0%; margin-left:0;" class="onion"> 🧅</a>
-      </a>
 
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    loadImg(23, 98)
 
-      <div class="navbar-collapse collapse" id="navbarNav">
-        <div class="container">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link active" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Me</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="mailto:ardagurcan2004@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-            </li>
-            <li class="nav-item disabled" aria-disabled="true">
-            <a class="nav-link" href="https://twitter.com/gurcan1729" target="_blank"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://github.com/ArdaGurcan" target="_blank"><i class="fa fa-github"></i></a>
-            </li>
-            <li class="nav-item disabled" aria-disabled="true">
-            <a class="nav-link" style="cursor: not-allowed !important;" target="_blank"><i class="fa fa-linkedin"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.chess.com/member/agurcan" target="_blank"><i class="fas fa-chess-pawn"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.worldcubeassociation.org/persons/2018GURC01" target="_blank"><i class="fa fa-cube"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.duolingo.com/profile/ArdaGurcan" target="_blank"><i class="fas fa-language"></i></a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">About Me</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Me</a>
-            </li> -->
-          </ul>
 
-        </div>
-        <div class="container">
-          
-          <img src="sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();"
-            title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
-        </div>
-      </div>
-    </div>
-  </nav>  
-  <nav class="navbar navbar-expand-md navbar-dark bg-light" style="top: -1px">
-    <div class="container justify-content-end">
-      <nav class="nav-item active dropdown">
-        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Sort by
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="javascript: sortBy('a-z')">A-Z</a>
-          <a class="dropdown-item" href="javascript: sortBy('z-a')">Z-A</a>
-          <a class="dropdown-item" href="javascript: sortBy('new')">Newest</a>
-          <a class="dropdown-item" href="javascript: sortBy('old')">Oldest</a>
-          <a class="dropdown-item" href="javascript: sortBy('category')">Category</a>
-          <a class="dropdown-item" href="javascript: sortBy('engine')">Engine</a>
-        </div>
-      </nav>
-  </nav>
 
-  <div class="container mt-4">
-    <div class="jumbotron text-center" style="padding-top: 0%;">
+    var playAnimation = () => {
+      let forwards = limit > imageIndex;
+      state += forwards * 2 - 1
+      anim = setInterval(function () {
+        let nextImage = "img/" + ("000" + imageIndex).slice(-4) + ".png"
+        $(".animation").attr('src', nextImage);
+        imageIndex += forwards * 2 - 1
+        if ((forwards && (imageIndex > limit)) || (!forwards && (imageIndex < limit))) {
+          state += forwards * 2 - 1
+
+          clearInterval(anim)
+          console.log(state)
+          if (state == 4) {
+            $(".animation").css("pointer-events"," none")
+          } else {
+            $(".animation").css("pointer-events"," auto")
+
+          }
+        }
+      }, 42);
+    }
+
+
+    $(document).click(function () {
+      if (state == 2 || state == 1) {
+        // state = 2
+        // imageIndex = 128
+        limit = 350
+        clearInterval(anim)
+        playAnimation()
+      }
+    });
+  </script>
+  <div >
+    <nav style="top: 20px" class="navbar navbar-expand-md navbar-dark bg-light sticky-top">
       <div class="container">
-        <div id="cube"></div>
-        <div class="controls">
+        <a class="navbar-brand" href="/" style="margin-right: 5px;">
+          <img class="icon" src="ico.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
+          Arda Gürcan <a href="http://agurcanwyb73gljuby5drl5rm2q4svdv5ovp7c2k2oinwamu7ldiltqd.onion/"
+            style="text-decoration: none;display:inline; font-size: 20px; opacity: 0%; margin-left:0;" class="onion">
+            🧅</a>
+        </a>
 
-        <div class="btn-group" role="group">
-          <button type="button" onclick="pressKey(this)" id="letter-controls"
-            class="btn btn-outline-secondary">f</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls"
-            class="btn btn-outline-secondary">b</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls"
-            class="btn btn-outline-secondary">r</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls"
-            class="btn btn-outline-secondary">l</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls"
-            class="btn btn-outline-secondary">u</button>
-          <button type="button" onclick="pressKey(this)" id="letter-controls"
-            class="btn btn-outline-secondary">d</button>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="navbar-collapse collapse" id="navbarNav">
+          <div class="container">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link active" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Me</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="mailto:ardagurcan2004@gmail.com" target="_blank"><i
+                    class="fas fa-envelope"></i></a>
+              </li>
+              <li class="nav-item disabled" aria-disabled="true">
+                <a class="nav-link" href="https://twitter.com/gurcan1729" target="_blank"><i
+                    class="fa fa-twitter"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://github.com/ArdaGurcan" target="_blank"><i
+                    class="fa fa-github"></i></a>
+              </li>
+              <li class="nav-item disabled" aria-disabled="true">
+                <a class="nav-link" style="cursor: not-allowed !important;" target="_blank"><i
+                    class="fa fa-linkedin"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.chess.com/member/agurcan" target="_blank"><i
+                    class="fas fa-chess-pawn"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.worldcubeassociation.org/persons/2018GURC01" target="_blank"><i
+                    class="fa fa-cube"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.duolingo.com/profile/ArdaGurcan" target="_blank"><i
+                    class="fas fa-language"></i></a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="#">About Me</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Me</a>
+              </li> -->
+            </ul>
+
+          </div>
+          <div class="container">
+
+            <img src="sun.svg" width="20" height="20" class="toggle-icon align-bottom" onclick="toggleMode();"
+              title="Toggle dark mode" style="float: right;" alt="Toggle dark mode">
+          </div>
         </div>
-        <div class="btn-group" role="group">
-          <button type="button" onclick="pressKey(this)" id="controls" class="btn btn-outline-secondary">Shift</button>
-          <button type="button" onclick="pressKey(this)" id="controls" class="btn btn-outline-secondary">Tab</button>
-        </div>
-        <br>
-        <br>
       </div>
+    </nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-light" style="top: 19px">
+      <div class="container justify-content-end">
+        <nav class="nav-item active dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Sort by
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="javascript: sortBy('a-z')">A-Z</a>
+            <a class="dropdown-item" href="javascript: sortBy('z-a')">Z-A</a>
+            <a class="dropdown-item" href="javascript: sortBy('new')">Newest</a>
+            <a class="dropdown-item" href="javascript: sortBy('old')">Oldest</a>
+            <a class="dropdown-item" href="javascript: sortBy('category')">Category</a>
+            <a class="dropdown-item" href="javascript: sortBy('engine')">Engine</a>
+          </div>
+        </nav>
+    </nav>
 
-        <!-- <img data-src="ico.png" width="30%" class="jumbotron-image icon lazyload"> -->
-        <!-- <br>
-          <br> -->
+    <div class="container mt-4">
+      <div class="jumbotron text-center" style="padding-top: 0%;">
+        <div class="container">
+          <div id="cube"></div>
+          <div class="controls">
+
+            <div class="btn-group" role="group">
+              <button type="button" onclick="pressKey(this)" id="letter-controls"
+                class="btn btn-outline-secondary">f</button>
+              <button type="button" onclick="pressKey(this)" id="letter-controls"
+                class="btn btn-outline-secondary">b</button>
+              <button type="button" onclick="pressKey(this)" id="letter-controls"
+                class="btn btn-outline-secondary">r</button>
+              <button type="button" onclick="pressKey(this)" id="letter-controls"
+                class="btn btn-outline-secondary">l</button>
+              <button type="button" onclick="pressKey(this)" id="letter-controls"
+                class="btn btn-outline-secondary">u</button>
+              <button type="button" onclick="pressKey(this)" id="letter-controls"
+                class="btn btn-outline-secondary">d</button>
+
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" onclick="pressKey(this)" id="controls"
+                class="btn btn-outline-secondary">Shift</button>
+              <button type="button" onclick="pressKey(this)" id="controls"
+                class="btn btn-outline-secondary">Tab</button>
+            </div>
+            <br>
+            <br>
+          </div>
+
+          <!-- <img data-src="ico.png" width="30%" class="jumbotron-image icon lazyload"> -->
+          <!-- <br>
+            <br> -->
           <span style="display:inline; font-size: 30px;visibility: hidden;">🐒</span>
           <h1 style="display:inline-block" class="jumbotron-heading .d-none name"></h1>
-          <a href="https://en.wikipedia.org/wiki/Infinite_monkey_theorem" style="text-decoration: none;display:inline; font-size: 30px; opacity: 0%;"target="_blank" id="monkey">🐒</a>
-        <p class="lead text-muted detail"></p>
+          <a href="https://en.wikipedia.org/wiki/Infinite_monkey_theorem"
+            style="text-decoration: none;display:inline; font-size: 30px; opacity: 0%;" target="_blank"
+            id="monkey">🐒</a>
+          <p class="lead text-muted detail"></p>
+        </div>
       </div>
     </div>
+
+
+    <div class="container" id="projects">
+    </div>
+
+    <footer class="container py-2">
+      <hr>
+      <p style="text-align:left;">
+        Made by Arda Gürcan
+        <span style="float:right;font-style: italic"><span class="last-edit"></span></span>
+      </p>
+    </footer>
+
   </div>
-
-
-  <div class="container" id="projects">
-  </div>
-
-  <footer class="container py-2">
-    <hr>
-    <p style="text-align:left;">
-      Made by Arda Gürcan
-      <span style="float:right;font-style: italic"><span class="last-edit"></span></span>
-    </p>
-  </footer>
-    <?php 
+  <?php 
     include("ip.php")
     ?>
 </body>

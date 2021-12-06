@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Overlay</title>
+
+    <style>
+        body,
+        html,
+        .animation {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img style="position:absolute; z-index: 1000;" class="animation"></img>   
+    <script>
+        let imageIndex = 23;
+        let limit = 98;
+        let anim = undefined
+        let currentScroll = 0
+        let state = 0
+        var playAnimation = () => {
+            let forwards = limit > imageIndex;
+            anim = setInterval(function () {
+                let nextImage = "img/" + ("000" + imageIndex).slice(-4) + ".png"
+                $(".animation").attr('src', nextImage);
+                imageIndex += forwards * 2 - 1
+                if ((forwards && (imageIndex > limit)) || (!forwards && (imageIndex < limit))) {
+
+                    clearInterval(anim)
+                    state += forwards * 2 - 1
+                }
+            }, 33.33333);
+        }
+        playAnimation()
+        $(document).click(function () {
+            if (state!= 2){
+                state = 2
+                imageIndex = 128
+                limit = 350
+            playAnimation()
+            }
+        });
+    </script>
+</body>
+
+</html>
