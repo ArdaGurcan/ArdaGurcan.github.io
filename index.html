@@ -440,6 +440,15 @@
       }, 42);
     }
 
+    $(document).keypress(function () {
+      if (state == 2 || state == 1) {
+        // state = 2
+        // imageIndex = 128
+        limit = 350
+        clearInterval(anim)
+        playAnimation()
+      }
+    });
 
     $(document).click(function () {
       if (state == 2 || state == 1) {
