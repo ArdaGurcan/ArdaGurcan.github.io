@@ -32,6 +32,15 @@
             "engine": "HTML"
         },
         {
+            "name": "Edebidle",
+            "aliases" : ["edebidle","wordle"],
+            "category": "Website",
+            "fileType": "Website",
+            "releaseDate": "19 Ağustos 2022",
+            "purpose": "Fun",
+            "engine": "HTML"
+        },
+        {
             "name": "Gravity Simulation",
             "category": "Simulation",
             "fileType": "Download",
