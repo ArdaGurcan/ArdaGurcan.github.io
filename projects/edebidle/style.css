@@ -90,7 +90,7 @@ header {
 }
 
 .key--hint-correct {
-  background: #8d8;
+  background: #8d8 !important;
 }
 .key--hint-wrong {
   background: #888;

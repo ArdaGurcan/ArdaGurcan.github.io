@@ -86,7 +86,7 @@ async function startGame({ word, kb, board, words }) {
           }
 
         }
-
+        
         for (let i = 0; i < guess.length; i++) {
           if(guess[i] != solution[i] && solution.indexOf(guess[i]) > -1 && letterCounts[i] == 0) {
             hints[i] = "close";
@@ -221,9 +221,11 @@ function generateKeyboard() {
         off: (l) => keyListeners.delete(l),
         revealHint: (guess, hints) => {
             hints.forEach((hint, i) => {
-                $(`[data-key="${guess[i]}"]`).classList.add(
+              try {
+                $(`[data-key="${guess[i]}"]:not(.key--hint-correct)`).classList.add(
                     "key--hint-" + hint
-                );
+                );}
+                catch {}
             });
         },
     };
