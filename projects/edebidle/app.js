@@ -67,7 +67,7 @@ async function startGame({ word, kb, board, words }) {
     board.revealHint(round, hints);
     kb.revealHint(guess, hints);
     if (guess.join('') === word) {
-      $(".feedback").innerText = `HELAAL!`;  
+      $(".feedback").innerText = `MÜKEMMELSİN!`;  
       return;
     }
   }
