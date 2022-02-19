@@ -84,12 +84,9 @@ async function startGame({ word, kb, board, words }) {
               }
             }
           }
-          else {
-            console.log(guess[i] + '≠' + solution[i])
-          }
+
         }
-        console.log(hints);
-        console.log(letterCounts)
+
         for (let i = 0; i < guess.length; i++) {
           if(guess[i] != solution[i] && solution.indexOf(guess[i]) > -1 && letterCounts[i] == 0) {
             hints[i] = "close";
@@ -102,7 +99,6 @@ async function startGame({ word, kb, board, words }) {
           }
         }
 
-        console.log(hints);
         board.revealHint(round, hints);
         kb.revealHint(guess, hints);
         if (guess.join("") === word) {
@@ -117,7 +113,6 @@ function collectGuess({ kb, board, round, words }) {
     return new Promise((submit) => {
         let letters = [];
         async function keyHandler(key) {
-            console.log(key);
             if (key === "+") {
                 if (letters.length === 5) {
                     const guessIsValid = words.includes(letters.join(""));
