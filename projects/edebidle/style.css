@@ -45,6 +45,7 @@ small {
   grid-template-rows: auto auto auto auto auto;
   gap: 2%;
   padding: 1rem;
+  padding-bottom: env(safe-area-inset-bottom);
   /* padding-top: 0; */
   justify-content: center;
   text-align: center;
