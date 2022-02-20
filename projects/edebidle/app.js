@@ -30,6 +30,7 @@ const ROUNDS = 6;
 const LENGTH = 5;
 
 const dictionaryRequest = fetch("./dictionary.txt").then((r) => r.text());
+const commonRequest = fetch("./common.txt").then((r) => r.text());
 const board = $(".board");
 const keyboard = $(".keyboard");
 
@@ -40,7 +41,8 @@ async function init() {
     const kb = generateKeyboard();
 
     const words = (await dictionaryRequest).split("\n");
-    const word = words[(Math.random() * words.length) | 0];
+    const common = (await commonRequest).split("\n");
+    const word = common[(Math.random() * common.length) | 0];
 
     await startGame({ word, kb, board, words });
 }
@@ -88,6 +90,7 @@ async function startGame({ word, kb, board, words }) {
         for (let i = 0; i < guess.length; i++) {
           if(guess[i] != solution[i] && solution.indexOf(guess[i]) > -1 && letterCounts[guess[i]] > 0) {
             hints[i] = "close";
+            letterCounts[guess[i]]--
           }
         }
 
