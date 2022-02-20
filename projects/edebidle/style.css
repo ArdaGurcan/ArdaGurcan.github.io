@@ -70,6 +70,10 @@ small {
   .app {
     align-content: top;
   }
+
+  body {
+    background-color: pink !important;
+  }
 }
 .board {
   display: flex;
