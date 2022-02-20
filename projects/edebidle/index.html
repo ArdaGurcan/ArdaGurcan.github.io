@@ -1,80 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-    rel="apple-touch-icon"
-    sizes="192x192"
-    href="./favicon.png"
-  />
-  <link
-    rel="mask-icon"
-    color="#000000"
-    href="./favicon.png"
-  />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon" sizes="192x192" href="./favicon.png" />
+  <link rel="mask-icon" color="#000000" href="./favicon.png" />
   <meta name="apple-mobile-web-app-title" content="Edebidle - Bitmeyen Wordle" />
   <meta name="application-name" content="Edebidle - Bitmeyen Wordle" />
   <meta name="msapplication-TileColor" content="#000000" />
   <meta name="theme-color" content="#000000" />
   <meta name="sourceApp" content="games-crosswords" />
-  <meta
-    property="description"
-    content="Gizli kelimeyi 6 tahminde bul! Yeni kelime için sayfayı yenile"
-  />
+  <meta property="description" content="Gizli kelimeyi 6 tahminde bul! Yeni kelime için sayfayı yenile" />
   <meta property="og:title" content="Edebidle - Bitmeyen Wordle" />
   <meta property="og:url" content="https://www.ardagurcan.com/projects/edebidle/index.html" />
-  <meta
-    property="og:description"
-    content="Gizli kelimeyi 6 tahminde bul! Yeni kelime için sayfayı yenile"
-  />
+  <meta property="og:description" content="Gizli kelimeyi 6 tahminde bul! Yeni kelime için sayfayı yenile" />
   <meta property="og:image" content="./favicon.png" />
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:domain" content="ardagurcan.com" />
   <link rel="canonical" href="https://www.ardagurcan.com/projects/edebidle/index.html" />
   <link rel="shortcut icon" href="favicon.png">
-    <title>Edebidle - Bitmeyen Wordle</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="app.js" type="module"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Edebidle - Bitmeyen Wordle</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" type="module"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-  </head>
-  <body>
-    <div class="app">
-      <header><h1>edebidle<svg data-bs-toggle="modal" data-bs-target="#exampleModal" xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-      </svg></h1><small>sayfayı her yenilediğinde yepisyeni bir kelime</a></small></header>
-      <div class="board"></div>
-      <div class="feedback"></div>
-      <div class="keyboard"></div>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content" style="height: 100%">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Kurallar</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Altı tahminde kelimeyi bul.<br><br>
-            Her tahmin 5 harfli ve geçerli olmalıdır. Tahmin yapmak için <kbd>enter</kbd>'a bas.<br><br>
-            Her tahminden sonra kutuların rengi doğru cevaba ne kadar yakın olduğunu gösterir.<br><br>
-            <strong>Örnekler</strong><br><br>
-            <div class="round"><div class="letter letter--hint-correct">K</div><div class="letter letter--hint-wrong">A</div><div class="letter letter--hint-wrong">F</div><div class="letter letter--hint-wrong">İ</div><div class="letter letter--hint-wrong">R</div></div>
-            <strong>K</strong> harfi kelimede var ve doğru yerde.<br><br>
-            <div class="round"><div class="letter letter--hint-wrong">D</div><div class="letter letter--hint-wrong">E</div><div class="letter letter--hint-wrong">R</div><div class="letter letter--hint-wrong">Y</div><div class="letter letter--hint-close">A</div></div>
-            <strong>A</strong> harfi kelimede var ama yanlış yerde.<br><br>
-            <div class="round"><div class="letter letter--hint-wrong">K</div><div class="letter letter--hint-wrong">Ö</div><div class="letter letter--hint-wrong">Y</div><div class="letter letter--hint-wrong">L</div><div class="letter letter--hint-wrong">Ü</div></div>
-            Bu harflerin hiçbiri kelimede yok.<br><br>
+</head>
 
+<body>
+  <div class="app">
+    <header>
+      <h1>edebidle<svg data-bs-toggle="modal" data-bs-target="#exampleModal" xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+          <path
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+        </svg></h1><small>sayfayı her yenilediğinde yepisyeni bir kelime</a></small>
+    </header>
+    <div class="board"></div>
+    <div class="feedback"></div>
+    <div class="keyboard"></div>
+    <div><span class="text-muted"><a
+      href="https://www.ardagurcan.com" target="_blank" class="text-muted"><img class="icon" src="https://www.ardagurcan.com/ico.png"
+          style="position: relative; padding-right: 3px; padding-bottom: 3px; width: 20px; height: 20px;">Arda Gürcan</a></div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="height: 100%">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Kurallar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Altı tahminde kelimeyi bul.<br><br>
+          Her tahmin 5 harfli ve geçerli olmalıdır. Tahmin yapmak için <kbd>Enter</kbd>'a bas.<br><br>
+          Her tahminden sonra kutuların rengi doğru cevaba ne kadar yakın olduğunu gösterir.<br><br>
+          <strong>Örnekler</strong><br><br>
+          <div class="round">
+            <div class="letter letter--hint-correct">K</div>
+            <div class="letter letter--hint-wrong">A</div>
+            <div class="letter letter--hint-wrong">F</div>
+            <div class="letter letter--hint-wrong">İ</div>
+            <div class="letter letter--hint-wrong">R</div>
           </div>
-          <!-- <hr>  -->
-          
+          <div class="explanation"><strong>K</strong> harfi kelimede var ve doğru yerde.</div>
+          <div class="round">
+            <div class="letter letter--hint-wrong">D</div>
+            <div class="letter letter--hint-wrong">E</div>
+            <div class="letter letter--hint-wrong">R</div>
+            <div class="letter letter--hint-wrong">Y</div>
+            <div class="letter letter--hint-close">A</div>
+          </div>
+          <div class="explanation"><strong>A</strong> harfi kelimede var ama yanlış yerde.</div>
+          <div class="round">
+            <div class="letter letter--hint-wrong">K</div>
+            <div class="letter letter--hint-wrong">Ö</div>
+            <div class="letter letter--hint-wrong">Y</div>
+            <div class="letter letter--hint-wrong">L</div>
+            <div class="letter letter--hint-wrong">Ü</div>
+          </div>
+          <div class="explanation">Bu harflerin hiçbiri kelimede yok.</div>
 
         </div>
+        <!-- <hr>  -->
+
+
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  </body>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+</body>
+
 </html>
