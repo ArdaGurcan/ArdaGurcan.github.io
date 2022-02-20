@@ -71,31 +71,23 @@ async function startGame({ word, kb, board, words }) {
         let hints = ["wrong", "wrong", "wrong", "wrong", "wrong"];
 
 
-        let letterCounts = [0,0,0,0,0]
-
-
+        let letterCounts = {}
+        for (let i = 0; i < solution.length; i++) {
+          letterCounts[solution[i]] = (!letterCounts.hasOwnProperty(solution[i])) ? 1 : letterCounts[solution[i]]+1
+          
+        }
+        console.log(letterCounts)
         for (let i = 0; i < guess.length; i++) {
           if(guess[i] == solution[i]) {
             hints[i] = "correct";
-            letterCounts[i] ++
-            for (let j = 0; j < guess.length; j++) {           
-              if(i != j && guess[i] == guess[j]) {
-                letterCounts[j] ++
-              }
-            }
+            letterCounts[guess[i]]--
           }
 
         }
         
         for (let i = 0; i < guess.length; i++) {
-          if(guess[i] != solution[i] && solution.indexOf(guess[i]) > -1 && letterCounts[i] == 0) {
+          if(guess[i] != solution[i] && solution.indexOf(guess[i]) > -1 && letterCounts[guess[i]] > 0) {
             hints[i] = "close";
-            letterCounts[i]--
-            for (let j = 0; j < guess.length; j++) {           
-              if(i != j && guess[i] == guess[j]) {
-                letterCounts[j]--
-              }
-            }
           }
         }
 
