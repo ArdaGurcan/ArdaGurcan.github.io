@@ -1,3 +1,21 @@
+:root {
+  --board-color: #fff !important;
+  --bs-body-bg: rgb(15,15,16) !important;
+  --bs-body-color: #fff !important;
+  --border-color: rgb(44,44,46);
+  --key-color: rgb(109, 112,113);
+  --correct: #538d4e;
+  --close: #b59f3b;
+  --wrong: #3a3a3c !important;
+  --muted: #999;
+}
+.text-muted {
+  color: var(--muted) !important;
+}  
+.modal-content {
+  background-color: var(--bs-body-bg) !important;
+}
+
 *,
 *:before,
 *:after {
@@ -74,8 +92,9 @@ small {
   gap: 0.5rem;
 }
 .letter {
+  color: var(--board-color);
   font-size: 2rem;
-  border: 1px solid #888;
+  border: 1px solid var(--border-color);
   display: flex;
   width: 3rem;
   height: 3rem;
@@ -84,13 +103,13 @@ small {
   justify-content: center;
 }
 .letter--hint-correct {
-  background: #8d8;
+  background: var(--correct);
 }
 .letter--hint-wrong {
-  background: #888;
+  background: var(--wrong);
 }
 .letter--hint-close {
-  background: #cc4;
+  background: var(--close);
 }
 .feedback {
   /* white-space: pre-wrap; */
@@ -107,6 +126,8 @@ small {
   justify-content: center;
 }
 .key {
+  color: var(--bs-body-color);
+  background-color: var(--key-color);
   font: inherit;
   padding: 0;
   display: block;
@@ -114,8 +135,7 @@ small {
   height: 2.5rem;
   /* background: #eee; */
   border-radius: 0.25rem;
-  border: 1px solid #888;
-  color: #000;
+  border: 1px solid var(--border-color);
   font-size: 1rem;
 }
 .key:hover {
@@ -138,13 +158,13 @@ svg {
 }
 
 .key--hint-correct {
-  background: #8d8 !important;
+  background: var(--correct) !important;
 }
 .key--hint-wrong {
-  background: #888;
+  background: var(--wrong);
 }
 .key--hint-close {
-  background: #cc4;
+  background: var(--close);
 }
 
 
