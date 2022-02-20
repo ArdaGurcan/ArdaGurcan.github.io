@@ -21,7 +21,10 @@ body {
 
 header {
   text-align: center;
+  
 }
+
+
 
 .bi-question-circle-fill {
   position: relative;
@@ -52,11 +55,21 @@ small {
   height: 100vh;
   grid-template-rows: auto auto auto auto auto;
   gap: 2%;
-  padding: 1rem;
+  padding: 0rem;
   /* padding-top: 0; */
   justify-content: center;
   text-align: center;
+  
+}
+
+.app {
   align-content: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .app {
+    align-content: top;
+  }
 }
 .board {
   display: flex;
