@@ -76,7 +76,7 @@ async function startGame({ word, kb, board, words }) {
           letterCounts[solution[i]] = (!letterCounts.hasOwnProperty(solution[i])) ? 1 : letterCounts[solution[i]]+1
           
         }
-        console.log(letterCounts)
+
         for (let i = 0; i < guess.length; i++) {
           if(guess[i] == solution[i]) {
             hints[i] = "correct";

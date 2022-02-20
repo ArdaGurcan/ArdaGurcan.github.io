@@ -13,12 +13,32 @@ body {
 header {
   text-align: center;
 }
+
+.bi-question-circle-fill {
+  position: relative;
+  top: -3px;
+  right: -6px; 
+
+  height: 20px;
+  /* height: 32px;
+  position: absolute;
+
+  right: 0; */
+}
+h1 {
+  font-size: 48px;
+}
+small {
+  font-size: 16px;
+}
+
 .app {
   display: grid;
   height: 100vh;
   grid-template-rows: auto auto 1fr auto;
   gap: 1rem;
   padding: 1rem;
+  /* padding-top: 0; */
   justify-content: center;
   text-align: center;
 }
@@ -80,7 +100,14 @@ header {
 }
 .key:hover {
   box-shadow: 0 0 0 0.1rem currentColor;
-  /* cursor: pointer; */
+
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+svg {
+  cursor:pointer
 }
 
 .key--pretty {
