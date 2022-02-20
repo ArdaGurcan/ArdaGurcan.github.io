@@ -42,7 +42,7 @@ small {
   display: grid;
   height: 100vh;
   grid-template-rows: auto auto auto auto auto;
-  gap: 3rem;
+  gap: 2%;
   padding: 1rem;
   /* padding-top: 0; */
   justify-content: center;
