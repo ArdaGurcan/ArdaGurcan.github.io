@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ukraine Invasion Map</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <style>
@@ -14,17 +15,43 @@
             border-color: rgba(34, 38, 42, 0.4) !important;
         }
     </style>
+    <link rel="shortcut icon"
+        href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/flag-ukraine_1f1fa-1f1e6.png"
+        type="image/x-icon">
 </head>
 
 <body style="background-color: #2696E0;">
-    <div class="container">
+    <div class="container flex" style="height:calc(100vh - 2rem)">
 
-        <div class="jumbotron border" style="margin-top: 2rem; padding-top: 1rem; background-color: #D9D6D0;">
-                <h1>Ukraine Invasion Map</h1>
+        <div class="jumbotron border"
+            style="padding-bottom:1rem;margin-top: 1rem; padding-top: 1rem; background-color: #D9D6D0; text-align: center;height:calc(100vh - 2rem)">
+            <h1>Live Ukraine Invasion Map</h1>
+            <hr class="my-4">
+
+            <img src="#" alt="Ukraine Invasion Map" class="map img-fluid rounded border">
+            <br><br>
+
+            <h1>Help Ukraine <a href="https://twitter.com/Ukraine/status/1497294840110977024">Here</a></h1>
+            <div class="align-bottom">
+
                 <hr class="my-4">
+                
 
-                <img src="#" alt="Ukraine Invasion Map" class="map img-fluid rounded border">
+                <p>
+                    Map data scraped daily from <a class="text-muted" style="text-decoration: none !important;"
+                        href="https://www.nytimes.com/interactive/2022/world/europe/ukraine-maps.html">New York Times</a>
+                    using <a class="text-muted" style="text-decoration: none !important;"
+                        href="https://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a>.
+                </p>
+    
+                <div style="text-align: center;">
+                    <span class="text-muted"><a href="https://www.ardagurcan.com" target="_blank" class="text-muted"
+                            style="text-decoration: none !important;"><img class="icon"
+                                src="https://www.ardagurcan.com/ico.png"
+                                style="position: relative; padding-right: 3px; padding-bottom: 3px; width: 20px; height: 20px;">Arda
+                            Gürcan</a></span></div>
             </div>
+        </div>
     </div>
 
     <script>
