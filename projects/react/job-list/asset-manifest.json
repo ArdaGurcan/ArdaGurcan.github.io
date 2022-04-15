@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/projects/react/job-list/static/css/main.31d6cfe0.css",
+    "main.js": "/projects/react/job-list/static/js/main.afda1d56.js",
+    "index.html": "/projects/react/job-list/index.html",
+    "main.afda1d56.js.map": "/projects/react/job-list/static/js/main.afda1d56.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.afda1d56.js"
+  ]
+}
