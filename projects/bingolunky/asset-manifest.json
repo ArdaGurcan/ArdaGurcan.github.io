@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/projects/bingolunky/static/css/main.76604b26.css",
-    "main.js": "/projects/bingolunky/static/js/main.ed445f1c.js",
+    "main.js": "/projects/bingolunky/static/js/main.6bb4325a.js",
     "index.html": "/projects/bingolunky/index.html",
     "main.76604b26.css.map": "/projects/bingolunky/static/css/main.76604b26.css.map",
-    "main.ed445f1c.js.map": "/projects/bingolunky/static/js/main.ed445f1c.js.map"
+    "main.6bb4325a.js.map": "/projects/bingolunky/static/js/main.6bb4325a.js.map"
   },
   "entrypoints": [
     "static/css/main.76604b26.css",
-    "static/js/main.ed445f1c.js"
+    "static/js/main.6bb4325a.js"
   ]
 }
