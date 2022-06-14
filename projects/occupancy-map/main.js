@@ -124,8 +124,8 @@ const generateOccupancyMap = () => {
                     }
                 }
                 const pixelCoords = {
-                    x: (n * tileSize + tileSize / 2)/2,
-                    y: (m * tileSize + tileSize / 2)/2,
+                    x: (n * tileSize + tileSize / 2)/4,
+                    y: (m * tileSize + tileSize / 2)/4,
                 };
                 const latLng = map.containerPointToLatLng(pixelCoords);
                 row.push({
