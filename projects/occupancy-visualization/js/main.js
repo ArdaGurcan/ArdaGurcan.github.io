@@ -3,7 +3,7 @@
 
 console.log("start");
 // The protocol identifier is ws
-var connection = new WebSocket("ws://localhost:8765/");
+var connection = new WebSocket("ws://localhost:5000/");
 // send data
 connection.onopen = function () {
     connection.send("I need data!");
@@ -41,15 +41,15 @@ connection.onmessage = function (event) {
             for (let x = 0; x < data[frame]["info.width"]; x++) {
                 const material = new THREE.MeshBasicMaterial({
                     color: new THREE.Color(
-                        "hsl(0, 0%, " +
-                            (100 -
-                                parseInt(
+                        "hsl(" +
+                            (
+                                (100 -parseInt(
                                     data[frame][
                                         "data_" +
                                             (data[frame]["info.width"] * y + x)
                                     ]
-                                )) +
-                            "%)"
+                                )) * 120/100 ) +
+                            ",100%,65%)"
                     ),
                 });
                 const cube = new THREE.Mesh(geometry, material);
