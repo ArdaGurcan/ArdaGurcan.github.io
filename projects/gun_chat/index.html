@@ -1,0 +1,49 @@
+<html>
+
+<head>
+  <title>
+    GUN.js Messaging App
+  </title>
+</head>
+
+<body>
+  <!-- Sender Receiver Info -->
+  <h2>🔫 GUN.js Messaging App 🔫</h2>
+  <h4 id="sh">Sender: </h4>
+  <h4 id="rh">Receiver: </h4>
+
+  <!-- Login form -->
+  <form id="sign">
+    <input id="alias" placeholder="username">
+    <input id="pass" type="password" placeholder="passphrase">
+    <input id="in" type="submit" value="sign in">
+    <input id="up" type="button" value="sign up">
+  </form>
+
+  <!-- Set receiver form -->
+  <form id="receiver">
+    <input id="user2" placeholder="recipient">
+    <input id="set" type="submit" value="set receiver">
+
+  </form>
+
+  <!-- Message history -->
+  <ul></ul>
+
+  <!-- Message sending form -->
+  <form id="said">
+    <input id="say" placeholder="message">
+    <input id="speak" type="submit" value="speak">
+  </form>
+
+  <!-- JQuery for element querying and triggers -->
+  <script src="https://cdn.jsdelivr.net/npm/gun/examples/jquery.js"></script>
+  <!-- GUN.js for decentralized storage -->
+  <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+  <!-- SEA.js for encryption -->
+  <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
+  <!-- Sends data to GUN.js -->
+  <script src="main.js"></script>
+</body>
+
+</html>
