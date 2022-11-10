@@ -1,6 +1,6 @@
 // Define gun instance
 let gun = Gun([
-    "http://localhost:1234/gun",
+    "http://77.68.15.151:1234/gun",
     "https://gun-manhattan.herokuapp.com/gun",
 ]);
 
