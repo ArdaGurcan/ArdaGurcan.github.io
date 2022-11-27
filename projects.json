@@ -138,16 +138,6 @@
             "engine": "Unity"
         },
         {
-            "name": "Hikmat",
-            "category": "Game",
-            "fileType": "Website",
-            "link": "https://agurcan.itch.io/hikmat",
-            "eventLink": "https://itch.io/jam/freepalestine/rate/1101037",
-            "releaseDate": "24 June 2021",
-            "purpose": "Free Palestine Jam",
-            "engine": "Unity"
-        },
-        {
             "name": "La Lutte Vers Les Sommets",
             "category": "Game",
             "fileType": "Download",
