@@ -138,6 +138,17 @@
             "engine": "Unity"
         },
         {
+            "name": "You Are What You Eat",
+            "aliases": ["eat"],
+            "category": "Game",
+            "fileType": "Website",
+            "link": "https://agurcan.itch.io/you-are-what-you-eat",
+            "eventLink": "https://itch.io/jam/brackeys-9/rate/1933529",
+            "releaseDate": "19 September 2023",
+            "purpose": "Brackeys Game Jam 2023.1",
+            "engine": "Unity"
+        },
+        {
             "name": "La Lutte Vers Les Sommets",
             "category": "Game",
             "fileType": "Download",
