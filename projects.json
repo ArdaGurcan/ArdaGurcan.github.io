@@ -187,7 +187,7 @@
         {
             "name": "NFT",
             "hidden": true,
-            "aliases": ["nft", "noise", "non-fungible-token"],
+            "aliases": ["nft", "non-fungible-token"],
             "link": "https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/33826582964456893023873888935166366410577006609596456292899737953481495937025/"
         },
         {
