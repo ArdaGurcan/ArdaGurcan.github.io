@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Roller Coaster Simulation</title>
+  <style>
+    canvas {
+
+      width: 100vw;
+
+      aspect-ratio: 16 / 9 !important;
+
+    }
+  </style>
+</head>
+
+<body style="text-align: center; margin: 0; padding: 0;">
+  <canvas id="unity-canvas" width=1920 height=1080 style="background: #231F20"></canvas>
+  <script src="Build/2023-02-27-09-57.loader.js"></script>
+  <script>
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      dataUrl: "Build/2023-02-27-09-57.data",
+      frameworkUrl: "Build/2023-02-27-09-57.framework.js",
+      codeUrl: "Build/2023-02-27-09-57.wasm",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "DefaultCompany",
+      productName: "Roller Coaster Sim 2",
+      productVersion: "1.0",
+      // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+      // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+    });
+  </script>
+</body>
+
+</html>
