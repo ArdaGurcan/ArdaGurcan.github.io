@@ -17,7 +17,7 @@
   </head>
   <body style=" margin: 0; padding: 0; background-color: #231F20;">
     <canvas id="unity-canvas" width=1920 height=1080 style="background: #231F20"></canvas>
-    <script src="Build/web.loader.js"></script>
+    <script src="Build/web01.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -35,9 +35,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/web.data",
-        frameworkUrl: "Build/web.framework.js",
-        codeUrl: "Build/web.wasm",
+        dataUrl: "Build/web01.data",
+        frameworkUrl: "Build/web01.framework.js",
+        codeUrl: "Build/web01.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Interactive Learning and Design Lab",
         productName: "Roller Coaster Sim 2",
@@ -48,3 +48,4 @@
     </script>
   </body>
 </html>
+
