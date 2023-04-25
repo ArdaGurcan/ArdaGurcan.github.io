@@ -17,7 +17,13 @@
   </head>
   <body style=" margin: 0; padding: 0; background-color: #231F20;">
     <canvas id="unity-canvas" width=1920 height=1080 style="background: #231F20"></canvas>
-    <script src="Build/2023-04-02-21-52.loader.js"></script>
+    <script>
+      let unityData = null;
+      let receiveMessageFromUnity = (text) => {
+        unityData = JSON.parse(text);
+      }
+    </script>
+    <script src="Build/2023-04-24-22-13.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -35,13 +41,13 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/2023-04-02-21-52.data",
-        frameworkUrl: "Build/2023-04-02-21-52.framework.js",
-        codeUrl: "Build/2023-04-02-21-52.wasm",
+        dataUrl: "Build/2023-04-24-22-13.data",
+        frameworkUrl: "Build/2023-04-24-22-13.framework.js",
+        codeUrl: "Build/2023-04-24-22-13.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Interactive Learning and Design Lab",
         productName: "Roller Coaster Sim 2",
-        productVersion: "1.1",
+        productVersion: "1.2",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
