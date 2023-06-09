@@ -20,14 +20,10 @@
     <script>
       let unityData = null;
       let receiveMessageFromUnity = (text) => {
-        try {
-          unityData = JSON.parse(text);
-        } catch (error) {
-          console.log("JSON.parse(" + text + ") produced: \n" + error);
-        }
+        unityData = JSON.parse(text);
       }
     </script>
-    <script src="Build/2023-06-05-17-17.loader.js"></script>
+    <script src="Build/2023-06-09-14-48.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -45,9 +41,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/2023-06-05-17-17.data",
-        frameworkUrl: "Build/2023-06-05-17-17.framework.js",
-        codeUrl: "Build/2023-06-05-17-17.wasm",
+        dataUrl: "Build/2023-06-09-14-48.data",
+        frameworkUrl: "Build/2023-06-09-14-48.framework.js",
+        codeUrl: "Build/2023-06-09-14-48.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Interactive Learning and Design Lab",
         productName: "Roller Coaster Sim 2",
