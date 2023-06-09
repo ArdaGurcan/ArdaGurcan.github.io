@@ -20,7 +20,11 @@
     <script>
       let unityData = null;
       let receiveMessageFromUnity = (text) => {
-        unityData = JSON.parse(text);
+        try {
+          unityData = JSON.parse(text);
+        } catch (error) {
+          console.log("JSON.parse(" + text + ") produced: \n" + error);
+        }
       }
     </script>
     <script src="Build/2023-06-05-17-17.loader.js"></script>
