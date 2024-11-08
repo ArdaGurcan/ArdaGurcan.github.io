@@ -186,8 +186,7 @@ function generateKeyboard() {
                             class: `key${
                                 PRETTY_KEYS[key] ? " key--pretty" : ""
                             }`,
-                            "data-key": key,
-                            "disabled": "disabled"
+                            "data-key": key
                         },
                         PRETTY_KEYS[key] || key
                     )
