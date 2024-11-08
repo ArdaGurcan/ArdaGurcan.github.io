@@ -20,17 +20,19 @@ const dom = (tag, attrs, ...children) => {
     return el;
 };
 
-const KEYS = ["QWERTYUIOPĞÜ", "ASDFGHJKLŞİ", "+ZXCVBNMÖÇ-"];
+const KEYS = ["ERTYUIOPĞÜ", "ASDFGHJKLŞİ", "+ZCVBNMÖÇ-"];
 const PRETTY_KEYS = {
     "+": "Enter",
     "-": "←",
 };
 
+const CONGRATS = ["OLAĞANÜSTÜ!", "MÜKEMMEL!", "HARİKA!", "BRAVO", "FENA DEĞİL", "HADİ YİNE İYİSİN"]
+
 const ROUNDS = 6;
 const LENGTH = 5;
 
 const dictionaryRequest = fetch("./dictionary.txt").then((r) => r.text());
-const commonRequest = fetch("./common.txt").then((r) => r.text());
+const commonRequest = fetch("./dictionary.txt").then((r) => r.text());
 const board = $(".board");
 const keyboard = $(".keyboard");
 
@@ -97,7 +99,7 @@ async function startGame({ word, kb, board, words }) {
         board.revealHint(round, hints);
         kb.revealHint(guess, hints);
         if (guess.join("") === word) {
-            $(".feedback").innerText = `MÜKEMMELSİN!`;
+            $(".feedback").innerText = CONGRATS[round]
             return;
         }
     }
@@ -185,6 +187,7 @@ function generateKeyboard() {
                                 PRETTY_KEYS[key] ? " key--pretty" : ""
                             }`,
                             "data-key": key,
+                            "disabled": "disabled"
                         },
                         PRETTY_KEYS[key] || key
                     )
